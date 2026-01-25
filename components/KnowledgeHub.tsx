@@ -173,7 +173,9 @@ const KnowledgeHub: React.FC = () => {
     const handleHashChange = () => {
       const hash = window.location.hash.replace('#article-', '');
       const article = articles.find(a => a.id === hash);
-      setSelectedArticle(article || null);
+      if (article) {
+        setSelectedArticle(article);
+      }
     };
     handleHashChange();
     window.addEventListener('hashchange', handleHashChange);
@@ -181,6 +183,8 @@ const KnowledgeHub: React.FC = () => {
   }, [articles]);
 
   const openArticle = (article: Article) => {
+    // Immediate state update for responsiveness on mobile
+    setSelectedArticle(article);
     window.location.hash = `article-${article.id}`;
   };
 
@@ -208,7 +212,7 @@ const KnowledgeHub: React.FC = () => {
   );
 
   return (
-    <section id="knowledge" className="py-16 sm:py-24 bg-gray-950/50">
+    <section id="knowledge" className="py-16 sm:py-24 bg-gray-950/50 relative z-10">
       <div className="container mx-auto px-6">
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-blue-500 font-black uppercase tracking-[0.2em] text-xs sm:text-sm mb-4">מרכז המידע המקצועי</h2>
@@ -217,12 +221,15 @@ const KnowledgeHub: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
           {articles.map((article) => (
-            <button 
+            <div 
               key={article.id}
               onClick={() => openArticle(article)}
-              className="group text-right bg-gray-900 border border-white/5 rounded-[2rem] overflow-hidden hover:border-blue-500 transition-all shadow-2xl relative flex flex-col h-full"
+              className="group text-right bg-gray-900 border border-white/5 rounded-[2rem] overflow-hidden hover:border-blue-500 transition-all shadow-2xl relative flex flex-col h-full cursor-pointer touch-manipulation active:scale-[0.98]"
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => e.key === 'Enter' && openArticle(article)}
             >
-              <div className="h-48 sm:h-56 overflow-hidden relative">
+              <div className="h-48 sm:h-56 overflow-hidden relative pointer-events-none">
                 <img 
                   src={article.image} 
                   alt={article.title} 
@@ -235,7 +242,7 @@ const KnowledgeHub: React.FC = () => {
                 </div>
               </div>
               
-              <div className="p-6 sm:p-8 flex-grow flex flex-col">
+              <div className="p-6 sm:p-8 flex-grow flex flex-col pointer-events-none">
                 <span className="text-blue-400 text-[10px] sm:text-xs font-bold uppercase tracking-widest mb-2">{article.keyword}</span>
                 <h4 className="text-xl sm:text-2xl font-black text-white mb-3 group-hover:text-blue-400 transition-colors leading-tight">{article.title}</h4>
                 <p className="text-gray-400 line-clamp-2 text-sm sm:text-base leading-relaxed mb-6">{article.excerpt}</p>
@@ -245,7 +252,7 @@ const KnowledgeHub: React.FC = () => {
                     <svg className="w-4 h-4 transform group-hover:translate-x-[-4px] transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M19 9l-7 7-7-7" /></svg>
                 </div>
               </div>
-            </button>
+            </div>
           ))}
         </div>
       </div>

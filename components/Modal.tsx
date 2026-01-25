@@ -20,14 +20,11 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children, title, footer 
     if (isOpen) {
       document.addEventListener('keydown', handleKeyDown);
       document.body.style.overflow = 'hidden';
-      // Prevent background scrolling on touch devices
-      document.body.style.touchAction = 'none';
     }
 
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
       document.body.style.overflow = 'unset';
-      document.body.style.touchAction = 'unset';
     };
   }, [isOpen, onClose]);
 
