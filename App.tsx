@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -6,6 +7,7 @@ import WhyUs from './components/WhyUs';
 import Process from './components/Process';
 import Testimonials from './components/Testimonials';
 import ComparisonTable from './components/ComparisonTable';
+import KnowledgeHub from './components/KnowledgeHub';
 import FAQ from './components/FAQ';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -36,6 +38,10 @@ const App: React.FC = () => {
 
         <FadeInSection delay={100}>
           <Process />
+        </FadeInSection>
+
+        <FadeInSection>
+          <KnowledgeHub />
         </FadeInSection>
 
         <FadeInSection>

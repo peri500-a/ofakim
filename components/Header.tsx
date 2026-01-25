@@ -12,6 +12,7 @@ const Header: React.FC = () => {
     { href: '#services', label: 'שירותים' },
     { href: '#why-us', label: 'למה אנחנו?' },
     { href: '#process', label: 'התהליך' },
+    { href: '#knowledge', label: 'מרכז ידע' },
     { href: '#testimonials', label: 'המלצות' },
     { href: '#contact', label: 'צור קשר' },
   ];
@@ -36,14 +37,14 @@ const Header: React.FC = () => {
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
       isScrolled 
-        ? 'bg-gray-950/90 backdrop-blur-lg py-3 shadow-2xl border-b border-white/10' 
-        : 'bg-transparent py-6'
+        ? 'bg-gray-950/95 backdrop-blur-md py-2 shadow-2xl border-b border-white/10' 
+        : 'bg-transparent py-5 md:py-6'
     }`}>
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between">
-          <a href="#" className="flex items-center gap-3 transition-transform duration-300 hover:scale-105">
+          <a href="#" className="flex items-center gap-2 md:gap-3 transition-transform duration-300 hover:scale-105">
             <Logo />
-            <span className="text-xl md:text-2xl font-black tracking-tighter text-blue-400">אופקים הנדסה</span>
+            <span className="text-lg md:text-2xl font-black tracking-tighter text-blue-400">אופקים הנדסה</span>
           </a>
           
           <nav className="hidden md:flex items-center space-x-8 space-x-reverse">
