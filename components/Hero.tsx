@@ -19,7 +19,7 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-cover bg-fixed bg-center text-white overflow-hidden py-12 md:py-0" style={{ backgroundImage: "url('https://images.pexels.com/photos/1106476/pexels-photo-1106476.jpeg?auto=compress&cs=tinysrgb&w=1920')" }}>
+    <section className="relative min-h-screen flex items-center justify-center bg-cover bg-fixed bg-center text-white overflow-hidden py-16 md:py-0" style={{ backgroundImage: "url('https://images.pexels.com/photos/1106476/pexels-photo-1106476.jpeg?auto=compress&cs=tinysrgb&w=1920')" }}>
       {/* Enhanced overlay for maximum text clarity */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/95 via-black/60 to-gray-950"></div>
       
@@ -27,10 +27,9 @@ const Hero: React.FC = () => {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(59,130,246,0.15)_0%,_transparent_70%)] pointer-events-none"></div>
 
       <div className="relative container mx-auto px-4 md:px-6 text-center z-10">
-        {/* Main Header - Reduced mobile font size to text-4xl to prevent cutting */}
-        <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-black leading-tight md:leading-[0.95] mb-6 md:mb-8 tracking-tight md:tracking-tighter drop-shadow-[0_10px_10px_rgba(0,0,0,0.8)]">
-          <span className="block mb-2">בדק בית</span>
-          <span className="block text-white opacity-95">מקצועי.</span>
+        {/* Main Header - Unified to prevent cutting and improved responsive font sizing */}
+        <h1 className="text-[2.75rem] sm:text-6xl md:text-8xl lg:text-9xl font-black leading-[1.1] md:leading-[0.95] mb-6 md:mb-8 tracking-tight md:tracking-tighter drop-shadow-[0_10px_10px_rgba(0,0,0,0.8)]">
+          <span className="block text-white opacity-95">בדק בית מקצועי.</span>
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-blue-500 block mt-2 md:mt-4">
             השקט הנפשי שלך.
           </span>
