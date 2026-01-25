@@ -17,6 +17,57 @@ const KnowledgeHub: React.FC = () => {
 
   const articles: Article[] = [
     {
+      id: 'engineer',
+      keyword: 'מהנדס בדק בית',
+      title: 'למה חובה להזמין מהנדס ולא בודק?',
+      excerpt: 'ההבדל בין חוות דעת של הנדסאי למהנדס רשום, ואיך זה משפיע על הקבילות בבית המשפט.',
+      image: 'https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg?auto=compress&cs=tinysrgb&w=600',
+      icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>,
+      content: (
+        <div className="space-y-4 text-right">
+          <p>בעולם בדק הבית, התעודה שעל הקיר קובעת את חוזק הדו"ח שלכם. רק מהנדס בניין רשום (B.Sc) מוסמך לתת חוות דעת הנדסית קונסטרוקטיבית.</p>
+          <h5 className="font-bold text-white">היתרונות של מהנדס:</h5>
+          <ul className="list-disc list-inside space-y-1">
+            <li>הבנה עמוקה של תקני הבנייה הישראליים (ת"י).</li>
+            <li>יכולת לזהות כשלים בשלד המבנה, לא רק בטיח.</li>
+            <li>סמכות מקצועית מוערכת מול קבלנים ובתי משפט.</li>
+          </ul>
+        </div>
+      )
+    },
+    {
+      id: 'defects',
+      keyword: 'ליקויי בנייה',
+      title: '7 ליקויי הבנייה הנפוצים ביותר',
+      excerpt: 'מרטיבות קפילארית ועד סטיות בריצוף - הרשימה שתעזור לכם לדעת מה לחפש בבית החדש.',
+      image: 'https://images.pexels.com/photos/5691622/pexels-photo-5691622.jpeg?auto=compress&cs=tinysrgb&w=600',
+      icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>,
+      content: (
+        <div className="space-y-4 text-right">
+          <p>ליקויי בנייה הם לא תמיד גלויים לעין. לעיתים הם מסתתרים מתחת לריצוף היפה או מאחורי הצבע החדש.</p>
+          <ul className="list-decimal list-inside space-y-2">
+            <li><strong>רטיבות כלואה:</strong> מים שנשארו מתחת לריצוף ויוצרים עובש.</li>
+            <li><strong>סטיות במידות:</strong> חדרים קטנים יותר ממה שהובטח במפרט.</li>
+            <li><strong>אינסטלציה לקויה:</strong> שיפועים לא נכונים הגורמים לסתימות חוזרות.</li>
+          </ul>
+        </div>
+      )
+    },
+    {
+      id: 'legal',
+      keyword: 'חוות דעת הנדסית',
+      title: 'הכוח המשפטי של חוות דעת הנדסית',
+      excerpt: 'איך הופכים דוח בדיקה לכלי משפטי שמחייב את הקבלן לתקן או לפצות?',
+      image: 'https://images.pexels.com/photos/5668473/pexels-photo-5668473.jpeg?auto=compress&cs=tinysrgb&w=600',
+      icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" /></svg>,
+      content: (
+        <div className="space-y-4 text-right">
+          <p>חוות דעת הנדסית היא מסמך משפטי לכל דבר. היא צריכה להיכתב בפורמט מסוים כדי ששופט יקבל אותה כראיה.</p>
+          <p>באופקים הנדסה, אנו מכינים דוחות הכוללים הערכת עלות תיקון לפי "מחירון דקל", מה שמאפשר לכם לתבוע פיצוי כספי מדויק.</p>
+        </div>
+      )
+    },
+    {
       id: 'price',
       keyword: 'בדק בית מחיר',
       title: 'כמה עולה בדק בית ב-2024?',
@@ -32,9 +83,6 @@ const KnowledgeHub: React.FC = () => {
             <li>מורכבות המערכות (מערכות חכמות, מיזוג מרכזי)</li>
             <li>מרחק גאוגרפי של המהנדס</li>
           </ul>
-          <p className="bg-blue-600/20 p-4 rounded-xl border border-blue-500/30 text-blue-300">
-            <strong>טיפ:</strong> אל תתפתו להצעה הכי זולה. דוח שאינו קביל בבית משפט עלול לעלות לכם הרבה יותר בעתיד.
-          </p>
         </div>
       )
     },
@@ -43,7 +91,7 @@ const KnowledgeHub: React.FC = () => {
       keyword: 'איתור נזילות ורטיבות',
       title: 'איתור נזילות ללא הרס',
       excerpt: 'איך מצלמה תרמית חוסכת לכם שבירת קירות מיותרת? כל מה שצריך לדעת על בדיקת רטיבות.',
-      image: 'https://images.pexels.com/photos/5691622/pexels-photo-5691622.jpeg?auto=compress&cs=tinysrgb&w=600',
+      image: 'https://images.pexels.com/photos/161477/repair-leak-water-pvc-161477.jpeg?auto=compress&cs=tinysrgb&w=600',
       icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.618.309a2 2 0 01-1.789 0l-.618-.309a6 6 0 00-3.86-.517l-2.387.477a2 2 0 00-1.022.547V18.5a2 2 0 001.022 1.547l2.387.477a6 6 0 003.86-.517l.618-.309a2 2 0 011.789 0l.618.309a6 6 0 003.86.517l2.387-.477a2 2 0 001.022-1.547V15.428z" /></svg>,
       content: (
         <div className="space-y-4 text-right">
@@ -77,14 +125,14 @@ const KnowledgeHub: React.FC = () => {
     <section id="knowledge" className="py-24 bg-gray-950/50">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-blue-500 font-black uppercase tracking-[0.2em] text-sm mb-4">מרכז המידע שלנו</h2>
-          <h3 className="text-4xl md:text-5xl font-black text-white mb-6">כל מה שצריך לדעת על בדק בית</h3>
+          <h2 className="text-blue-500 font-black uppercase tracking-[0.2em] text-sm mb-4">מרכז המידע וה-SEO שלנו</h2>
+          <h3 className="text-4xl md:text-5xl font-black text-white mb-6">מדריכי מומחים לבדק בית</h3>
           <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-            אספנו עבורכם את המדריכים המקצועיים ביותר שיעזרו לכם לקבל החלטות חכמות ולחסוך כסף.
+            הידע המקצועי שייתן לכם ביטחון מלא מול הקבלן או מוכר הדירה.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {articles.map((article) => (
             <div 
               key={article.id}
@@ -95,7 +143,7 @@ const KnowledgeHub: React.FC = () => {
                 <img 
                   src={article.image} 
                   alt={article.title} 
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-80 group-hover:opacity-100"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent"></div>
                 <div className="absolute bottom-4 right-4 bg-blue-600 p-2 rounded-xl text-white shadow-lg">
@@ -107,7 +155,7 @@ const KnowledgeHub: React.FC = () => {
                 <h4 className="text-2xl font-bold text-white mt-2 mb-4 group-hover:text-blue-400 transition-colors">{article.title}</h4>
                 <p className="text-gray-400 mb-6 line-clamp-2">{article.excerpt}</p>
                 <div className="flex items-center text-blue-400 font-bold gap-2">
-                  <span>קראו עוד</span>
+                  <span>קראו את המדריך</span>
                   <svg className="w-4 h-4 transform group-hover:translate-x-[-4px] transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M19 9l-7 7-7-7" /></svg>
                 </div>
               </div>
@@ -128,13 +176,20 @@ const KnowledgeHub: React.FC = () => {
             <div className="relative h-64 rounded-2xl overflow-hidden mb-6">
                <img src={selectedArticle.image} alt={selectedArticle.title} className="w-full h-full object-cover" />
                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent"></div>
+               <div className="absolute bottom-4 right-4 bg-gray-950/80 backdrop-blur px-4 py-2 rounded-full border border-white/10">
+                  <span className="text-blue-400 font-bold text-sm uppercase">{selectedArticle.keyword}</span>
+               </div>
             </div>
-            <div className="prose prose-invert max-w-none">
+            <div className="prose prose-invert max-w-none text-gray-300 leading-relaxed">
               {selectedArticle.content}
+              <div className="mt-8 p-6 bg-blue-600/10 rounded-2xl border border-blue-500/20">
+                <p className="font-bold text-white mb-2">צריכים עזרה בנושא זה?</p>
+                <p>המהנדסים שלנו זמינים לייעוץ ראשוני ללא עלות בנושא {selectedArticle.keyword}.</p>
+              </div>
             </div>
             <div className="pt-6 mt-8 border-t border-white/5 flex flex-col sm:flex-row gap-4">
-              <a href="#contact" onClick={() => setSelectedArticle(null)} className="flex-1 bg-blue-600 text-white font-black py-4 rounded-xl text-center hover:bg-blue-500 transition-all">קבלו הצעת מחיר בהתאם לכתבה</a>
-              <button onClick={() => setSelectedArticle(null)} className="px-8 py-4 bg-gray-700 text-white font-bold rounded-xl hover:bg-gray-600 transition-all">סגירה</button>
+              <a href="#contact" onClick={() => setSelectedArticle(null)} className="flex-1 bg-blue-600 text-white font-black py-4 rounded-xl text-center hover:bg-blue-500 transition-all shadow-lg shadow-blue-600/20">דברו עם מהנדס עכשיו</a>
+              <button onClick={() => setSelectedArticle(null)} className="px-8 py-4 bg-gray-700 text-white font-bold rounded-xl hover:bg-gray-600 transition-all">חזרה למרכז המידע</button>
             </div>
           </div>
         )}
