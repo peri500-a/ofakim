@@ -47,15 +47,17 @@ const App: React.FC = () => {
         // 3. ניקוי הכתובת: הסרת לוכסן סופי (אם קיים)
         const normalizedPath = path.length > 1 ? path.replace(/\/+$/, "") : path;
 
-        // 4. אם אנחנו בדף הבית, הכל תקין
-        if (normalizedPath === "/" || normalizedPath === "/index.html") {
+        // 4. בדיקה האם אנחנו בסביבת תצוגה מקדימה או בשורש
+        const isRoot = normalizedPath === "/" || normalizedPath === "/index.html" || normalizedPath === "";
+        const isPreviewEnv = window.location.hostname.includes('webcontainer') || window.self !== window.top;
+
+        if (isRoot || isPreviewEnv) {
           setIsNotFound(false);
           return;
         }
 
         // 5. בדיקה האם הכתובת נמצאת במפת הניתובים הישנה
         if (legacyMap[normalizedPath]) {
-          // ביצוע הפניה פנימית לעוגן המתאים
           window.location.replace('/' + legacyMap[normalizedPath]);
           setIsNotFound(false);
           return;
@@ -67,7 +69,7 @@ const App: React.FC = () => {
           return;
         }
 
-        // 7. אם הגענו לכאן - הכתובת לא מזוהה
+        // 7. אם הגענו לכאן והכתובת לא בשורש ולא במפה - נציג 404
         setIsNotFound(true);
       } catch (err) {
         console.error("Routing error:", err);
@@ -76,7 +78,6 @@ const App: React.FC = () => {
     };
 
     handleRouting();
-    // האזנה לשינויים בכתובת
     window.addEventListener('popstate', handleRouting);
     return () => window.removeEventListener('popstate', handleRouting);
   }, []);
@@ -88,7 +89,7 @@ const App: React.FC = () => {
   return (
     <div className="bg-gray-950 text-gray-300 selection:bg-blue-500/30 selection:text-white overflow-x-hidden">
       <Header />
-      <main>
+      <main id="main-content" role="main">
         <FadeInSection>
           <Hero />
         </FadeInSection>
