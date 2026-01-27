@@ -12,9 +12,21 @@ interface Article {
 
 const KnowledgeHub: React.FC = () => {
   const [selectedId, setSelectedId] = useState<string>('defects');
+  const [activeCity, setActiveCity] = useState<string | null>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
-  const areas = ["תל אביב", "ראשון לציון", "רחובות", "נתניה", "ירושלים", "פתח תקווה", "אשדוד", "חיפה"];
+  const cityData: Record<string, string> = {
+    "תל אביב": "התמחות בבניינים לשימור, תמ\"א 38 ובדיקת תשתיות ישנות מול חדשות.",
+    "ראשון לציון": "דגש על בדיקת איטום וחיפויים חיצוניים בשכונות החדשות במערב העיר.",
+    "רחובות": "מומחיות בבדיקת צנרת ואינסטלציה במבנים צמודי קרקע ודירות יוקרה.",
+    "נתניה": "איתור נזקי מליחות וקורוזיה בבניינים הקרובים לקו החוף.",
+    "ירושלים": "בדיקת חיפוי אבן ירושלמית ובידוד תרמי המותאם לאקלים ההררי.",
+    "פתח תקווה": "ביקורת מקיפה למגדלי מגורים רבי קומות ובדיקת מערכות כיבוי אש.",
+    "אשדוד": "אבחון ליקויי בנייה בבנייה רוויה חדשה עם דגש על שיפועי מרפסות.",
+    "חיפה": "התמחות בבדיקת יציבות וביסוס במבנים על צלע ההר."
+  };
+
+  const areas = Object.keys(cityData);
 
   const articles: Article[] = [
     {
@@ -71,29 +83,6 @@ const KnowledgeHub: React.FC = () => {
           </p>
         </div>
       )
-    },
-    {
-      id: 'legal',
-      keyword: 'חוות דעת הנדסית',
-      title: 'הכוח המשפטי של הדוח שלנו',
-      excerpt: 'המדריך המלא לשימוש בחוות דעת הנדסית בבית המשפט מול קבלנים.',
-      image: 'https://images.pexels.com/photos/6077326/pexels-photo-6077326.jpeg?auto=compress&cs=tinysrgb&w=1200',
-      icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" /></svg>,
-      content: (
-        <div className="space-y-6">
-          <p className="text-xl font-bold text-white mb-4">דוח המהנדס הוא הנשק שלכם מול הקבלן.</p>
-          <ul className="space-y-4 text-gray-300">
-            <li className="flex gap-3">
-              <span className="text-blue-500 font-bold">✓</span>
-              <span>חתימת מהנדס בניין רשום ומחייב.</span>
-            </li>
-            <li className="flex gap-3">
-              <span className="text-blue-500 font-bold">✓</span>
-              <span>פירוט סעיפי חוק המכר הרלוונטיים.</span>
-            </li>
-          </ul>
-        </div>
-      )
     }
   ];
 
@@ -117,35 +106,61 @@ const KnowledgeHub: React.FC = () => {
           <h2 className="text-blue-500 font-black uppercase tracking-widest text-xs mb-4">מרכז המידע והידע</h2>
           <h3 className="text-4xl sm:text-6xl font-black text-white mb-6">מדריכי הנדסה וביקורת מבנים</h3>
           
-          {/* SEO Locations Tag Cloud */}
-          <div className="flex flex-wrap justify-center gap-2 mb-8 opacity-60 hover:opacity-100 transition-opacity">
-            <span className="text-gray-500 text-sm">שירות בפריסה ארצית:</span>
-            {areas.map(area => (
-              <span key={area} className="text-xs font-bold text-blue-400/80 bg-blue-400/5 px-2 py-0.5 rounded border border-blue-400/10">בדק בית ב{area}</span>
-            ))}
+          {/* SEO Locations Tag Cloud - Interactive Version */}
+          <div className="mt-8">
+            <p className="text-gray-500 text-sm mb-4 font-bold">בחרו עיר לצפייה בדגשים הנדסיים מקומיים:</p>
+            <div className="flex flex-wrap justify-center gap-3">
+              {areas.map(area => (
+                <button 
+                  key={area} 
+                  onClick={() => setActiveCity(area)}
+                  className={`text-sm font-bold px-4 py-2 rounded-xl border transition-all duration-300 ${
+                    activeCity === area 
+                    ? 'bg-blue-600 border-blue-500 text-white shadow-lg shadow-blue-600/20 scale-110' 
+                    : 'text-blue-400/80 bg-blue-400/5 border-blue-400/10 hover:border-blue-400/40'
+                  }`}
+                >
+                  בדק בית ב{area}
+                </button>
+              ))}
+            </div>
+            
+            {activeCity && (
+              <div className="mt-8 animate-fade-in bg-blue-600/5 border border-blue-500/20 rounded-3xl p-6 max-w-2xl mx-auto relative overflow-hidden group">
+                <div className="absolute top-0 left-0 w-1 h-full bg-blue-600"></div>
+                <h4 className="text-xl font-black text-blue-400 mb-2">מומחיות הנדסית ב{activeCity}:</h4>
+                <p className="text-gray-300 text-lg leading-relaxed">{cityData[activeCity]}</p>
+                <button 
+                  onClick={() => setActiveCity(null)}
+                  className="mt-4 text-xs text-gray-500 hover:text-white transition-colors"
+                >
+                  סגור מידע מקומי [X]
+                </button>
+              </div>
+            )}
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12 max-w-4xl mx-auto">
           {articles.map((article) => (
             <button
               key={article.id}
               onClick={() => handleSelect(article.id)}
-              className={`group text-right p-6 rounded-3xl border transition-all duration-500 ${
+              className={`group text-right p-8 rounded-3xl border transition-all duration-500 ${
                 selectedId === article.id 
                   ? 'bg-blue-600 border-blue-500 shadow-2xl' 
                   : 'bg-gray-900 border-white/5 hover:border-blue-500/30'
               }`}
             >
-              <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-4 ${
+              <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-6 ${
                 selectedId === article.id ? 'bg-white text-blue-600' : 'bg-blue-600/10 text-blue-400'
               }`}>
                 {article.icon}
               </div>
-              <h4 className={`text-xl font-black mb-2 ${selectedId === article.id ? 'text-white' : 'text-gray-100'}`}>
+              <h4 className={`text-2xl font-black mb-3 ${selectedId === article.id ? 'text-white' : 'text-gray-100'}`}>
                 {article.title}
               </h4>
-              <p className={`text-sm line-clamp-2 ${selectedId === article.id ? 'text-blue-100' : 'text-gray-400'}`}>
+              <p className={`text-base line-clamp-2 ${selectedId === article.id ? 'text-blue-100' : 'text-gray-400'}`}>
                 {article.excerpt}
               </p>
             </button>
