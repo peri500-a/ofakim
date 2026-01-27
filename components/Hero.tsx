@@ -14,7 +14,7 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-cover bg-fixed bg-center text-white overflow-hidden py-24 md:py-0" style={{ backgroundImage: "url('https://images.pexels.com/photos/1106476/pexels-photo-1106476.jpeg?auto=compress&cs=tinysrgb&w=1920')" }}>
+    <section className="relative min-h-screen flex items-center justify-center bg-cover bg-fixed bg-center text-white overflow-hidden py-24 md:py-0" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1503387762-592dea58ef21?auto=format&fit=crop&w=1920&q=80')" }}>
       <div className="absolute inset-0 bg-gradient-to-b from-black/95 via-black/70 to-gray-950"></div>
       
       <div className="relative container mx-auto px-4 md:px-6 text-center z-10 pt-16">

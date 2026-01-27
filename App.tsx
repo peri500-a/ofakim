@@ -12,8 +12,10 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import StickyQuoteButton from './components/StickyQuoteButton';
 import PrivacySection from './components/PrivacySection';
+import AccessibilitySection from './components/AccessibilitySection';
 import FadeInSection from './components/FadeInSection';
 import NotFound from './components/NotFound';
+import CookieConsent from './components/CookieConsent';
 
 const App: React.FC = () => {
   const [isNotFound, setIsNotFound] = useState(false);
@@ -129,9 +131,14 @@ const App: React.FC = () => {
         <FadeInSection>
           <PrivacySection />
         </FadeInSection>
+
+        <FadeInSection>
+          <AccessibilitySection />
+        </FadeInSection>
       </main>
       <Footer />
       <StickyQuoteButton />
+      <CookieConsent />
     </div>
   );
 };

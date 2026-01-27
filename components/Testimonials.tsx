@@ -1,10 +1,9 @@
-
 import React from 'react';
 
 const TestimonialCard: React.FC<{ quote: string; name: string; city: string; image: string }> = ({ quote, name, city, image }) => (
   <div className="bg-gray-800 p-8 rounded-xl shadow-lg flex flex-col items-center text-center h-full border border-gray-700">
-    <img src={image} alt={name} className="w-20 h-20 rounded-full mb-4 object-cover" />
-    <p className="text-gray-300 italic mb-4 flex-grow">"{quote}"</p>
+    <img src={image} alt={name} className="w-20 h-20 rounded-full mb-4 object-cover border-2 border-blue-500/30 shadow-lg" />
+    <p className="text-gray-300 italic mb-4 flex-grow leading-relaxed">"{quote}"</p>
     <div>
       <div className="font-bold text-gray-100">{name}</div>
       <div className="text-sm text-gray-400">{city}</div>
@@ -18,19 +17,19 @@ const Testimonials: React.FC = () => {
       quote: 'הגענו דרך המלצה ולא התאכזבנו. הדוח המפורט חשף ליקויים שהקבלן "שכח" לציין. בזכותם, נכנסנו לדירה מושלמת וחסכנו עשרות אלפי שקלים. שירות מקצועי ואדיב.',
       name: 'משפחת אבידן',
       city: 'רעננה',
-      image: 'https://picsum.photos/200/200?random=1',
+      image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&h=200&q=80',
     },
     {
       quote: 'חשבנו שהבית שמצאנו מושלם, אבל הבדיקה גילתה בעיות איטום רציניות בגג. המהנדס היה יסודי והסביר הכל בסבלנות. אין ספק שמנעתם מאיתנו אסון כלכלי!',
       name: 'תומר ושירי',
       city: 'באר שבע',
-      image: 'https://picsum.photos/200/200?random=2',
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&h=200&q=80',
     },
     {
       quote: 'שירות יוצא מן הכלל. מהשיחה הראשונה ועד קבלת הדוח הרגשנו שיש על מי לסמוך. הדוח היה ברור ומקצועי, ועזר לנו מאוד במשא ומתן מול המוכרים. ממליצים בחום!',
       name: 'סיגל כהן',
       city: 'ראשון לציון',
-      image: 'https://picsum.photos/200/200?random=3',
+      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=200&h=200&q=80',
     },
   ];
 

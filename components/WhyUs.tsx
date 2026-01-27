@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const Feature: React.FC<{ icon: React.ReactNode; title: string; description: string }> = ({ icon, title, description }) => (
@@ -54,8 +53,11 @@ const WhyUs: React.FC = () => {
             <div className="relative h-[500px] md:h-[700px] overflow-hidden rounded-[3rem] border border-white/10 shadow-[0_0_80px_rgba(0,0,0,0.6)]">
               <img 
                 className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-100" 
-                src="https://images.pexels.com/photos/3183186/pexels-photo-3183186.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+                src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&q=80" 
                 alt="צוות הנדסה מקצועי בבדיקת בדק בית"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = 'https://images.pexels.com/photos/159306/pexels-photo-159306.jpeg?auto=compress&cs=tinysrgb&w=800';
+                }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/20 to-transparent"></div>
               
@@ -65,7 +67,7 @@ const WhyUs: React.FC = () => {
                     <p className="text-blue-400 font-black text-xs md:text-sm uppercase tracking-widest">זמינות מיידית</p>
                 </div>
                 <p className="text-white text-lg md:text-3xl font-black leading-tight">
-                    אנחנו פועלים בפריסה רחבה בין רחובות לנתניה ומתחייבים לדוח מהיר תוך 48 שעות.
+                    אנו פועלים בתל אביב, ירושלים, רחובות, שוהם והמרכז ומתחייבים לדוח מהיר תוך 48 שעות.
                 </p>
               </div>
             </div>

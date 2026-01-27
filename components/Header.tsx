@@ -5,6 +5,7 @@ const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const firstNavLinkRef = useRef<HTMLAnchorElement>(null);
 
   const navLinks = [
     { href: '#services', label: 'שירותים' },
@@ -21,6 +22,41 @@ const Header: React.FC = () => {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // ניהול פוקוס ומקלדת עבור תפריט נייד
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isMenuOpen) {
+        setIsMenuOpen(false);
+        menuButtonRef.current?.focus();
+      }
+    };
+
+    if (isMenuOpen) {
+      document.addEventListener('keydown', handleKeyDown);
+      // העברת פוקוס לפריט הראשון בתפריט כשהוא נפתח
+      setTimeout(() => firstNavLinkRef.current?.focus(), 100);
+      // מניעת גלילה של הדף כשהתפריט פתוח
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = '';
+    };
+  }, [isMenuOpen]);
+
+  const toggleMenu = () => {
+    if (isMenuOpen) {
+      setIsMenuOpen(false);
+      // החזרת פוקוס לכפתור כשסוגרים
+      menuButtonRef.current?.focus();
+    } else {
+      setIsMenuOpen(true);
+    }
+  };
 
   return (
     <>
@@ -76,10 +112,11 @@ const Header: React.FC = () => {
 
               <button 
                 ref={menuButtonRef}
-                onClick={() => setIsMenuOpen(!isMenuOpen)} 
+                onClick={toggleMenu} 
                 className="lg:hidden text-gray-300 p-2 rounded-xl bg-gray-800/50 border border-white/5 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                aria-label={isMenuOpen ? "סגור תפריט" : "פתח תפריט"}
+                aria-label={isMenuOpen ? "סגור תפריט" : "פתח תפריט ניווט"}
                 aria-expanded={isMenuOpen}
+                aria-controls="mobile-menu"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={isMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}></path>
@@ -89,21 +126,37 @@ const Header: React.FC = () => {
           </div>
           
           {isMenuOpen && (
-            <div className="lg:hidden absolute top-full left-0 right-0 bg-gray-950 border-t border-white/10 py-8 px-6 animate-in slide-in-from-top duration-300 shadow-2xl">
+            <div 
+              id="mobile-menu"
+              className="lg:hidden absolute top-full left-0 right-0 bg-gray-950 border-t border-white/10 py-8 px-6 animate-in slide-in-from-top duration-300 shadow-2xl h-screen md:h-auto"
+              role="dialog"
+              aria-modal="true"
+              aria-label="תפריט ניווט נייד"
+            >
               <nav className="flex flex-col space-y-4 text-center" aria-label="תפריט נייד">
-                {navLinks.map((link) => (
+                {navLinks.map((link, index) => (
                   <a 
                     key={link.href} 
                     href={link.href} 
-                    className="text-gray-200 text-xl font-black py-2 focus:text-blue-400 focus:outline-none" 
+                    ref={index === 0 ? firstNavLinkRef : null}
+                    className="text-gray-200 text-2xl font-black py-3 rounded-xl hover:bg-white/5 focus:bg-blue-600 focus:text-white focus:outline-none transition-all" 
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {link.label}
                   </a>
                 ))}
-                <a href="tel:054-7515142" className="bg-white/5 text-blue-400 font-black text-xl py-4 rounded-2xl border border-white/10 focus:bg-blue-600 focus:text-white focus:outline-none">
+                <a 
+                  href="tel:054-7515142" 
+                  className="mt-4 bg-blue-600/10 text-blue-400 font-black text-xl py-5 rounded-2xl border border-blue-500/20 hover:bg-blue-600 hover:text-white focus:bg-blue-600 focus:text-white focus:outline-none transition-all"
+                >
                   התקשרו: 054-7515142
                 </a>
+                <button 
+                  onClick={() => setIsMenuOpen(false)}
+                  className="mt-8 text-gray-500 text-sm font-bold uppercase tracking-widest hover:text-white focus:outline-none focus:underline"
+                >
+                  סגור תפריט
+                </button>
               </nav>
             </div>
           )}
