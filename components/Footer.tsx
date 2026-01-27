@@ -11,13 +11,13 @@ const Footer: React.FC = () => {
             <span className="text-2xl font-black text-blue-400">אופקים הנדסה</span>
           </a>
           
-          <div className="flex flex-wrap justify-center gap-6 sm:gap-10 text-gray-400 font-bold">
+          <nav className="flex flex-wrap justify-center gap-6 sm:gap-10 text-gray-400 font-bold" aria-label="ניווט תחתון">
             <a href="#services" className="hover:text-blue-400 transition-colors">שירותים</a>
             <a href="#knowledge" className="hover:text-blue-400 transition-colors">מחירון</a>
             <a href="#privacy-policy" className="hover:text-blue-400 transition-colors">מדיניות פרטיות</a>
-            <a href="#accessibility" className="hover:text-blue-400 transition-colors">הצהרת נגישות</a>
+            <a href="#accessibility" className="hover:text-blue-400 transition-colors underline decoration-blue-500/50 decoration-2 underline-offset-8">הצהרת נגישות</a>
             <a href="#contact" className="hover:text-blue-400 transition-colors">צור קשר</a>
-          </div>
+          </nav>
 
           <div className="w-full max-w-2xl h-px bg-white/5"></div>
 

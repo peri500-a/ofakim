@@ -2,7 +2,6 @@ import React from 'react';
 
 const ServiceCard: React.FC<{ icon: React.ReactNode; title: string; description: React.ReactNode; imageSrc: string; imageAlt: string; }> = ({ icon, title, description, imageSrc, imageAlt }) => (
   <div className="bg-gray-800 rounded-2xl shadow-lg hover:shadow-blue-500/20 hover:-translate-y-2 transition-all duration-500 flex flex-col border border-gray-700 group-hover:border-blue-500/50 overflow-hidden group relative">
-    {/* Subtle Background Glow on Hover */}
     <div className="absolute inset-0 bg-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
     
     <div className="relative overflow-hidden h-60 bg-gray-900 min-h-[240px]">
@@ -11,9 +10,6 @@ const ServiceCard: React.FC<{ icon: React.ReactNode; title: string; description:
         alt={imageAlt} 
         loading="lazy"
         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
-        onError={(e) => {
-          (e.target as HTMLImageElement).src = 'https://images.pexels.com/photos/159306/pexels-photo-159306.jpeg?auto=compress&cs=tinysrgb&w=800';
-        }}
       />
       <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent"></div>
     </div>
@@ -44,25 +40,25 @@ const Services: React.FC = () => {
       title: 'ביקורת מבנים לפני רכישה',
       description: (
         <ul className="space-y-2">
-          <li><strong>מה בודקים:</strong> <span className="text-blue-400">מהנדס בדק בית</span> בוחן את מערכות האינסטלציה, החשמל, האיטום ושלד הנכס.</li>
-          <li><strong>המטרה:</strong> איתור <span className="text-cyan-400">ליקויי בנייה</span> קריטיים שעלות תיקונם גבוהה.</li>
-          <li className="text-sm text-gray-400 pt-2 italic">אל תקנו חתול בשק - קבלו דוח מקצועי שיחסוך לכם אלפים.</li>
+          <li><strong>יד שנייה:</strong> בדיקת שלד, אינסטלציה וחשמל לפני קנייה.</li>
+          <li><strong>המטרה:</strong> איתור ליקויים קריטיים וחיסכון בעלויות שיפוץ עתידיות.</li>
+          <li className="text-sm text-gray-400 pt-2 italic">אל תקנו חתול בשק - קבלו שקט נפשי.</li>
         </ul>
       ),
-      imageSrc: 'https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=800',
-      imageAlt: 'ביקורת מבנים מקצועית בבית פרטי',
+      imageSrc: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80',
+      imageAlt: 'ביקורת מבנים מקצועית לפני רכישה',
     },
     {
       icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>,
       title: 'בדק בית לדירה חדשה',
       description: (
         <ul className="space-y-2">
-          <li><strong>בנייה חדשה:</strong> בדיקה מקיפה מול מפרט המכר והתקנים הישראליים העדכניים.</li>
-          <li><strong>ליקויי בנייה:</strong> איתור סטיות בריצוף, חיפויי חוץ, ואיטום מרפסות.</li>
-          <li className="text-sm text-gray-400 pt-2 italic">אל תחתמו על קבלת מפתח לפני שמהנדס אישר את תקינות הדירה.</li>
+          <li><strong>מול הקבלן:</strong> בדיקה מקיפה מול מפרט המכר והתקנים הישראליים.</li>
+          <li><strong>תיקון ליקויים:</strong> הפקת דוח מחייב לקבלן לביצוע תיקונים בשנת הבדק.</li>
+          <li className="text-sm text-gray-400 pt-2 italic">וידוא שהדירה נמסרת לכם באיכות הנדסית מושלמת.</li>
         </ul>
       ),
-      imageSrc: 'https://images.pexels.com/photos/1475938/pexels-photo-1475938.jpeg?auto=compress&cs=tinysrgb&w=800',
+      imageSrc: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80',
       imageAlt: 'בדק בית לדירה חדשה מקבלן',
     },
     {
@@ -70,91 +66,91 @@ const Services: React.FC = () => {
       title: 'בדיקת קונסטרוקציה ושלד',
       description: (
         <ul className="space-y-2">
-          <li><strong>יציבות המבנה:</strong> אבחון <span className="text-blue-400">ביסוס ויסודות</span>, קירות נושאים ותקרות בטון.</li>
-          <li><strong>איתור סדקים:</strong> הבחנה מקצועית בין סדק נימי אסתטי לסדק <span className="text-red-400">קונסטרוקטיבי</span> מסוכן.</li>
-          <li className="text-sm text-gray-400 pt-2 italic">בדיקה קריטית במבנים ותיקים ובפרויקטים של התחדשות עירונית.</li>
+          <li><strong>יציבות מבנית:</strong> אבחון ביסוס, קירות נושאים ותקרות בטון.</li>
+          <li><strong>איתור סדקים:</strong> הבחנה בין סדק אסתטי לסדק קונסטרוקטיבי מסוכן.</li>
+          <li className="text-sm text-gray-400 pt-2 italic">בדיקה קריטית במבנים ותיקים ובפרויקטי תמ"א.</li>
         </ul>
       ),
-      imageSrc: 'https://images.pexels.com/photos/159306/pexels-photo-159306.jpeg?auto=compress&cs=tinysrgb&w=800',
-      imageAlt: 'בדיקת שלד ויציבות המבנה ע"י מהנדס קונסטרוקציה',
+      imageSrc: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80',
+      imageAlt: 'בדיקת יציבות קונסטרוקטיבית ושלד',
     },
     {
       icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>,
       title: 'איתור נזילות ורטיבות',
       description: (
         <ul className="space-y-2">
-          <li><strong>טכנולוגיה:</strong> שימוש במצלמה תרמית (FLIR) לאיתור נזילות סמויות בתוך קירות ותחת ריצוף.</li>
-          <li><strong>דיוק:</strong> זיהוי כשלי איטום ובעיות ניקוז ללא הרס של תשתיות קיימות.</li>
-          <li className="text-sm text-gray-400 pt-2 italic">מניעת נזק מצטבר למבנה ומפגעי עובש בריאותיים.</li>
+          <li><strong>טכנולוגיה תרמית:</strong> שימוש במצלמות FLIR לאיתור נזילות סמויות.</li>
+          <li><strong>ללא הרס:</strong> זיהוי כשלי איטום ובעיות ניקוז בדיוק מקסימלי.</li>
+          <li className="text-sm text-gray-400 pt-2 italic">מניעת נזק מצטבר למבנה ועובש בריאותי.</li>
         </ul>
       ),
-      imageSrc: 'https://images.pexels.com/photos/5691622/pexels-photo-5691622.jpeg?auto=compress&cs=tinysrgb&w=800',
-      imageAlt: 'איתור נזילות וליקויי רטיבות בטכנולוגיה תרמית',
+      imageSrc: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80',
+      imageAlt: 'איתור נזילות במצלמה תרמית',
     },
     {
-      icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" /></svg>,
-      title: 'פיקוח וליווי הנדסי',
+      icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>,
+      title: 'בדיקת רכוש משותף',
       description: (
         <ul className="space-y-2">
-          <li><strong>ליווי בבנייה:</strong> פיקוח צמוד על קבלנים באתר, וידוא ביצוע לפי התוכניות והתקנים.</li>
-          <li><strong>בקרת איכות:</strong> אישור שלבי יציקות, איטום ומערכות קריטיות בזמן אמת.</li>
-          <li className="text-sm text-gray-400 pt-2 italic">הגנה על האינטרסים שלכם מול כל אנשי המקצוע באתר.</li>
+          <li><strong>לוועדי בית:</strong> בדיקת לובי, חדר מדרגות, חדר גנרטור וגגות.</li>
+          <li><strong>מערכות בניין:</strong> וידוא תקינות מעליות, משאבות וכיבוי אש.</li>
+          <li className="text-sm text-gray-400 pt-2 italic">הגנה על האינטרס של כלל הדיירים בבניין.</li>
         </ul>
       ),
-      imageSrc: 'https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?auto=compress&cs=tinysrgb&w=800',
-      imageAlt: 'ליווי ופיקוח הנדסי באתר בנייה',
+      imageSrc: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80',
+      imageAlt: 'בדיקת רכוש משותף - בניין מגורים רב קומות מודרני',
     },
     {
       icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>,
-      title: 'חוות דעת הנדסית למשפט',
+      title: 'חוות דעת הנדסית לבית משפט',
       description: (
         <ul className="space-y-2">
-          <li><strong>תוקף משפטי:</strong> הפקת דוחות הנדסיים מפורטים הקבילים כראיה בבתי המשפט בישראל.</li>
-          <li><strong>הערכת נזקים:</strong> פירוט עלויות תיקון ריאליות וירידת ערך הנכס בעקבות ליקויים.</li>
-          <li className="text-sm text-gray-400 pt-2 italic">ליווי מקצועי של מהנדס מומחה לאורך כל התהליך המשפטי.</li>
+          <li><strong>קביל משפטית:</strong> דוח מפורט המשמש כראיה בבתי המשפט בישראל.</li>
+          <li><strong>ליווי מומחה:</strong> עדות מהנדס וליווי מקצועי בתביעות ליקויי בנייה.</li>
+          <li className="text-sm text-gray-400 pt-2 italic">מסמך עוצמתי לניהול תביעות מול קבלנים סרבנים.</li>
         </ul>
       ),
-      imageSrc: 'https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=800',
-      imageAlt: 'חוות דעת הנדסית של מהנדס בדק בית מוסמך',
+      imageSrc: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=800&q=80',
+      imageAlt: 'חוות דעת הנדסית קבילה לבית משפט',
     },
     {
-      icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>,
-      title: 'ייעוץ הנדסי ותכנוני',
+      icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 00(2 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" /></svg>,
+      title: 'פיקוח וליווי הנדסי',
       description: (
         <ul className="space-y-2">
-          <li><strong>שיפוצים:</strong> ייעוץ לפני הורדת קירות, שינויים מבניים ובדיקת היתכנות הנדסית.</li>
-          <li><strong>השבחה:</strong> ייעוץ לניצול זכויות בנייה ואופטימיזציה של חללי הבית.</li>
-          <li className="text-sm text-gray-400 pt-2 italic">קבלו החלטות מושכלות לפני שמתחילים לשבור קירות.</li>
+          <li><strong>בנייה פרטית:</strong> ליווי צמוד משלב השלד ועד קבלת המפתח.</li>
+          <li><strong>בקרת איכות:</strong> פיקוח על קבלנים באתר ווידוא ביצוע לפי התוכניות.</li>
+          <li className="text-sm text-gray-400 pt-2 italic">הבטחה שהבית שלכם נבנה בדיוק לפי התקן.</li>
         </ul>
       ),
-      imageSrc: 'https://images.pexels.com/photos/3183186/pexels-photo-3183186.jpeg?auto=compress&cs=tinysrgb&w=800',
-      imageAlt: 'ייעוץ הנדסי מקצועי ותכנון שינויים מבניים',
+      imageSrc: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80',
+      imageAlt: 'פיקוח הנדסי וליווי בנייה פרטית',
     },
     {
-      icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>,
-      title: 'תכנון אדריכלי ועיצוב',
+      icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>,
+      title: 'שמאות רכוש והערכת נזקים',
       description: (
         <ul className="space-y-2">
-          <li><strong>תכנון:</strong> הכנת תוכניות אדריכליות למגורים, תוספות בנייה והיתרים מול הרשויות.</li>
-          <li><strong>עיצוב פנים:</strong> התאמת חללי הבית לצרכים פונקציונליים תוך שמירה על אסתטיקה מודרנית.</li>
-          <li className="text-sm text-gray-400 pt-2 italic">שילוב מושלם בין חוזק הנדסי ליופי אדריכלי.</li>
+          <li><strong>הערכת שווי:</strong> אומדן שווי ריאלי של הנכס ותכולתו לצרכי ביטוח, ירושות או פירוק שיתוף.</li>
+          <li><strong>נזקי מבנה:</strong> כימות כספי של נזקי צנרת, אש ואיטום לצורך תביעה מחברת הביטוח.</li>
+          <li className="text-sm text-gray-400 pt-2 italic">חוות דעת שמאית מקיפה ומדויקת להבטחת זכויותיכם.</li>
         </ul>
       ),
-      imageSrc: 'https://images.pexels.com/photos/271667/pexels-photo-271667.jpeg?auto=compress&cs=tinysrgb&w=800',
-      imageAlt: 'תכנון אדריכלי מודרני והכנת תוכניות בנייה',
+      imageSrc: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=80',
+      imageAlt: 'שמאות רכוש והערכת נזקים מקצועית',
     },
     {
-      icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>,
-      title: 'כתב כמויות ואומדן עלויות',
+      icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>,
+      title: 'אומדני שיפוץ וכתב כמויות',
       description: (
         <ul className="space-y-2">
-          <li><strong>דיוק תקציבי:</strong> הכנת רשימת חומרים ועבודות מפורטת לצורך קבלת הצעות מחיר מקבלנים.</li>
-          <li><strong>אומדן:</strong> הערכת עלויות ריאלית לפרויקט למניעת חריגות תקציביות במהלך הבנייה.</li>
-          <li className="text-sm text-gray-400 pt-2 italic">הכלי החשוב ביותר לניהול תקציב הבנייה שלכם בחוכמה.</li>
+          <li><strong>לפני שיפוץ:</strong> הכנת מפרט טכני מדויק וכתב כמויות להצעות מחיר מקבלנים.</li>
+          <li><strong>תקצוב:</strong> הערכת עלויות ריאלית למניעת חריגות בתקציב השיפוץ.</li>
+          <li className="text-sm text-gray-400 pt-2 italic">כלי ניהולי קריטי לחיסכון כספי בשיפוץ הבית.</li>
         </ul>
       ),
-      imageSrc: 'https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=800',
-      imageAlt: 'הכנת כתב כמויות ואומדן עלויות לבנייה ושיפוץ',
+      imageSrc: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
+      imageAlt: 'הכנת כתב כמויות ואומדן שיפוצים הנדסי מקצועי עם טבלאות נתונים',
     },
   ];
 

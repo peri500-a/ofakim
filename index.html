@@ -3,75 +3,109 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
     <title>אופקים הנדסה | מהנדס בדק בית מוסמך וביקורת מבנים מקצועית</title>
-    <meta name="description" content="זקוקים למהנדס בדק בית? אופקים הנדסה מתמחים בביקורת מבנים, איתור ליקויי בנייה מתקדם וחוות דעת הנדסית קבילה בבית משפט. בדיקה יסודית תוך 48 שעות. התקשרו עכשיו!" />
-    <meta name="keywords" content="בדק בית, מהנדס בדק בית, ביקורת מבנים, ליקויי בנייה, איתור נזילות, בדק בית בתל אביב, בדק בית בירושלים" />
     
-    <!-- Open Graph for Social Media -->
-    <meta property="og:title" content="אופקים הנדסה | מהנדס בדק בית וביקורת מבנים" />
-    <meta property="og:description" content="ביקורת מבנים מקיפה ע״י מהנדסים. איתור ליקויי בנייה, בדיקה תרמית ודוח הנדסי מקצועי." />
-    <meta property="og:image" content="https://images.pexels.com/photos/1106476/pexels-photo-1106476.jpeg" />
-    <meta property="og:type" content="website" />
-
-    <!-- JSON-LD Structured Data for Local Business -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "אופקים הנדסה",
-      "image": "https://images.pexels.com/photos/1106476/pexels-photo-1106476.jpeg",
-      "description": "חברת הנדסה המתמחה בבדק בית וביקורת מבנים ע\"י מהנדסים מוסמכים.",
-      "telephone": "054-7515142",
-      "url": "https://ofakim-engineering.co.il",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "תל אביב, ירושלים, רחובות",
-        "addressCountry": "IL"
-      },
-      "priceRange": "₪₪",
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Sunday",
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday"
-        ],
-        "opens": "08:00",
-        "closes": "20:00"
-      }
-    }
-    </script>
-
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Assistant', 'sans-serif'],
+            },
+            colors: {
+              blue: {
+                50: '#eff6ff',
+                100: '#dbeafe',
+                200: '#bfdbfe',
+                300: '#93c5fd',
+                400: '#3b82f6',
+                500: '#2563eb',
+                600: '#1d4ed8',
+                700: '#1e40af',
+                800: '#1e3a8a',
+                900: '#1e3a8a',
+                950: '#0a0f1d',
+              },
+              gray: {
+                950: '#070a13',
+              }
+            }
+          }
+        }
+      }
+    </script>
+
     <style>
-      html { scroll-behavior: smooth; }
-      body { font-family: 'Assistant', sans-serif; background-color: #030712; -webkit-tap-highlight-color: transparent; }
+      :root {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: 'Assistant', sans-serif;
+        background-color: #070a13;
+      }
+
+      /* Custom Scrollbar */
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.05);
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: rgba(59, 130, 246, 0.3);
+        border-radius: 10px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: rgba(59, 130, 246, 0.5);
+      }
+
+      /* Reveal Animations */
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        pointer-events: none;
+      }
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+
+      /* Keyframe Animations */
+      @keyframes slide-up {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .animate-slide-up {
+        animation: slide-up 0.5s ease-out forwards;
+      }
       
-      .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
-      .reveal.active { opacity: 1; transform: none !important; }
-
-      @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
-      @keyframes slide-up { from { transform: translateY(100%); } to { transform: translateY(0); } }
-      .animate-fade-in { animation: fade-in 0.3s ease-out forwards; }
-      .animate-slide-up { animation: slide-up 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-
-      ::-webkit-scrollbar { width: 10px; }
-      ::-webkit-scrollbar-track { background: #0f172a; }
-      ::-webkit-scrollbar-thumb { background: #334155; border-radius: 5px; }
+      @keyframes fade-in {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      .animate-fade-in {
+        animation: fade-in 1s ease-out forwards;
+      }
     </style>
+
     <script type="importmap">
 {
   "imports": {
     "react": "https://esm.sh/react@19.0.0",
     "react-dom": "https://esm.sh/react-dom@19.0.0",
     "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
+    "@google/genai": "https://esm.sh/@google/genai",
     "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
     "react/": "https://esm.sh/react@^19.2.4/",
     "vite": "https://esm.sh/vite@^7.3.1"
@@ -82,7 +116,6 @@
 </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="./index.tsx"></script>
-  <script type="module" src="/index.tsx"></script>
-</body>
+    <script type="module" src="/index.tsx"></script>
+  </body>
 </html>

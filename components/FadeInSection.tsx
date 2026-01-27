@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 
 interface FadeInSectionProps {
@@ -12,17 +11,22 @@ const FadeInSection: React.FC<FadeInSectionProps> = ({ children, delay = 0, clas
   const domRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Safety Fallback: Force show after 500ms if observer fails or scrolls are slow
+    const fallbackTimer = setTimeout(() => {
+      setVisible(true);
+    }, 500);
+
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           setVisible(true);
-          // Once visible, stop observing to keep it visible
+          clearTimeout(fallbackTimer);
           observer.unobserve(entry.target);
         }
       });
     }, {
-      threshold: 0.1, // Trigger when 10% of the element is visible
-      rootMargin: "0px 0px -50px 0px" // Trigger slightly before it fully enters
+      threshold: 0.01, // Trigger as soon as 1% is visible
+      rootMargin: "0px 0px 50px 0px"
     });
 
     const currentRef = domRef.current;
@@ -31,6 +35,7 @@ const FadeInSection: React.FC<FadeInSectionProps> = ({ children, delay = 0, clas
     }
 
     return () => {
+      clearTimeout(fallbackTimer);
       if (currentRef) {
         observer.unobserve(currentRef);
       }

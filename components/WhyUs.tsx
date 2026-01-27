@@ -52,12 +52,9 @@ const WhyUs: React.FC = () => {
             <div className="absolute -inset-6 bg-blue-600/20 rounded-[4rem] blur-3xl group-hover:bg-blue-600/30 transition-all duration-1000"></div>
             <div className="relative h-[500px] md:h-[700px] overflow-hidden rounded-[3rem] border border-white/10 shadow-[0_0_80px_rgba(0,0,0,0.6)]">
               <img 
-                className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-100" 
-                src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&q=80" 
-                alt="צוות הנדסה מקצועי בבדיקת בדק בית"
-                onError={(e) => {
-                  (e.target as HTMLImageElement).src = 'https://images.pexels.com/photos/159306/pexels-photo-159306.jpeg?auto=compress&cs=tinysrgb&w=800';
-                }}
+                className="w-full h-full object-cover transition-all duration-1000 scale-105 group-hover:scale-100" 
+                src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1260&q=80" 
+                alt="קולאז' עבודת מהנדס בדק בית בשטח: בדיקת לוח חשמל, גג וסדקים"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/20 to-transparent"></div>
               

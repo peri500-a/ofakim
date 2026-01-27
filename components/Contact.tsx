@@ -5,6 +5,7 @@ const PHONE_NUMBER = "054-7515142";
 
 const Contact: React.FC = () => {
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [emailError, setEmailError] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -14,17 +15,36 @@ const Contact: React.FC = () => {
     address: ''
   });
 
+  const validateEmail = (email: string) => {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+    
+    // Clear email error when user starts typing
+    if (name === 'email') {
+      setEmailError(null);
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Basic email validation check
+    if (formData.email && !validateEmail(formData.email)) {
+      setEmailError('אנא הזן כתובת אימייל תקינה');
+      return;
+    }
+
     setStatus('submitting');
     try {
       await new Promise(resolve => setTimeout(resolve, 1500));
       setStatus('success');
       setFormData({ name: '', phone: '', email: '', message: '', service: '', address: '' });
+      setEmailError(null);
     } catch (error) {
       console.error('Submission error:', error);
       setStatus('error');
@@ -155,10 +175,16 @@ const Contact: React.FC = () => {
                       <label htmlFor="email" className="text-sm font-bold text-gray-400 mr-2 block">אימייל לחזרה</label>
                       <input 
                         id="email"
-                        type="email" name="email" value={formData.email} onChange={handleChange}
-                        className="w-full bg-gray-950 border border-white/5 rounded-2xl px-6 py-4 text-white focus:border-blue-500 focus:ring-2 focus:ring-blue-500 transition-all outline-none"
+                        type="email" 
+                        name="email" 
+                        value={formData.email} 
+                        onChange={handleChange}
+                        className={`w-full bg-gray-950 border rounded-2xl px-6 py-4 text-white focus:ring-2 focus:ring-blue-500 transition-all outline-none ${emailError ? 'border-red-500' : 'border-white/5 focus:border-blue-500'}`}
                         placeholder="your@email.com"
                       />
+                      {emailError && (
+                        <p className="text-red-500 text-xs mt-1 mr-2 font-bold animate-fade-in">{emailError}</p>
+                      )}
                     </div>
                   </div>
 

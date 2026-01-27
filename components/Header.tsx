@@ -12,6 +12,7 @@ const Header: React.FC = () => {
     { href: '#why-us', label: 'למה אנחנו?' },
     { href: '#process', label: 'התהליך' },
     { href: '#knowledge', label: 'מרכז ידע' },
+    { href: '#accessibility', label: 'נגישות' },
     { href: '#contact', label: 'צור קשר' },
   ];
 
@@ -78,9 +79,20 @@ const Header: React.FC = () => {
       >
         <div className="container mx-auto px-6">
           <div className="flex items-center justify-between">
-            <a href="#" className="flex items-center gap-2 md:gap-3 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg p-1" aria-label="אופקים הנדסה - דף הבית">
+            <a 
+              href="#" 
+              className="group flex items-center gap-3 md:gap-4 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-xl p-1.5 transition-all" 
+              aria-label="אופקים הנדסה - דף הבית"
+            >
               <Logo />
-              <span className="text-xl md:text-2xl font-black tracking-tighter text-blue-400">אופקים הנדסה</span>
+              <div className="flex flex-col">
+                <span className="text-xl md:text-3xl font-black tracking-tighter text-white group-hover:text-blue-400 transition-colors duration-300">
+                  אופקים הנדסה
+                </span>
+                <span className="text-[10px] md:text-xs font-bold text-blue-500/80 uppercase tracking-[0.3em] -mt-1 group-hover:text-blue-400 transition-colors">
+                  Precise Engineering
+                </span>
+              </div>
             </a>
             
             <nav className="hidden lg:flex items-center space-x-6 space-x-reverse" role="navigation" aria-label="תפריט ראשי">
@@ -88,7 +100,7 @@ const Header: React.FC = () => {
                 <a 
                   key={link.href} 
                   href={link.href} 
-                  className="text-gray-300 hover:text-blue-400 font-bold transition-colors duration-300 text-sm xl:text-base focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md px-2 py-1"
+                  className="text-gray-300 hover:text-blue-400 font-bold transition-all duration-300 text-sm xl:text-base focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md px-2 py-1 hover:scale-105 active:scale-95"
                 >
                   {link.label}
                 </a>
@@ -98,14 +110,14 @@ const Header: React.FC = () => {
             <div className="flex items-center gap-4">
               <a 
                 href="tel:054-7515142" 
-                className="hidden sm:flex items-center gap-2 text-white font-black bg-blue-600/10 border border-blue-500/20 px-4 py-2 rounded-xl hover:bg-blue-600 transition-all focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="hidden sm:flex items-center gap-2 text-white font-black bg-blue-600/10 border border-blue-500/20 px-4 py-2 rounded-xl hover:bg-blue-600 transition-all focus:outline-none focus:ring-2 focus:ring-blue-500 group"
               >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                <svg className="w-4 h-4 text-blue-400 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
                 <span>054-7515142</span>
               </a>
               <a 
                 href="#contact" 
-                className="hidden md:inline-block bg-blue-600 text-white font-black px-6 py-2.5 rounded-xl hover:bg-blue-500 transition-all duration-300 shadow-lg shadow-blue-600/20 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                className="hidden md:inline-block bg-blue-600 text-white font-black px-6 py-2.5 rounded-xl hover:bg-blue-500 transition-all duration-300 shadow-lg shadow-blue-600/20 focus:outline-none focus:ring-2 focus:ring-blue-400 active:scale-95"
               >
                 הזמינו בדק בית
               </a>
@@ -128,7 +140,7 @@ const Header: React.FC = () => {
           {isMenuOpen && (
             <div 
               id="mobile-menu"
-              className="lg:hidden absolute top-full left-0 right-0 bg-gray-950 border-t border-white/10 py-8 px-6 animate-in slide-in-from-top duration-300 shadow-2xl h-screen md:h-auto"
+              className="lg:hidden absolute top-full left-0 right-0 bg-gray-950 border-t border-white/10 py-8 px-6 animate-in slide-in-from-top duration-300 shadow-2xl h-screen md:h-auto overflow-y-auto"
               role="dialog"
               aria-modal="true"
               aria-label="תפריט ניווט נייד"
