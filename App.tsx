@@ -17,11 +17,10 @@ import FadeInSection from './components/FadeInSection';
 import NotFound from './components/NotFound';
 
 const App: React.FC = () => {
-  const [path, setPath] = useState(window.location.pathname);
   const [isNotFound, setIsNotFound] = useState(false);
 
   useEffect(() => {
-    // Legacy URL Mapping - SEO Critical
+    // Legacy URL Mapping - Includes Hebrew slugs from the old site
     const legacyMap: Record<string, string> = {
       '/prices': '#knowledge',
       '/pricing': '#knowledge',
@@ -33,20 +32,29 @@ const App: React.FC = () => {
       '/leak-detection': '#services',
       '/about': '#why-us',
       '/testimonials': '#testimonials',
-      '/faq': '#faq'
+      '/faq': '#faq',
+      // Handling the specific Hebrew URL from the screenshot
+      '/חוות-דעת-הנדסית-לבית-משפט': '#services',
+      '/ביקורת-מבנים': '#services',
+      '/בדק-בית': '#services'
     };
 
-    const currentPath = window.location.pathname.toLowerCase().replace(/\/$/, "");
-    
-    // 1. If it's a known legacy path, redirect to the anchor on the main page
-    if (legacyMap[currentPath]) {
-      window.location.href = '/' + legacyMap[currentPath];
-      return;
-    }
+    // Decode URI to handle Hebrew characters correctly
+    try {
+      const currentPath = decodeURIComponent(window.location.pathname).toLowerCase().replace(/\/$/, "");
+      
+      // 1. Check if it's a known legacy path
+      if (legacyMap[currentPath]) {
+        window.location.replace('/' + legacyMap[currentPath]);
+        return;
+      }
 
-    // 2. If it's not root and not a legacy path, it's a 404
-    if (currentPath !== "" && currentPath !== "/") {
-      setIsNotFound(true);
+      // 2. Check if it's a non-root path that isn't handled
+      if (currentPath !== "" && currentPath !== "/" && !currentPath.startsWith('/#')) {
+        setIsNotFound(true);
+      }
+    } catch (e) {
+      console.error("Path decoding error", e);
     }
   }, []);
 
