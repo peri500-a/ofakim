@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -20,7 +19,7 @@ const App: React.FC = () => {
   const [isNotFound, setIsNotFound] = useState(false);
 
   useEffect(() => {
-    // Legacy URL Mapping - Mapping old URLs to new anchors
+    // Legacy URL Mapping - Includes Hebrew slugs from the old site
     const legacyMap: Record<string, string> = {
       // English Slugs
       '/prices': '#knowledge',
@@ -28,48 +27,55 @@ const App: React.FC = () => {
       '/makhiron': '#knowledge',
       '/bedek-bait-price': '#knowledge',
       '/contact-us': '#contact',
+      '/contact': '#contact',
       '/services': '#services',
       '/about': '#why-us',
       
-      // Hebrew Slugs (Decoded)
+      // Hebrew Slugs (Decoded strings as they appear in URL)
       '/בדק-בית-מחיר': '#knowledge',
       '/מחיר-בדק-בית': '#knowledge',
       '/חוות-דעת-הנדסית-לבית-משפט': '#services',
       '/ביקורת-מבנים': '#services',
       '/בדק-בית': '#services',
-      '/איתור-נזילות': '#services',
-      '/צור-קשר': '#contact'
+      '/איתור-נזילות': '#services'
     };
 
     try {
-      // Decode current path and normalize it
-      const currentPath = decodeURIComponent(window.location.pathname)
-        .toLowerCase()
-        .replace(/\/$/, ""); // Remove trailing slash
+      // 1. Get and decode path (handles Hebrew characters correctly)
+      let path = window.location.pathname;
+      try {
+        path = decodeURIComponent(path);
+      } catch (e) {
+        console.warn("Could not decode URI component", e);
+      }
 
-      // 1. If path is empty, we are at home
-      if (currentPath === "" || currentPath === "/") {
+      // Normalize: remove trailing slash and convert to lower case
+      const normalizedPath = path.toLowerCase().replace(/\/$/, "");
+
+      // 2. If path is home, index or empty, stay on home
+      if (normalizedPath === "" || normalizedPath === "/" || normalizedPath === "/index.html") {
         setIsNotFound(false);
         return;
       }
 
-      // 2. If it's a known legacy path, redirect with replace to maintain history cleanliness
-      if (legacyMap[currentPath]) {
-        window.location.replace('/' + legacyMap[currentPath]);
+      // 3. Check if path is in our legacy mapping
+      if (legacyMap[normalizedPath]) {
+        // Use replace to redirect without adding to history stack
+        window.location.replace('/' + legacyMap[normalizedPath]);
         return;
       }
 
-      // 3. If the path contains an anchor (starts with /#), it's a valid internal link
-      if (window.location.hash || currentPath.includes('#')) {
+      // 4. If the URL already has a hash (anchor), it's valid for our single page app
+      if (window.location.hash || normalizedPath.includes('#')) {
         setIsNotFound(false);
         return;
       }
 
-      // 4. Otherwise, it's a true 404
+      // 5. If none of the above, show our custom 404 page
       setIsNotFound(true);
-    } catch (e) {
-      console.error("Error during path routing:", e);
-      setIsNotFound(true);
+    } catch (err) {
+      console.error("Routing error:", err);
+      setIsNotFound(false); // Default to home on error
     }
   }, []);
 
