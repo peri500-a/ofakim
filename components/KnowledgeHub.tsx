@@ -56,30 +56,45 @@ const KnowledgeHub: React.FC = () => {
       id: 'price',
       keyword: 'בדק בית מחיר',
       title: 'מחירון בדק בית וביקורת מבנים 2026',
-      excerpt: 'כמה באמת עולה להזמין מהנדס בדק בית מוסמך? מחירון שקוף לדירות ובתים פרטיים.',
+      excerpt: 'כמה באמת עולה להזמין מהנדס בדק בית מוסמך? מחירון שקוף ומעודכן לדירות ובתים פרטיים.',
       image: 'https://images.pexels.com/photos/5849559/pexels-photo-5849559.jpeg?auto=compress&cs=tinysrgb&w=1200',
       icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
       content: (
         <div className="space-y-6">
           <h4 className="text-xl font-bold text-white mb-4">השקעה קטנה שחוסכת עשרות אלפים בתיקונים.</h4>
           <div className="bg-gray-800 rounded-2xl p-6 border border-white/5 shadow-inner">
-             <ul className="space-y-4">
-               <li className="flex justify-between items-center border-b border-white/10 pb-3">
-                 <span className="text-gray-300">ביקורת מבנים לדירת 3 חדרים</span> 
-                 <span className="text-blue-400 font-black">1,450 ₪</span>
+             <ul className="space-y-3">
+               <li className="flex justify-between items-center border-b border-white/10 pb-2">
+                 <span className="text-gray-300">דירת 1-3 חדרים</span> 
+                 <span className="text-blue-400 font-black">1,300-1,600 ₪</span>
                </li>
-               <li className="flex justify-between items-center border-b border-white/10 pb-3">
-                 <span className="text-gray-300">בדק בית לדירת 4-5 חדרים</span> 
-                 <span className="text-blue-400 font-black">1,750 ₪</span>
+               <li className="flex justify-between items-center border-b border-white/10 pb-2">
+                 <span className="text-gray-300">דירת 4-5 חדרים</span> 
+                 <span className="text-blue-400 font-black">1,600-2,000 ₪</span>
                </li>
-               <li className="flex justify-between items-center pt-1">
-                 <span className="text-white font-black text-lg">בדיקת בית פרטי (וילה)</span> 
-                 <span className="text-blue-400 font-black text-lg">החל מ-2,500 ₪</span>
+               <li className="flex justify-between items-center border-b border-white/10 pb-2">
+                 <span className="text-gray-300">דירת 6 חדרים</span> 
+                 <span className="text-blue-400 font-black">2,000-2,500 ₪</span>
+               </li>
+               <li className="flex justify-between items-center border-b border-white/10 pb-2">
+                 <span className="text-gray-300">בית פרטי ללא מרתף</span> 
+                 <span className="text-blue-400 font-black">2,500-3,100 ₪</span>
+               </li>
+               <li className="flex justify-between items-center border-b border-white/10 pb-2">
+                 <span className="text-gray-300">בית פרטי עם מרתף</span> 
+                 <span className="text-blue-400 font-black">2,800-3,500 ₪</span>
+               </li>
+               <li className="flex justify-between items-start pt-2">
+                 <div className="flex flex-col">
+                    <span className="text-white font-black">בית פרטי מעל 200 מ"ר</span>
+                    <span className="text-gray-500 text-xs">כולל בריכה וחימום תת רצפתי</span>
+                 </div>
+                 <span className="text-blue-400 font-black text-lg">התקשר להצעה</span>
                </li>
              </ul>
           </div>
           <p className="text-gray-400 italic text-sm mt-4 bg-white/5 p-4 rounded-xl border-r-2 border-blue-500">
-            * המחיר כולל דוח הנדסי קביל בבית משפט ובדיקה תרמית מקיפה ע"י מהנדס מוסמך.
+            * המחיר כולל דוח הנדסי מפורט הקביל בבית משפט ובדיקה תרמית (Thermal) ע"י מהנדס מוסמך.
           </p>
         </div>
       )
