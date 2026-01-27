@@ -19,64 +19,66 @@ const App: React.FC = () => {
   const [isNotFound, setIsNotFound] = useState(false);
 
   useEffect(() => {
-    // Legacy URL Mapping - Includes Hebrew slugs from the old site
+    // מפת ניתובים מכתובות האתר הישן למקטעים החדשים (עוגנים)
     const legacyMap: Record<string, string> = {
-      // English Slugs
       '/prices': '#knowledge',
       '/pricing': '#knowledge',
-      '/makhiron': '#knowledge',
-      '/bedek-bait-price': '#knowledge',
-      '/contact-us': '#contact',
-      '/contact': '#contact',
-      '/services': '#services',
-      '/about': '#why-us',
-      
-      // Hebrew Slugs (Decoded strings as they appear in URL)
       '/בדק-בית-מחיר': '#knowledge',
       '/מחיר-בדק-בית': '#knowledge',
-      '/חוות-דעת-הנדסית-לבית-משפט': '#services',
       '/ביקורת-מבנים': '#services',
       '/בדק-בית': '#services',
-      '/איתור-נזילות': '#services'
+      '/איתור-נזילות': '#services',
+      '/צור-קשר': '#contact',
+      '/contact': '#contact'
     };
 
-    try {
-      // 1. Get and decode path (handles Hebrew characters correctly)
-      let path = window.location.pathname;
+    const handleRouting = () => {
       try {
-        path = decodeURIComponent(path);
-      } catch (e) {
-        console.warn("Could not decode URI component", e);
-      }
+        // 1. קבלת הנתיב הנוכחי
+        let path = window.location.pathname;
+        
+        // 2. פענוח תווים בעברית (חשוב מאוד עבור כתובות כמו /בדק-בית-מחיר)
+        try {
+          path = decodeURIComponent(path);
+        } catch (e) {
+          console.warn("URI decoding failed, using raw path", e);
+        }
 
-      // Normalize: remove trailing slash and convert to lower case
-      const normalizedPath = path.toLowerCase().replace(/\/$/, "");
+        // 3. ניקוי הכתובת: הסרת לוכסן סופי (אם קיים)
+        const normalizedPath = path.length > 1 ? path.replace(/\/+$/, "") : path;
 
-      // 2. If path is home, index or empty, stay on home
-      if (normalizedPath === "" || normalizedPath === "/" || normalizedPath === "/index.html") {
+        // 4. אם אנחנו בדף הבית, הכל תקין
+        if (normalizedPath === "/" || normalizedPath === "/index.html") {
+          setIsNotFound(false);
+          return;
+        }
+
+        // 5. בדיקה האם הכתובת נמצאת במפת הניתובים הישנה
+        if (legacyMap[normalizedPath]) {
+          // ביצוע הפניה פנימית לעוגן המתאים
+          window.location.replace('/' + legacyMap[normalizedPath]);
+          setIsNotFound(false);
+          return;
+        }
+
+        // 6. אם הכתובת מכילה כבר עוגן (#), היא תקינה
+        if (window.location.hash) {
+          setIsNotFound(false);
+          return;
+        }
+
+        // 7. אם הגענו לכאן - הכתובת לא מזוהה
+        setIsNotFound(true);
+      } catch (err) {
+        console.error("Routing error:", err);
         setIsNotFound(false);
-        return;
       }
+    };
 
-      // 3. Check if path is in our legacy mapping
-      if (legacyMap[normalizedPath]) {
-        // Use replace to redirect without adding to history stack
-        window.location.replace('/' + legacyMap[normalizedPath]);
-        return;
-      }
-
-      // 4. If the URL already has a hash (anchor), it's valid for our single page app
-      if (window.location.hash || normalizedPath.includes('#')) {
-        setIsNotFound(false);
-        return;
-      }
-
-      // 5. If none of the above, show our custom 404 page
-      setIsNotFound(true);
-    } catch (err) {
-      console.error("Routing error:", err);
-      setIsNotFound(false); // Default to home on error
-    }
+    handleRouting();
+    // האזנה לשינויים בכתובת
+    window.addEventListener('popstate', handleRouting);
+    return () => window.removeEventListener('popstate', handleRouting);
   }, []);
 
   if (isNotFound) {
