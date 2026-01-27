@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Services from './components/Services';
@@ -14,8 +14,46 @@ import Footer from './components/Footer';
 import StickyQuoteButton from './components/StickyQuoteButton';
 import PrivacySection from './components/PrivacySection';
 import FadeInSection from './components/FadeInSection';
+import NotFound from './components/NotFound';
 
 const App: React.FC = () => {
+  const [path, setPath] = useState(window.location.pathname);
+  const [isNotFound, setIsNotFound] = useState(false);
+
+  useEffect(() => {
+    // Legacy URL Mapping - SEO Critical
+    const legacyMap: Record<string, string> = {
+      '/prices': '#knowledge',
+      '/pricing': '#knowledge',
+      '/makhiron': '#knowledge',
+      '/bedek-bait-price': '#knowledge',
+      '/contact-us': '#contact',
+      '/contact': '#contact',
+      '/services': '#services',
+      '/leak-detection': '#services',
+      '/about': '#why-us',
+      '/testimonials': '#testimonials',
+      '/faq': '#faq'
+    };
+
+    const currentPath = window.location.pathname.toLowerCase().replace(/\/$/, "");
+    
+    // 1. If it's a known legacy path, redirect to the anchor on the main page
+    if (legacyMap[currentPath]) {
+      window.location.href = '/' + legacyMap[currentPath];
+      return;
+    }
+
+    // 2. If it's not root and not a legacy path, it's a 404
+    if (currentPath !== "" && currentPath !== "/") {
+      setIsNotFound(true);
+    }
+  }, []);
+
+  if (isNotFound) {
+    return <NotFound />;
+  }
+
   return (
     <div className="bg-gray-950 text-gray-300 selection:bg-blue-500/30 selection:text-white overflow-x-hidden">
       <Header />
