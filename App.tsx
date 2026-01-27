@@ -20,41 +20,56 @@ const App: React.FC = () => {
   const [isNotFound, setIsNotFound] = useState(false);
 
   useEffect(() => {
-    // Legacy URL Mapping - Includes Hebrew slugs from the old site
+    // Legacy URL Mapping - Mapping old URLs to new anchors
     const legacyMap: Record<string, string> = {
+      // English Slugs
       '/prices': '#knowledge',
       '/pricing': '#knowledge',
       '/makhiron': '#knowledge',
       '/bedek-bait-price': '#knowledge',
       '/contact-us': '#contact',
-      '/contact': '#contact',
       '/services': '#services',
-      '/leak-detection': '#services',
       '/about': '#why-us',
-      '/testimonials': '#testimonials',
-      '/faq': '#faq',
-      // Handling the specific Hebrew URL from the screenshot
+      
+      // Hebrew Slugs (Decoded)
+      '/בדק-בית-מחיר': '#knowledge',
+      '/מחיר-בדק-בית': '#knowledge',
       '/חוות-דעת-הנדסית-לבית-משפט': '#services',
       '/ביקורת-מבנים': '#services',
-      '/בדק-בית': '#services'
+      '/בדק-בית': '#services',
+      '/איתור-נזילות': '#services',
+      '/צור-קשר': '#contact'
     };
 
-    // Decode URI to handle Hebrew characters correctly
     try {
-      const currentPath = decodeURIComponent(window.location.pathname).toLowerCase().replace(/\/$/, "");
-      
-      // 1. Check if it's a known legacy path
+      // Decode current path and normalize it
+      const currentPath = decodeURIComponent(window.location.pathname)
+        .toLowerCase()
+        .replace(/\/$/, ""); // Remove trailing slash
+
+      // 1. If path is empty, we are at home
+      if (currentPath === "" || currentPath === "/") {
+        setIsNotFound(false);
+        return;
+      }
+
+      // 2. If it's a known legacy path, redirect with replace to maintain history cleanliness
       if (legacyMap[currentPath]) {
         window.location.replace('/' + legacyMap[currentPath]);
         return;
       }
 
-      // 2. Check if it's a non-root path that isn't handled
-      if (currentPath !== "" && currentPath !== "/" && !currentPath.startsWith('/#')) {
-        setIsNotFound(true);
+      // 3. If the path contains an anchor (starts with /#), it's a valid internal link
+      if (window.location.hash || currentPath.includes('#')) {
+        setIsNotFound(false);
+        return;
       }
+
+      // 4. Otherwise, it's a true 404
+      setIsNotFound(true);
     } catch (e) {
-      console.error("Path decoding error", e);
+      console.error("Error during path routing:", e);
+      setIsNotFound(true);
     }
   }, []);
 
