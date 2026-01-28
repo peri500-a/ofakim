@@ -36,20 +36,30 @@ const App: React.FC = () => {
 
     const handleRouting = () => {
       try {
-        // 1. קבלת הנתיב הנוכחי
-        let path = window.location.pathname;
-        
-        // 2. פענוח תווים בעברית (חשוב מאוד עבור כתובות כמו /בדק-בית-מחיר)
+        const rawPath = window.location.pathname;
+        let decodedPath = rawPath;
+
+        // פענוח תווים בעברית בכתובת ה-URL
         try {
-          path = decodeURIComponent(path);
+          decodedPath = decodeURIComponent(rawPath);
         } catch (e) {
-          console.warn("URI decoding failed, using raw path", e);
+          console.warn("URI decoding failed", e);
         }
 
-        // 3. ניקוי הכתובת: הסרת לוכסן סופי (אם קיים)
-        const normalizedPath = path.length > 1 ? path.replace(/\/+$/, "") : path;
+        // ניקוי סלאשים מיותרים בסוף הכתובת ונרמול לשורש
+        const normalizedPath = decodedPath.length > 1 ? decodedPath.replace(/\/+$/, "") : decodedPath;
 
-        // 4. בדיקה האם אנחנו בסביבת תצוגה מקדימה או בשורש
+        // 1. בדיקה האם מדובר בכתובת ישנה שצריכה הפניה (Redirect)
+        if (legacyMap[normalizedPath]) {
+          const targetHash = legacyMap[normalizedPath];
+          // מעבר לעמוד הראשי ועדכון ההיסטוריה ללא הנתיב הישן
+          window.history.replaceState(null, '', '/');
+          window.location.hash = targetHash;
+          setIsNotFound(false);
+          return;
+        }
+
+        // 2. בדיקה האם מדובר בעמוד הראשי או בנתיבי מערכת מוכרים
         const isRoot = normalizedPath === "/" || normalizedPath === "/index.html" || normalizedPath === "";
         const isPreviewEnv = window.location.hostname.includes('webcontainer') || window.self !== window.top;
 
@@ -58,20 +68,13 @@ const App: React.FC = () => {
           return;
         }
 
-        // 5. בדיקה האם הכתובת נמצאת במפת הניתובים הישנה
-        if (legacyMap[normalizedPath]) {
-          window.location.replace('/' + legacyMap[normalizedPath]);
+        // 3. אם יש האש (anchor) בלבד ללא נתיב - זה תקין (SPA)
+        if (normalizedPath === "/" && window.location.hash) {
           setIsNotFound(false);
           return;
         }
 
-        // 6. אם הכתובת מכילה כבר עוגן (#), היא תקינה
-        if (window.location.hash) {
-          setIsNotFound(false);
-          return;
-        }
-
-        // 7. אם הגענו לכאן והכתובת לא בשורש ולא במפה - נציג 404
+        // 4. לכל נתיב לא מוכר (כמו /trial) - הצגת דף 404
         setIsNotFound(true);
       } catch (err) {
         console.error("Routing error:", err);
@@ -79,9 +82,14 @@ const App: React.FC = () => {
       }
     };
 
+    // הפעלת הניתוב בטעינה ראשונית
     handleRouting();
+    
+    // האזנה לשינויי ניווט (היסטוריה)
     window.addEventListener('popstate', handleRouting);
-    return () => window.removeEventListener('popstate', handleRouting);
+    return () => {
+      window.removeEventListener('popstate', handleRouting);
+    };
   }, []);
 
   if (isNotFound) {

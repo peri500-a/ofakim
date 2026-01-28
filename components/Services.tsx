@@ -1,7 +1,10 @@
 import React from 'react';
 
 const ServiceCard: React.FC<{ icon: React.ReactNode; title: string; description: React.ReactNode; imageSrc: string; imageAlt: string; }> = ({ icon, title, description, imageSrc, imageAlt }) => (
-  <div className="bg-gray-800 rounded-2xl shadow-lg hover:shadow-blue-500/20 hover:-translate-y-2 transition-all duration-500 flex flex-col border border-gray-700 group-hover:border-blue-500/50 overflow-hidden group relative">
+  <a 
+    href="#contact"
+    className="bg-gray-800 rounded-2xl shadow-lg hover:shadow-blue-500/20 hover:-translate-y-2 transition-all duration-500 flex flex-col border border-gray-700 group-hover:border-blue-500/50 overflow-hidden group relative focus:outline-none focus:ring-2 focus:ring-blue-500"
+  >
     <div className="absolute inset-0 bg-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
     
     <div className="relative overflow-hidden h-60 bg-gray-900 min-h-[240px]">
@@ -24,13 +27,15 @@ const ServiceCard: React.FC<{ icon: React.ReactNode; title: string; description:
       <div className="text-gray-300 leading-relaxed flex-grow text-base">{description}</div>
       
       <div className="mt-6 pt-6 border-t border-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-        <span className="text-blue-400 font-bold text-sm flex items-center gap-2">
-          למידע נוסף
-          <svg className="w-4 h-4 transform group-hover:translate-x-[-4px] transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 12H5m0 0l7 7m-7-7l7-7" /></svg>
-        </span>
+        <div className="text-blue-400 font-bold text-sm flex items-center gap-2 group-hover:text-blue-300">
+          למידע נוסף והזמנה
+          <svg className="w-4 h-4 transform transition-transform group-hover:translate-x-[-4px]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 12H5m0 0l7 7m-7-7l7-7" />
+          </svg>
+        </div>
       </div>
     </div>
-  </div>
+  </a>
 );
 
 const Services: React.FC = () => {
