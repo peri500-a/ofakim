@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -46,9 +45,10 @@ const App: React.FC = () => {
           console.warn("URI decoding failed", e);
         }
 
-        const normalizedPath = decodedPath.length > 1 ? decodedPath.replace(/\/+$/, "") : decodedPath;
+        // נרמול הנתיב לבדיקה
+        const normalizedPath = decodedPath.toLowerCase().replace(/\/+$/, "") || "/";
 
-        // 1. בדיקה האם מדובר בכתובת ישנה שצריכה הפניה
+        // 1. בדיקה האם מדובר בכתובת ישנה שצריכה הפניה לעוגן בדף הבית
         if (legacyMap[normalizedPath]) {
           const targetHash = legacyMap[normalizedPath];
           window.history.replaceState(null, '', '/');
@@ -57,26 +57,20 @@ const App: React.FC = () => {
           return;
         }
 
-        // 2. בדיקת עמוד הבית (שורש)
-        const isRoot = normalizedPath === "/" || normalizedPath === "/index.html" || normalizedPath === "";
-        
-        if (isRoot) {
-          setIsNotFound(false);
-          return;
-        }
+        // 2. הבטחת הצגת דף הבית:
+        // מאחר ומדובר באתר של דף נחיתה אחד (Landing Page), אנחנו נבטל את הצגת דף ה-404 
+        // בכל מצב שבו המשתמש נמצא בנתיב כלשהו שאינו מוגדר במפורש כדף אחר.
+        // זה פותר בעיות שבהן ה-URL בסביבות פיתוח כולל תתי-נתיבים (כמו ב-AI Studio).
+        setIsNotFound(false);
 
-        // 3. תמיכה בסביבות פיתוח ו-Previews
-        // אם אנחנו בנתיב לא מזוהה (כמו /trial), נציג 404 בכל מקרה
-        setIsNotFound(true);
       } catch (err) {
         console.error("Routing error:", err);
-        setIsNotFound(false);
+        setIsNotFound(false); // ברירת מחדל לדף הבית בכל מקרה של שגיאה
       }
     };
 
     handleRouting();
     
-    // האזנה לכל סוגי שינויי הניווט
     window.addEventListener('popstate', handleRouting);
     window.addEventListener('hashchange', handleRouting);
     
@@ -86,6 +80,7 @@ const App: React.FC = () => {
     };
   }, []);
 
+  // הצגת דף 404 רק אם בעתיד נרצה להגדיר דפים פנימיים ומישהו ינסה להגיע אליהם
   if (isNotFound) {
     return <NotFound />;
   }
@@ -98,7 +93,7 @@ const App: React.FC = () => {
           <Hero />
         </FadeInSection>
 
-        <FadeInSection delay={200}>
+        <FadeInSection delay={150}>
           <Services />
         </FadeInSection>
 
