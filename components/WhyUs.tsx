@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 const Feature: React.FC<{ icon: React.ReactNode; title: string; description: string }> = ({ icon, title, description }) => (
@@ -41,7 +42,7 @@ const WhyUs: React.FC = () => {
             <p className="text-xl text-gray-400 mb-12 leading-relaxed">
               אנו מחויבים למקצועיות ללא פשרות, שקיפות מלאה ושירות אישי. המטרה שלנו היא לספק לכם את כל המידע המקצועי לקבלת החלטה מושכלת ברכישה הגדולה של חייכם.
             </p>
-            <div className="space-y-12">
+            <div className="space-y-10 sm:space-y-12">
               {features.map((feature, index) => (
                 <Feature key={index} {...feature} />
               ))}
@@ -49,22 +50,22 @@ const WhyUs: React.FC = () => {
           </div>
           
           <div className="relative group order-1 lg:order-2">
-            <div className="absolute -inset-6 bg-blue-600/20 rounded-[4rem] blur-3xl group-hover:bg-blue-600/30 transition-all duration-1000"></div>
-            <div className="relative h-[500px] md:h-[700px] overflow-hidden rounded-[3rem] border border-white/10 shadow-[0_0_80px_rgba(0,0,0,0.6)]">
+            <div className="absolute -inset-6 bg-blue-600/20 rounded-[3rem] md:rounded-[4rem] blur-3xl group-hover:bg-blue-600/30 transition-all duration-1000"></div>
+            <div className="relative h-[350px] sm:h-[500px] md:h-[700px] overflow-hidden rounded-[2.5rem] md:rounded-[3rem] border border-white/10 shadow-[0_0_80px_rgba(0,0,0,0.6)]">
               <img 
                 className="w-full h-full object-cover transition-all duration-1000 scale-105 group-hover:scale-100" 
                 src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1260&q=80" 
-                alt="קולאז' עבודת מהנדס בדק בית בשטח: בדיקת לוח חשמל, גג וסדקים"
+                alt="עבודת מהנדס בדק בית בשטח"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/20 to-transparent"></div>
               
-              <div className="absolute bottom-6 right-6 left-6 md:bottom-10 md:right-10 md:left-10 p-6 md:p-10 bg-gray-900/70 backdrop-blur-2xl rounded-[2rem] md:rounded-[2.5rem] border border-white/10 shadow-2xl transform group-hover:-translate-y-2 transition-transform duration-700">
-                <div className="flex items-center gap-3 md:gap-4 mb-3">
-                    <span className="h-3 w-3 bg-blue-500 rounded-full animate-pulse"></span>
-                    <p className="text-blue-400 font-black text-xs md:text-sm uppercase tracking-widest">זמינות מיידית</p>
+              <div className="absolute bottom-4 right-4 left-4 sm:bottom-10 sm:right-10 sm:left-10 p-5 sm:p-10 bg-gray-900/80 backdrop-blur-2xl rounded-3xl border border-white/10 shadow-2xl transform group-hover:-translate-y-2 transition-transform duration-700">
+                <div className="flex items-center gap-3 mb-2 sm:mb-3">
+                    <span className="h-2 w-2 sm:h-3 sm:w-3 bg-blue-500 rounded-full animate-pulse"></span>
+                    <p className="text-blue-400 font-black text-[10px] sm:text-sm uppercase tracking-widest">זמינות מיידית</p>
                 </div>
-                <p className="text-white text-lg md:text-3xl font-black leading-tight">
-                    אנו פועלים בתל אביב, ירושלים, רחובות, שוהם והמרכז ומתחייבים לדוח מהיר תוך 48 שעות.
+                <p className="text-white text-base sm:text-3xl font-black leading-tight">
+                    אנו מתחייבים לדוח הנדסי מפורט תוך 48 שעות ממועד הבדיקה.
                 </p>
               </div>
             </div>

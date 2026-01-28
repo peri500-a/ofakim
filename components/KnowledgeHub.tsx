@@ -1,3 +1,4 @@
+
 import React, { useState, useRef } from 'react';
 
 interface Article {
@@ -38,39 +39,31 @@ const KnowledgeHub: React.FC = () => {
       icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
       content: (
         <div className="space-y-6">
-          <h4 className="text-xl font-bold text-white mb-4">השקעה קטנה שחוסכת עשרות אלפים בתיקונים.</h4>
-          <div className="bg-gray-800 rounded-2xl p-6 border border-white/5 shadow-inner">
-             <ul className="space-y-3">
-               <li className="flex justify-between items-center border-b border-white/10 pb-2">
-                 <span className="text-gray-300">דירת 1-3 חדרים</span> 
-                 <span className="text-blue-400 font-black">1,300-1,600 ₪</span>
+          <h4 className="text-lg sm:text-xl font-bold text-white mb-4">השקעה קטנה שחוסכת עשרות אלפים בתיקונים.</h4>
+          <div className="bg-gray-800 rounded-2xl p-4 sm:p-6 border border-white/5 shadow-inner">
+             <ul className="space-y-4">
+               <li className="flex justify-between items-center border-b border-white/10 pb-3">
+                 <span className="text-gray-300 text-sm sm:text-base">דירת 1-3 חדרים</span> 
+                 <span className="text-blue-400 font-black">1,400-1,700 ₪</span>
                </li>
-               <li className="flex justify-between items-center border-b border-white/10 pb-2">
-                 <span className="text-gray-300">דירת 4-5 חדרים</span> 
-                 <span className="text-blue-400 font-black">1,600-1,900 ₪</span>
+               <li className="flex justify-between items-center border-b border-white/10 pb-3">
+                 <span className="text-gray-300 text-sm sm:text-base">דירת 4-5 חדרים</span> 
+                 <span className="text-blue-400 font-black">1,600-2,100 ₪</span>
                </li>
-               <li className="flex justify-between items-center border-b border-white/10 pb-2">
-                 <span className="text-gray-300">דירת 6 חדרים</span> 
-                 <span className="text-blue-400 font-black">2,000-2,200 ₪</span>
-               </li>
-               <li className="flex justify-between items-center border-b border-white/10 pb-2">
-                 <span className="text-gray-300">בית פרטי ללא מרתף</span> 
-                 <span className="text-blue-400 font-black">2,000-2,400 ₪</span>
-               </li>
-               <li className="flex justify-between items-center border-b border-white/10 pb-2">
-                 <span className="text-gray-300">בית פרטי עם מרתף</span> 
-                 <span className="text-blue-400 font-black">2,400-3,000 ₪</span>
+               <li className="flex justify-between items-center border-b border-white/10 pb-3">
+                 <span className="text-gray-300 text-sm sm:text-base">בית צמוד קרקע (עד 200 מ"ר)</span> 
+                 <span className="text-blue-400 font-black">2,200-2,800 ₪</span>
                </li>
                <li className="flex justify-between items-start pt-2">
                  <div className="flex flex-col">
-                    <span className="text-white font-black">בית פרטי מעל 200 מ"ר</span>
-                    <span className="text-gray-500 text-xs">כולל בריכה וחימום תת רצפתי</span>
+                    <span className="text-white font-black text-sm sm:text-base">בית צמוד קרקע (מעל 200 מ"ר)</span>
+                    <span className="text-gray-500 text-[10px]">כולל בריכה ומערכות</span>
                  </div>
-                 <span className="text-blue-400 font-black text-lg">התקשר להצעה</span>
+                 <span className="text-blue-400 font-black text-base sm:text-lg">התקשרו להצעה</span>
                </li>
              </ul>
           </div>
-          <p className="text-gray-400 italic text-sm mt-4 bg-white/5 p-4 rounded-xl border-r-2 border-blue-500">
+          <p className="text-gray-400 italic text-xs sm:text-sm mt-4 bg-white/5 p-4 rounded-xl border-r-2 border-blue-500">
             * המחיר כולל דוח הנדסי מפורט הקביל בבית משפט ובדיקה תרמית (Thermal) ע"י מהנדס מוסמך.
           </p>
         </div>
@@ -85,15 +78,15 @@ const KnowledgeHub: React.FC = () => {
       icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>,
       content: (
         <div className="space-y-6">
-          <h4 className="text-xl font-bold text-white mb-4 italic">זיהוי כשלי בנייה לפני שהם הופכים לנזק כלכלי</h4>
+          <h4 className="text-lg sm:text-xl font-bold text-white mb-4 italic">זיהוי כשלי בנייה לפני שהם הופכים לנזק כלכלי</h4>
           <div className="grid gap-6">
-            <div className="p-6 bg-white/5 rounded-2xl border border-white/10">
-              <h5 className="font-bold text-blue-400 text-lg mb-2">1. רטיבות קפילארית ואיטום</h5>
-              <p className="text-gray-300 leading-relaxed">שימוש במצלמה תרמית מאפשר למהנדס לאתר רטיבות מתחת לריצוף שנובעת מאיטום לקוי בחדרים רטובים.</p>
+            <div className="p-5 sm:p-6 bg-white/5 rounded-2xl border border-white/10">
+              <h5 className="font-bold text-blue-400 text-base sm:text-lg mb-2">1. רטיבות קפילארית ואיטום</h5>
+              <p className="text-gray-300 leading-relaxed text-sm sm:text-base">שימוש במצלמה תרמית מאפשר למהנדס לאתר רטיבות מתחת לריצוף שנובעת מאיטום לקוי בחדרים רטובים.</p>
             </div>
-            <div className="p-6 bg-white/5 rounded-2xl border border-white/10">
-              <h5 className="font-bold text-blue-400 text-lg mb-2">2. סדקים ובעיות קונסטרוקציה</h5>
-              <p className="text-gray-300 leading-relaxed">ביקורת מבנים מקצועית מבחינה בין סדקי נימיות לסדקים בבטון המעידים על בעיות ביסוס חמורות.</p>
+            <div className="p-5 sm:p-6 bg-white/5 rounded-2xl border border-white/10">
+              <h5 className="font-bold text-blue-400 text-base sm:text-lg mb-2">2. סדקים וקונסטרוקציה</h5>
+              <p className="text-gray-300 leading-relaxed text-sm sm:text-base">ביקורת מבנים מקצועית מבחינה בין סדקי נימיות לסדקים בבטון המעידים על בעיות ביסוס חמורות.</p>
             </div>
           </div>
         </div>
@@ -118,17 +111,17 @@ const KnowledgeHub: React.FC = () => {
     <section id="knowledge" className="py-24 sm:py-32 bg-gray-950/50">
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto text-center mb-16">
-          <h2 className="text-blue-500 font-black uppercase tracking-widest text-sm mb-4">מומחיות בפריסה ארצית</h2>
-          <h3 className="text-4xl sm:text-6xl font-black text-white mb-6">מדריכי <span className="text-blue-500">בדק בית</span> והנדסה</h3>
+          <h2 className="text-blue-500 font-black uppercase tracking-widest text-xs sm:text-sm mb-4">מומחיות בפריסה ארצית</h2>
+          <h3 className="text-3xl sm:text-6xl font-black text-white mb-6">מדריכי <span className="text-blue-500">בדק בית</span> והנדסה</h3>
           
-          <div className="mt-10">
-            <p className="text-gray-400 text-base mb-6 font-medium">בחרו את אזור המגורים שלכם לצפייה בדגשי <span className="text-white">ביקורת מבנים</span> ספציפיים:</p>
-            <div className="flex flex-wrap justify-center gap-3">
+          <div className="mt-8">
+            <p className="text-gray-400 text-sm sm:text-base mb-6 font-medium">בחרו את אזור המגורים שלכם לצפייה בדגשי <span className="text-white">ביקורת מבנים</span>:</p>
+            <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
               {areas.map(area => (
                 <button 
                   key={area} 
                   onClick={() => setActiveCity(area)}
-                  className={`text-sm font-bold px-5 py-2.5 rounded-2xl border transition-all duration-300 ${
+                  className={`text-[10px] sm:text-sm font-bold px-4 py-2 sm:px-5 sm:py-2.5 rounded-xl sm:rounded-2xl border transition-all duration-300 ${
                     activeCity === area 
                     ? 'bg-blue-600 border-blue-500 text-white shadow-lg shadow-blue-600/30 scale-105' 
                     : 'text-gray-400 bg-gray-900 border-white/5 hover:border-blue-500/40 hover:text-white'
@@ -140,13 +133,13 @@ const KnowledgeHub: React.FC = () => {
             </div>
             
             {activeCity && (
-              <div className="mt-10 animate-slide-up bg-blue-900/10 border border-blue-500/20 rounded-[2.5rem] p-8 max-w-2xl mx-auto relative group shadow-2xl">
-                <div className="absolute top-0 right-0 w-2 h-full bg-blue-600 rounded-r-full"></div>
-                <h4 className="text-2xl font-black text-blue-400 mb-4">מהנדס בדק בית ב{activeCity}</h4>
-                <p className="text-gray-300 text-lg leading-relaxed">{cityData[activeCity]}</p>
+              <div className="mt-8 animate-slide-up bg-blue-900/10 border border-blue-500/20 rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-8 max-w-2xl mx-auto relative group shadow-2xl">
+                <div className="absolute top-0 right-0 w-1 sm:w-2 h-full bg-blue-600 rounded-r-full"></div>
+                <h4 className="text-xl sm:text-2xl font-black text-blue-400 mb-3 sm:mb-4">מהנדס בדק בית ב{activeCity}</h4>
+                <p className="text-gray-300 text-base sm:text-lg leading-relaxed">{cityData[activeCity]}</p>
                 <button 
                   onClick={() => setActiveCity(null)}
-                  className="mt-6 text-xs text-gray-500 hover:text-white transition-colors underline decoration-dotted"
+                  className="mt-4 text-[10px] text-gray-500 hover:text-white transition-colors underline decoration-dotted"
                 >
                   סגור מידע אזורי
                 </button>
@@ -155,26 +148,26 @@ const KnowledgeHub: React.FC = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-16 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-16 max-w-4xl mx-auto">
           {articles.map((article) => (
             <button
               key={article.id}
               onClick={() => handleSelect(article.id)}
-              className={`group text-right p-8 rounded-[2rem] border transition-all duration-500 transform ${
+              className={`group text-right p-6 sm:p-8 rounded-[1.5rem] sm:rounded-[2rem] border transition-all duration-500 transform ${
                 selectedId === article.id 
                   ? 'bg-blue-600 border-blue-500 shadow-2xl -translate-y-1' 
                   : 'bg-gray-900 border-white/5 hover:border-blue-500/30'
               }`}
             >
-              <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-colors ${
+              <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 transition-colors ${
                 selectedId === article.id ? 'bg-white text-blue-600' : 'bg-blue-600/10 text-blue-400'
               }`}>
                 {article.icon}
               </div>
-              <h4 className={`text-2xl font-black mb-3 ${selectedId === article.id ? 'text-white' : 'text-gray-100'}`}>
+              <h4 className={`text-xl sm:text-2xl font-black mb-2 sm:mb-3 ${selectedId === article.id ? 'text-white' : 'text-gray-100'}`}>
                 {article.title}
               </h4>
-              <p className={`text-base leading-relaxed ${selectedId === article.id ? 'text-blue-100' : 'text-gray-400'}`}>
+              <p className={`text-xs sm:text-base leading-relaxed ${selectedId === article.id ? 'text-blue-100' : 'text-gray-400'}`}>
                 {article.excerpt}
               </p>
             </button>
@@ -182,24 +175,24 @@ const KnowledgeHub: React.FC = () => {
         </div>
 
         <div ref={contentRef} className="max-w-6xl mx-auto animate-fade-in" key={selectedId}>
-          <div className="bg-gray-900 rounded-[3rem] border border-white/10 overflow-hidden flex flex-col lg:flex-row min-h-[550px] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.8)]">
-            <div className="lg:w-1/2 relative h-80 lg:h-auto overflow-hidden">
-              <img src={selectedArticle.image} alt={selectedArticle.title} className="w-full h-full object-cover transition-transform duration-1000 hover:scale-105" />
-              <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent"></div>
-              <div className="absolute bottom-12 right-12">
-                <span className="inline-block bg-blue-600 text-white text-xs font-black px-4 py-1.5 rounded-full mb-4 uppercase tracking-widest">{selectedArticle.keyword}</span>
-                <h4 className="text-4xl font-black text-white leading-tight">{selectedArticle.title}</h4>
+          <div className="bg-gray-900 rounded-[2rem] sm:rounded-[3rem] border border-white/10 overflow-hidden flex flex-col lg:flex-row min-h-[500px] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.8)]">
+            <div className="lg:w-1/2 relative h-64 sm:h-80 lg:h-auto overflow-hidden">
+              <img src={selectedArticle.image} alt={selectedArticle.title} className="w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/30 to-transparent"></div>
+              <div className="absolute bottom-6 right-6 sm:bottom-12 sm:right-12">
+                <span className="inline-block bg-blue-600 text-white text-[10px] font-black px-3 py-1 rounded-full mb-3 uppercase tracking-widest">{selectedArticle.keyword}</span>
+                <h4 className="text-2xl sm:text-4xl font-black text-white leading-tight">{selectedArticle.title}</h4>
               </div>
             </div>
-            <div className="lg:w-1/2 p-12 sm:p-20 flex flex-col justify-center bg-gray-900/80 backdrop-blur-xl">
+            <div className="lg:w-1/2 p-6 sm:p-12 lg:p-16 flex flex-col justify-center bg-gray-900/80 backdrop-blur-xl">
               <div className="text-gray-300">
                 {selectedArticle.content}
               </div>
-              <div className="mt-12 pt-10 border-t border-white/5 flex flex-col sm:flex-row items-center gap-6">
-                <a href="#contact" className="w-full sm:w-auto text-center bg-blue-600 text-white font-black px-12 py-5 rounded-2xl shadow-xl hover:bg-blue-500 transition-all transform hover:scale-105">
-                  הזמינו בדק בית עכשיו
+              <div className="mt-8 sm:mt-12 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
+                <a href="#contact" className="w-full sm:w-auto text-center bg-blue-600 text-white font-black px-8 py-4 sm:px-12 sm:py-5 rounded-2xl shadow-xl hover:bg-blue-500 transition-all transform hover:scale-105">
+                  הזמינו בדק בית
                 </a>
-                <p className="text-sm text-gray-500 font-bold">או חייגו: 054-7515142</p>
+                <p className="text-xs sm:text-sm text-gray-500 font-bold">או חייגו: 054-7515142</p>
               </div>
             </div>
           </div>
