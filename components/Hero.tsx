@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 
 const Hero: React.FC = () => {
@@ -26,20 +27,21 @@ const Hero: React.FC = () => {
         <ul className="flex flex-wrap justify-center gap-2 sm:gap-6 mb-8 md:mb-12 animate-fade-in" aria-label="למה לבחור בנו?">
            <li className="flex items-center gap-2 bg-white/5 backdrop-blur-md px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-white/10 shadow-lg">
               <span className="text-blue-500 text-xs sm:text-base" aria-hidden="true">✓</span>
-              <span className="text-[10px] sm:text-sm font-bold text-gray-200">מהנדסים רשומים</span>
+              <span className="text-[10px] sm:text-sm font-bold text-gray-200">מהנדס בדק בית מוסמך</span>
            </li>
            <li className="flex items-center gap-2 bg-white/5 backdrop-blur-md px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-white/10 shadow-lg">
               <span className="text-blue-500 text-xs sm:text-base" aria-hidden="true">✓</span>
-              <span className="text-[10px] sm:text-sm font-bold text-gray-200">דוח תוך 48 שעות</span>
+              <span className="text-[10px] sm:text-sm font-bold text-gray-200">ביקורת מבנים מקיפה</span>
            </li>
            <li className="flex items-center gap-2 bg-white/5 backdrop-blur-md px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-white/10 shadow-lg">
               <span className="text-blue-500 text-xs sm:text-base" aria-hidden="true">✓</span>
-              <span className="text-[10px] sm:text-sm font-bold text-gray-200">ציוד תרמי</span>
+              <span className="text-[10px] sm:text-sm font-bold text-gray-200">איתור ליקויים תרמי</span>
            </li>
         </ul>
 
+        {/* H1 for SEO - Critical Change */}
         <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-black leading-tight md:leading-[0.9] mb-6 md:mb-8 tracking-tighter filter drop-shadow-2xl">
-          <span className="block text-white mb-1">בדק בית מקצועי.</span>
+          <span className="block text-white mb-1">בדק בית וביקורת מבנים.</span>
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 via-blue-400 to-indigo-500 block">
             השקט הנפשי שלך.
           </span>
@@ -47,7 +49,7 @@ const Hero: React.FC = () => {
         
         <div className="max-w-2xl mx-auto mb-8 md:mb-16">
           <p className="text-base sm:text-xl md:text-2xl text-gray-300 font-medium leading-relaxed drop-shadow-lg px-4">
-            אל תתפשרו על פחות ממהנדס מוסמך. אנו מאתרים ליקויי בנייה נסתרים ומבטיחים שהנכס שלכם בטוח ותקין.
+            אל תתפשרו על פחות ממהנדס בדק בית מוסמך. אנו מאתרים ליקויי בנייה נסתרים ומבטיחים שהנכס שלכם בטוח, תקין ומוכן למגורים.
           </p>
         </div>
 
@@ -56,9 +58,9 @@ const Hero: React.FC = () => {
             href="#contact" 
             onClick={handleScrollClick}
             className="w-full sm:w-auto flex items-center justify-center bg-blue-600 text-white font-black text-lg md:text-2xl px-10 py-4 md:px-16 md:py-7 rounded-2xl hover:bg-blue-500 transition-all duration-500 transform hover:scale-105 shadow-[0_20px_50px_rgba(37,99,235,0.4)] focus:outline-none focus:ring-4 focus:ring-blue-400"
-            aria-label="הזמינו בדיקה הנדסית עכשיו"
+            aria-label="הזמינו בדק בית עכשיו"
           >
-            {isLoading ? "מתחבר..." : "הזמינו בדיקה הנדסית"}
+            {isLoading ? "מתחבר..." : "הזמינו בדק בית"}
           </a>
           
           <a 

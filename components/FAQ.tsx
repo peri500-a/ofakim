@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 
 const FaqItem: React.FC<{ question: string; answer: string }> = ({ question, answer }) => {
@@ -63,7 +62,7 @@ const FAQ: React.FC = () => {
     <section id="faq" className="py-24 bg-gray-950">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-blue-500 font-black uppercase tracking-[0.2em] text-sm mb-4">שאלות ותשובות</h2>
+          <h2 className="text-blue-500 font-black uppercase tracking-[0.2em] text-base mb-4">שאלות ותשובות</h2>
           <h3 className="text-4xl md:text-5xl font-black text-white">השאלות שכולם שואלים</h3>
         </div>
         <div className="max-w-4xl mx-auto bg-gray-900/30 p-8 md:p-12 rounded-[2rem] border border-white/5 backdrop-blur-sm">

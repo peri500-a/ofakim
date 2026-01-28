@@ -36,7 +36,7 @@ const WhyUs: React.FC = () => {
       <div className="container mx-auto px-6">
         <div className="lg:grid lg:grid-cols-2 lg:gap-20 lg:items-center">
           <div className="mb-16 lg:mb-0 order-2 lg:order-1">
-            <h2 className="text-blue-500 font-black uppercase tracking-[0.2em] text-sm mb-4">למה לבחור באופקים?</h2>
+            <h2 className="text-blue-500 font-black uppercase tracking-[0.2em] text-base mb-4">למה לבחור באופקים?</h2>
             <h3 className="text-4xl md:text-6xl font-black text-white mb-8 leading-tight">היתרון שלנו הוא <br/><span className="text-blue-500">הביטחון שלכם</span></h3>
             <p className="text-xl text-gray-400 mb-12 leading-relaxed">
               אנו מחויבים למקצועיות ללא פשרות, שקיפות מלאה ושירות אישי. המטרה שלנו היא לספק לכם את כל המידע המקצועי לקבלת החלטה מושכלת ברכישה הגדולה של חייכם.

@@ -127,7 +127,7 @@ const Services: React.FC = () => {
       imageAlt: 'פיקוח הנדסי וליווי בנייה פרטית',
     },
     {
-      icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>,
+      icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2-2v14a2 2 0 002 2z" /></svg>,
       title: 'שמאות רכוש והערכת נזקים',
       description: (
         <ul className="space-y-2">
@@ -158,7 +158,7 @@ const Services: React.FC = () => {
     <section id="services" className="py-24 bg-gray-950">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-blue-500 font-black uppercase tracking-widest text-xs mb-4">המומחיות ההנדסית שלנו</h2>
+          <h2 className="text-blue-500 font-black uppercase tracking-widest text-sm mb-4 italic">המומחיות ההנדסית שלנו</h2>
           <h3 className="text-4xl md:text-6xl font-black text-white leading-tight">מעטפת פתרונות <br/><span className="text-blue-500">הנדסית ואדריכלית</span> מלאה</h3>
           <p className="mt-6 text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
             אופקים הנדסה מספקת ליווי מקצועי מקצה לקצה – משלב התכנון האדריכלי והכנת כתב הכמויות, דרך פיקוח בבנייה ועד לבדק בית מפורט ואיתור ליקויים.
