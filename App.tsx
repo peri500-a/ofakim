@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -39,42 +40,33 @@ const App: React.FC = () => {
         const rawPath = window.location.pathname;
         let decodedPath = rawPath;
 
-        // פענוח תווים בעברית בכתובת ה-URL
         try {
           decodedPath = decodeURIComponent(rawPath);
         } catch (e) {
           console.warn("URI decoding failed", e);
         }
 
-        // ניקוי סלאשים מיותרים בסוף הכתובת ונרמול לשורש
         const normalizedPath = decodedPath.length > 1 ? decodedPath.replace(/\/+$/, "") : decodedPath;
 
-        // 1. בדיקה האם מדובר בכתובת ישנה שצריכה הפניה (Redirect)
+        // 1. בדיקה האם מדובר בכתובת ישנה שצריכה הפניה
         if (legacyMap[normalizedPath]) {
           const targetHash = legacyMap[normalizedPath];
-          // מעבר לעמוד הראשי ועדכון ההיסטוריה ללא הנתיב הישן
           window.history.replaceState(null, '', '/');
           window.location.hash = targetHash;
           setIsNotFound(false);
           return;
         }
 
-        // 2. בדיקה האם מדובר בעמוד הראשי או בנתיבי מערכת מוכרים
+        // 2. בדיקת עמוד הבית (שורש)
         const isRoot = normalizedPath === "/" || normalizedPath === "/index.html" || normalizedPath === "";
-        const isPreviewEnv = window.location.hostname.includes('webcontainer') || window.self !== window.top;
-
-        if (isRoot || isPreviewEnv) {
+        
+        if (isRoot) {
           setIsNotFound(false);
           return;
         }
 
-        // 3. אם יש האש (anchor) בלבד ללא נתיב - זה תקין (SPA)
-        if (normalizedPath === "/" && window.location.hash) {
-          setIsNotFound(false);
-          return;
-        }
-
-        // 4. לכל נתיב לא מוכר (כמו /trial) - הצגת דף 404
+        // 3. תמיכה בסביבות פיתוח ו-Previews
+        // אם אנחנו בנתיב לא מזוהה (כמו /trial), נציג 404 בכל מקרה
         setIsNotFound(true);
       } catch (err) {
         console.error("Routing error:", err);
@@ -82,13 +74,15 @@ const App: React.FC = () => {
       }
     };
 
-    // הפעלת הניתוב בטעינה ראשונית
     handleRouting();
     
-    // האזנה לשינויי ניווט (היסטוריה)
+    // האזנה לכל סוגי שינויי הניווט
     window.addEventListener('popstate', handleRouting);
+    window.addEventListener('hashchange', handleRouting);
+    
     return () => {
       window.removeEventListener('popstate', handleRouting);
+      window.removeEventListener('hashchange', handleRouting);
     };
   }, []);
 

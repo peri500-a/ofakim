@@ -1,9 +1,11 @@
+
 import React from 'react';
 
 const ServiceCard: React.FC<{ icon: React.ReactNode; title: string; description: React.ReactNode; imageSrc: string; imageAlt: string; }> = ({ icon, title, description, imageSrc, imageAlt }) => (
   <a 
     href="#contact"
-    className="bg-gray-800 rounded-2xl shadow-lg hover:shadow-blue-500/20 hover:-translate-y-2 transition-all duration-500 flex flex-col border border-gray-700 group-hover:border-blue-500/50 overflow-hidden group relative focus:outline-none focus:ring-2 focus:ring-blue-500"
+    className="bg-gray-800 rounded-2xl shadow-lg hover:shadow-blue-500/20 hover:-translate-y-2 transition-all duration-500 flex flex-col border border-gray-700 group overflow-hidden group relative focus:outline-none focus:ring-2 focus:ring-blue-500 block"
+    aria-label={`מידע נוסף על ${title}`}
   >
     <div className="absolute inset-0 bg-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
     
@@ -27,8 +29,8 @@ const ServiceCard: React.FC<{ icon: React.ReactNode; title: string; description:
       <div className="text-gray-300 leading-relaxed flex-grow text-base">{description}</div>
       
       <div className="mt-6 pt-6 border-t border-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-        <div className="text-blue-400 font-bold text-sm flex items-center gap-2 group-hover:text-blue-300">
-          למידע נוסף והזמנה
+        <div className="text-blue-400 font-bold text-sm flex items-center gap-2 group-hover:text-blue-300 transition-colors">
+          <span>למידע נוסף והזמנה</span>
           <svg className="w-4 h-4 transform transition-transform group-hover:translate-x-[-4px]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 12H5m0 0l7 7m-7-7l7-7" />
           </svg>
@@ -97,7 +99,7 @@ const Services: React.FC = () => {
       title: 'בדיקת רכוש משותף',
       description: (
         <ul className="space-y-2">
-          <li><strong>לוועדי בית:</strong> בדיקת לובי, חדר מדרגות, חדר גנרטור וגגות.</li>
+          <li><strong>לווועדי בית:</strong> בדיקת לובי, חדר מדרגות, חדר גנרטור וגגות.</li>
           <li><strong>מערכות בניין:</strong> וידוא תקינות מעליות, משאבות וכיבוי אש.</li>
           <li className="text-sm text-gray-400 pt-2 italic">הגנה על האינטרס של כלל הדיירים בבניין.</li>
         </ul>
@@ -117,45 +119,6 @@ const Services: React.FC = () => {
       ),
       imageSrc: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=800&q=80',
       imageAlt: 'חוות דעת הנדסית קבילה לבית משפט',
-    },
-    {
-      icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 00(2 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" /></svg>,
-      title: 'פיקוח וליווי הנדסי',
-      description: (
-        <ul className="space-y-2">
-          <li><strong>בנייה פרטית:</strong> ליווי צמוד משלב השלד ועד קבלת המפתח.</li>
-          <li><strong>בקרת איכות:</strong> פיקוח על קבלנים באתר ווידוא ביצוע לפי התוכניות.</li>
-          <li className="text-sm text-gray-400 pt-2 italic">הבטחה שהבית שלכם נבנה בדיוק לפי התקן.</li>
-        </ul>
-      ),
-      imageSrc: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80',
-      imageAlt: 'פיקוח הנדסי וליווי בנייה פרטית',
-    },
-    {
-      icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2-2v14a2 2 0 002 2z" /></svg>,
-      title: 'שמאות רכוש והערכת נזקים',
-      description: (
-        <ul className="space-y-2">
-          <li><strong>הערכת שווי:</strong> אומדן שווי ריאלי של הנכס ותכולתו לצרכי ביטוח, ירושות או פירוק שיתוף.</li>
-          <li><strong>נזקי מבנה:</strong> כימות כספי של נזקי צנרת, אש ואיטום לצורך תביעה מחברת הביטוח.</li>
-          <li className="text-sm text-gray-400 pt-2 italic">חוות דעת שמאית מקיפה ומדויקת להבטחת זכויותיכם.</li>
-        </ul>
-      ),
-      imageSrc: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=80',
-      imageAlt: 'שמאות רכוש והערכת נזקים מקצועית',
-    },
-    {
-      icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>,
-      title: 'אומדני שיפוץ וכתב כמויות',
-      description: (
-        <ul className="space-y-2">
-          <li><strong>לפני שיפוץ:</strong> הכנת מפרט טכני מדויק וכתב כמויות להצעות מחיר מקבלנים.</li>
-          <li><strong>תקצוב:</strong> הערכת עלויות ריאלית למניעת חריגות בתקציב השיפוץ.</li>
-          <li className="text-sm text-gray-400 pt-2 italic">כלי ניהולי קריטי לחיסכון כספי בשיפוץ הבית.</li>
-        </ul>
-      ),
-      imageSrc: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
-      imageAlt: 'הכנת כתב כמויות ואומדן שיפוצים הנדסי מקצועי עם טבלאות נתונים',
     },
   ];
 
