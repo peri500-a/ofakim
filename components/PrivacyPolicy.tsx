@@ -4,7 +4,7 @@ import React from 'react';
 const PrivacyPolicy: React.FC = () => {
   return (
     <div className="prose prose-invert prose-p:text-gray-300 prose-headings:text-white prose-strong:text-gray-100 max-w-none text-right">
-        <p className="text-sm text-gray-500">עדכון אחרון: 24 ביולי 2024</p>
+        <p className="text-sm text-gray-500">עדכון אחרון: ינואר 2026</p>
         
         <h4>1. כללי</h4>
         <p>
