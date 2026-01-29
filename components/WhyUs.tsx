@@ -17,12 +17,12 @@ const WhyUs: React.FC = () => {
   const features = [
     {
       icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>,
-      title: 'ניסיון ומוניטין של עשור',
+      title: 'ניסיון ומוניטין של שני עשורים',
       description: 'מעל 15 שנות ניסיון בתחום בדק הבית וליווי אלפי לקוחות מרוצים. המומחיות שלנו היא השקט הנפשי שלכם ברגעים הקריטיים.',
     },
     {
       icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>,
-      title: 'דוח הנדסי קביל ומשפטי',
+      title: 'דוח הנדסי קביל בבית משפט',
       description: 'בסיום הבדיקה תקבלו דוח מפורט הכולל צילומים תרמיים, הפניה לתקנים והערכת עלויות. הדוח משמש ככלי משפטי עוצמתי מול קבלנים.',
     },
     {
@@ -33,7 +33,7 @@ const WhyUs: React.FC = () => {
   ];
 
   return (
-    <section id="why-us" className="py-24 bg-gray-950">
+    <section id="why-us" className="py-24 bg-gray-950 scroll-mt-24">
       <div className="container mx-auto px-6">
         <div className="lg:grid lg:grid-cols-2 lg:gap-20 lg:items-center">
           <div className="mb-16 lg:mb-0 order-2 lg:order-1">
@@ -54,7 +54,7 @@ const WhyUs: React.FC = () => {
             <div className="relative h-[350px] sm:h-[500px] md:h-[700px] overflow-hidden rounded-[2.5rem] md:rounded-[3rem] border border-white/10 shadow-[0_0_80px_rgba(0,0,0,0.6)]">
               <img 
                 className="w-full h-full object-cover transition-all duration-1000 scale-105 group-hover:scale-100" 
-                src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1260&q=80" 
+                src="https://res.cloudinary.com/dbzklnlcx/image/upload/v1769672471/%D7%94%D7%AA%D7%97%D7%99%D7%91%D7%95%D7%AA_%D7%9C%D7%91%D7%93%D7%99%D7%A7%D7%94_xscxkc.jpg" 
                 alt="עבודת מהנדס בדק בית בשטח"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/20 to-transparent"></div>

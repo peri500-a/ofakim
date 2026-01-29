@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 import Logo from './Logo';
 
@@ -12,7 +13,7 @@ const Header: React.FC = () => {
     { href: '#why-us', label: 'למה אנחנו?' },
     { href: '#process', label: 'התהליך' },
     { href: '#knowledge', label: 'מרכז ידע' },
-    { href: '#accessibility', label: 'נגישות' },
+    { href: '#accessibility', label: 'הצהרת נגישות', isAccessibility: true },
     { href: '#contact', label: 'צור קשר' },
   ];
 
@@ -100,8 +101,17 @@ const Header: React.FC = () => {
                 <a 
                   key={link.href} 
                   href={link.href} 
-                  className="text-gray-300 hover:text-blue-400 font-bold transition-all duration-300 text-sm xl:text-base focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md px-2 py-1 hover:scale-105 active:scale-95"
+                  className={`flex items-center gap-1.5 transition-all duration-300 text-sm xl:text-base focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md px-2 py-1 hover:scale-105 active:scale-95 ${
+                    link.isAccessibility 
+                      ? 'text-blue-400 font-extrabold border border-blue-500/20 bg-blue-500/5 hover:bg-blue-600 hover:text-white' 
+                      : 'text-gray-300 hover:text-blue-400 font-bold'
+                  }`}
                 >
+                  {link.isAccessibility && (
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                  )}
                   {link.label}
                 </a>
               ))}
@@ -151,9 +161,18 @@ const Header: React.FC = () => {
                     key={link.href} 
                     href={link.href} 
                     ref={index === 0 ? firstNavLinkRef : null}
-                    className="text-gray-200 text-2xl font-black py-3 rounded-xl hover:bg-white/5 focus:bg-blue-600 focus:text-white focus:outline-none transition-all" 
+                    className={`text-2xl font-black py-3 rounded-xl transition-all focus:outline-none flex items-center justify-center gap-2 ${
+                      link.isAccessibility 
+                        ? 'text-blue-400 border border-blue-500/20 bg-blue-600/5 focus:bg-blue-600 focus:text-white' 
+                        : 'text-gray-200 hover:bg-white/5 focus:bg-blue-600 focus:text-white'
+                    }`} 
                     onClick={() => setIsMenuOpen(false)}
                   >
+                    {link.isAccessibility && (
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                      </svg>
+                    )}
                     {link.label}
                   </a>
                 ))}

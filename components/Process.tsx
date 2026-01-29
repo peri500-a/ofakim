@@ -16,7 +16,7 @@ const Step: React.FC<{ number: string; title: string; description: string; isLas
 
 const Process: React.FC = () => {
   return (
-    <section id="process" className="py-20 bg-gray-900">
+    <section id="process" className="py-20 bg-gray-900 scroll-mt-24">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-extrabold text-white">התהליך שלנו - פשוט ויעיל</h2>

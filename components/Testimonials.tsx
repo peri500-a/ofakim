@@ -17,19 +17,19 @@ const Testimonials: React.FC = () => {
       quote: 'הגענו דרך המלצה ולא התאכזבנו. הדוח המפורט חשף ליקויים שהקבלן "שכח" לציין. בזכותם, נכנסנו לדירה מושלמת וחסכנו עשרות אלפי שקלים. שירות מקצועי ואדיב.',
       name: 'משפחת אבידן',
       city: 'רעננה',
-      image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&h=200&q=80',
+      image: 'https://res.cloudinary.com/dbzklnlcx/image/upload/v1769673065/%D7%9C%D7%A7%D7%95%D7%97%D7%95%D7%AA_%D7%9E%D7%9E%D7%9C%D7%99%D7%A6%D7%99%D7%9D1_mvppul.jpg',
     },
     {
       quote: 'חשבנו שהבית שמצאנו מושלם, אבל הבדיקה גילתה בעיות איטום רציניות בגג. המהנדס היה יסודי והסביר הכל בסבלנות. אין ספק שמנעתם מאיתנו אסון כלכלי!',
       name: 'תומר ושירי',
       city: 'באר שבע',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&h=200&q=80',
+      image: 'https://res.cloudinary.com/dbzklnlcx/image/upload/v1769673170/%D7%9C%D7%A7%D7%95%D7%97%D7%95%D7%AA_%D7%9E%D7%9E%D7%9C%D7%99%D7%A6%D7%99%D7%9D2_wqzcpi.jpg',
     },
     {
       quote: 'שירות יוצא מן הכלל. מהשיחה הראשונה ועד קבלת הדוח הרגשנו שיש על מי לסמוך. הדוח היה ברור ומקצועי, ועזר לנו מאוד במשא ומתן מול המוכרים. ממליצים בחום!',
       name: 'סיגל כהן',
       city: 'ראשון לציון',
-      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=200&h=200&q=80',
+      image: 'https://res.cloudinary.com/dbzklnlcx/image/upload/v1769673343/%D7%9C%D7%A7%D7%95%D7%97%D7%95%D7%AA_%D7%9E%D7%9E%D7%9C%D7%99%D7%A6%D7%99%D7%9D3_qkdwau.jpg',
     },
   ];
 

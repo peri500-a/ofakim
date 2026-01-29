@@ -1,8 +1,9 @@
+
 import React from 'react';
 
 const AccessibilitySection: React.FC = () => {
   return (
-    <section id="accessibility" className="py-20 bg-gray-950">
+    <section id="accessibility" className="py-20 bg-gray-950 scroll-mt-24">
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-black text-white mb-4">הצהרת נגישות</h2>

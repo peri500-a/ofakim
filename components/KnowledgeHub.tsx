@@ -44,11 +44,11 @@ const KnowledgeHub: React.FC = () => {
              <ul className="space-y-4">
                <li className="flex justify-between items-center border-b border-white/10 pb-3">
                  <span className="text-gray-300 text-sm sm:text-base">דירת 1-3 חדרים</span> 
-                 <span className="text-blue-400 font-black">1,400-1,700 ₪</span>
+                 <span className="text-blue-400 font-black">1,500-1,800 ₪</span>
                </li>
                <li className="flex justify-between items-center border-b border-white/10 pb-3">
                  <span className="text-gray-300 text-sm sm:text-base">דירת 4-5 חדרים</span> 
-                 <span className="text-blue-400 font-black">1,600-2,100 ₪</span>
+                 <span className="text-blue-400 font-black">1,600-2,200 ₪</span>
                </li>
                <li className="flex justify-between items-center border-b border-white/10 pb-3">
                  <span className="text-gray-300 text-sm sm:text-base">בית צמוד קרקע (עד 200 מ"ר)</span> 
@@ -108,7 +108,7 @@ const KnowledgeHub: React.FC = () => {
   };
 
   return (
-    <section id="knowledge" className="py-24 sm:py-32 bg-gray-950/50">
+    <section id="knowledge" className="py-24 sm:py-32 bg-gray-950/50 scroll-mt-24">
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto text-center mb-16">
           <h2 className="text-blue-500 font-black uppercase tracking-widest text-xs sm:text-sm mb-4">מומחיות בפריסה ארצית</h2>

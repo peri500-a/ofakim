@@ -55,7 +55,7 @@ const Contact: React.FC = () => {
   const whatsappLink = `https://wa.me/972${PHONE_NUMBER.substring(1).replace('-', '')}?text=${encodeURIComponent('היי, אשמח לקבל הצעת מחיר לבדק בית')}`;
 
   return (
-    <section id="contact" className="py-24 bg-gray-950">
+    <section id="contact" className="py-24 bg-gray-950 scroll-mt-24">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-blue-500 font-black uppercase tracking-[0.2em] text-xs sm:text-sm mb-4">צרו קשר</h2>
@@ -83,7 +83,7 @@ const Contact: React.FC = () => {
 
                 <a href={`mailto:${PROFESSIONAL_EMAIL}`} className="flex items-center gap-4 group focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-xl p-2 transition-all">
                   <div className="w-12 h-12 bg-blue-600/10 text-blue-500 rounded-xl flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 shrink-0">
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
                   </div>
                   <div>
                     <p className="text-xs text-gray-500">שלחו מייל</p>

@@ -4,7 +4,7 @@ import PrivacyPolicy from './PrivacyPolicy';
 
 const PrivacySection: React.FC = () => {
   return (
-    <section id="privacy-policy" className="py-20 bg-gray-800">
+    <section id="privacy-policy" className="py-20 bg-gray-800 scroll-mt-24">
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-extrabold text-white">מדיניות פרטיות</h2>
