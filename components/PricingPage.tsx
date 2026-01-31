@@ -9,7 +9,7 @@ import Logo from './Logo';
 const PricingPage: React.FC = () => {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    document.title = "מחירון בדק בית 2024 | אופקים הנדסה - שקיפות מלאה";
+    document.title = "מחירון בדק בית 2026 | אופקים הנדסה - שקיפות מלאה";
   }, []);
 
   const handleGoHome = (e: React.MouseEvent) => {
@@ -48,7 +48,7 @@ const PricingPage: React.FC = () => {
             
             <h1 className="text-5xl md:text-8xl font-black text-white mb-8 tracking-tighter leading-[0.9]">
               מחירון <br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">בדק בית 2024</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">בדק בית 2026</span>
             </h1>
             
             <p className="text-xl md:text-2xl text-gray-400 leading-relaxed max-w-2xl">
@@ -118,42 +118,6 @@ const PricingPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Why Invest Content */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-              <div className="space-y-8">
-                <h2 className="text-4xl font-black text-white leading-tight">למה בדק בית הוא <br/><span className="text-blue-500">ההשקעה הכי משתלמת</span> שתעשו?</h2>
-                <p className="text-gray-400 text-lg leading-relaxed">
-                  המחיר שאתם משלמים עבור בדיקה הנדסית הוא זניח לעומת הערך שהיא מספקת. ברוב המקרים, הממצאים שלנו מאפשרים ללקוחות לחסוך עשרות ואף מאות אלפי שקלים בתביעות מול קבלנים או בניהול משא ומתן מול מוכרים.
-                </p>
-                <div className="space-y-4">
-                  {[
-                    'איתור ליקויים סמויים שיעלו ביוקר בעתיד',
-                    'כוח מיקוח אדיר מול מוכר הנכס או הקבלן',
-                    'ביטחון אישי וידיעה שהבית בטוח למגורים',
-                    'דוח קביל בבית משפט שמגבה אתכם משפטית'
-                  ].map((item, i) => (
-                    <div key={i} className="flex items-center gap-3">
-                      <div className="w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center shrink-0">
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"/></svg>
-                      </div>
-                      <span className="text-white font-bold">{item}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="relative">
-                <div className="absolute -inset-4 bg-blue-600/20 blur-3xl rounded-full"></div>
-                <div className="relative bg-gray-900 border border-white/10 p-10 rounded-[3rem] shadow-2xl text-center">
-                   <div className="w-20 h-20 bg-blue-600 rounded-3xl mx-auto mb-8 flex items-center justify-center transform rotate-12 shadow-xl shadow-blue-600/30">
-                     <Logo />
-                   </div>
-                   <h3 className="text-3xl font-black text-white mb-4">צריכים הצעה מדויקת?</h3>
-                   <p className="text-gray-400 mb-8">השאירו פרטים ומהנדס יחזור אליכם עם הצעת מחיר סופית תוך דקות.</p>
-                   <a href="#contact" className="block w-full bg-blue-600 hover:bg-blue-500 text-white font-black py-5 rounded-2xl text-xl shadow-xl shadow-blue-900/40 transition-all hover:-translate-y-1">קבלו הצעה עכשיו</a>
-                </div>
-              </div>
-            </div>
-
           </div>
         </div>
       </section>
@@ -162,7 +126,6 @@ const PricingPage: React.FC = () => {
       <Contact />
       <Footer />
       
-      {/* Back to Home Floating Button */}
       <button 
         onClick={handleGoHome}
         className="fixed bottom-10 left-10 z-50 bg-white text-gray-950 font-black px-6 py-3 rounded-full shadow-2xl hover:bg-blue-500 hover:text-white transition-all transform hover:scale-110 active:scale-95 flex items-center gap-2"

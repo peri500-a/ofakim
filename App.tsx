@@ -19,59 +19,75 @@ import FadeInSection from './components/FadeInSection';
 import NotFound from './components/NotFound';
 import CookieConsent from './components/CookieConsent';
 import PricingPage from './components/PricingPage';
+import ContractorInspectionPage from './components/ContractorInspectionPage';
+import CourtExpertPage from './components/CourtExpertPage';
+import LeakDetectionPage from './components/LeakDetectionPage';
+import LocationPage from './components/LocationPage';
 
 const App: React.FC = () => {
-  const [currentPage, setCurrentPage] = useState<'home' | 'pricing' | '404'>('home');
+  // הגדרת דף הבית כברירת המחדל הראשונית
+  const [currentPage, setCurrentPage] = useState<'home' | 'pricing' | 'contractor' | 'court' | 'leak' | 'tel-aviv' | 'jerusalem' | '404'>('home');
 
   useEffect(() => {
     const handleRouting = () => {
-      // פענוח הכתובת כדי לזהות תווים בעברית נכונה (למשל במקום %D7%91...)
-      let path = "";
-      try {
-        path = decodeURIComponent(window.location.pathname).toLowerCase().replace(/\/+$/, "") || "/";
-      } catch (e) {
-        path = window.location.pathname.toLowerCase().replace(/\/+$/, "") || "/";
-      }
+      const rawPath = window.location.pathname;
+      let path = "/";
       
-      if (path === "/" || path === "") {
-        setCurrentPage('home');
-      } else if (path === "/בדק-בית-מחיר" || path === "/prices") {
-        setCurrentPage('pricing');
-      } else {
-        // רשימת הפניות למסמכים ישנים או סקשנים בתוך דף הבית
-        const legacyMap: Record<string, string> = {
-          '/ביקורת-מבנים': '#services',
-          '/צור-קשר': '#contact',
-          '/בדק-בית-המלצות': '#testimonials'
-        };
+      try {
+        path = decodeURIComponent(rawPath).toLowerCase();
+      } catch (e) {
+        path = rawPath.toLowerCase();
+      }
 
-        if (legacyMap[path]) {
-          window.history.replaceState(null, '', '/');
-          window.location.hash = legacyMap[path];
-          setCurrentPage('home');
-        } else {
-          setCurrentPage('404');
-        }
+      // ניקוי סלאשים וסיומות נפוצות
+      const cleanPath = path.replace(/\/+$/, "") || "/";
+      
+      // בדיקה ספציפית של נתיבים מזוהים
+      if (cleanPath.includes("/בדק-בית-מחיר") || cleanPath.includes("/prices")) {
+        setCurrentPage('pricing');
+      } else if (cleanPath.includes("/בדק-בית-מקבלן") || cleanPath.includes("/new-apartment")) {
+        setCurrentPage('contractor');
+      } else if (cleanPath.includes("/חוות-דעת-הנדסית-לבית-משפט")) {
+        setCurrentPage('court');
+      } else if (cleanPath.includes("/איתור-נזילות-ורטיבות")) {
+        setCurrentPage('leak');
+      } else if (cleanPath.includes("/בדק-בית-בתל-אביב")) {
+        setCurrentPage('tel-aviv');
+      } else if (cleanPath.includes("/בדק-בית-בירושלים")) {
+        setCurrentPage('jerusalem');
+      } 
+      // אם הנתיב הוא שורש, אינדקס, או נתיב קצר שאינו אחד מהדפים הנ"ל - דף הבית
+      else if (cleanPath === "/" || cleanPath === "" || cleanPath.includes("index.html") || cleanPath.split('/').filter(Boolean).length <= 1) {
+        setCurrentPage('home');
+      }
+      // במקום 404 גורף, נחזיר לדף הבית אם אנחנו לא בטוחים בנתיב בסביבת הפיתוח
+      else {
+        setCurrentPage('home'); 
       }
     };
 
-    // הפעלה ראשונית
     handleRouting();
     
-    // האזנה לשינויים ב-URL (כפתור אחורה/קדימה או pushState)
     window.addEventListener('popstate', handleRouting);
-    return () => window.removeEventListener('popstate', handleRouting);
+    window.addEventListener('hashchange', handleRouting);
+
+    return () => {
+      window.removeEventListener('popstate', handleRouting);
+      window.removeEventListener('hashchange', handleRouting);
+    };
   }, []);
 
-  // ניהול תצוגה
-  if (currentPage === '404') {
-    return <NotFound />;
-  }
+  // ניווט מותנה - החזרת הרכיב המתאים לפי ה-State
+  if (currentPage === 'pricing') return <PricingPage />;
+  if (currentPage === 'contractor') return <ContractorInspectionPage />;
+  if (currentPage === 'court') return <CourtExpertPage />;
+  if (currentPage === 'leak') return <LeakDetectionPage />;
+  if (currentPage === 'tel-aviv') return <LocationPage city="תל אביב" />;
+  if (currentPage === 'jerusalem') return <LocationPage city="ירושלים" />;
+  // דף 404 יופעל רק אם הוגדר מפורשות (כרגע הוסר מה-else כדי למנוע טעויות בתצוגה)
+  if (currentPage === '404') return <NotFound />;
 
-  if (currentPage === 'pricing') {
-    return <PricingPage />;
-  }
-
+  // ברירת מחדל סופית: רינדור דף הבית המלא
   return (
     <div className="bg-gray-950 text-gray-300 selection:bg-blue-500/30 selection:text-white overflow-x-hidden">
       <Header />
