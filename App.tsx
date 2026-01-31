@@ -25,45 +25,46 @@ import LeakDetectionPage from './components/LeakDetectionPage';
 import LocationPage from './components/LocationPage';
 
 const App: React.FC = () => {
-  // הגדרת דף הבית כברירת המחדל הראשונית
   const [currentPage, setCurrentPage] = useState<'home' | 'pricing' | 'contractor' | 'court' | 'leak' | 'tel-aviv' | 'jerusalem' | '404'>('home');
 
   useEffect(() => {
     const handleRouting = () => {
+      // הסרת פרמטרים של גוגל (כמו ?gclid) מהנתיב לצורך בדיקת התאמה
       const rawPath = window.location.pathname;
-      let path = "/";
+      let decodedPath = "/";
       
       try {
-        path = decodeURIComponent(rawPath).toLowerCase();
+        decodedPath = decodeURIComponent(rawPath).toLowerCase();
       } catch (e) {
-        path = rawPath.toLowerCase();
+        decodedPath = rawPath.toLowerCase();
       }
 
-      // ניקוי סלאשים וסיומות נפוצות
-      const cleanPath = path.replace(/\/+$/, "") || "/";
+      // ניקוי סלאשים מיותרים ורווחים
+      const cleanPath = decodedPath.trim().replace(/\/+$/, "") || "/";
       
-      // בדיקה ספציפית של נתיבים מזוהים
-      if (cleanPath.includes("/בדק-בית-מחיר") || cleanPath.includes("/prices")) {
+      // לוגיקת זיהוי גמישה המבוססת על מילות מפתח ב-URL
+      if (cleanPath.includes("מחיר") || cleanPath.includes("pricing")) {
         setCurrentPage('pricing');
-      } else if (cleanPath.includes("/בדק-בית-מקבלן") || cleanPath.includes("/new-apartment")) {
+      } else if (cleanPath.includes("מקבלן") || cleanPath.includes("contractor")) {
         setCurrentPage('contractor');
-      } else if (cleanPath.includes("/חוות-דעת-הנדסית-לבית-משפט")) {
+      } else if (cleanPath.includes("חוות-דעת") || cleanPath.includes("court")) {
         setCurrentPage('court');
-      } else if (cleanPath.includes("/איתור-נזילות-ורטיבות")) {
+      } else if (cleanPath.includes("נזילות") || cleanPath.includes("leak")) {
         setCurrentPage('leak');
-      } else if (cleanPath.includes("/בדק-בית-בתל-אביב")) {
+      } else if (cleanPath.includes("תל-אביב") || cleanPath.includes("tel-aviv")) {
         setCurrentPage('tel-aviv');
-      } else if (cleanPath.includes("/בדק-בית-בירושלים")) {
+      } else if (cleanPath.includes("ירושלים") || cleanPath.includes("jerusalem")) {
         setCurrentPage('jerusalem');
       } 
-      // אם הנתיב הוא שורש, אינדקס, או נתיב קצר שאינו אחד מהדפים הנ"ל - דף הבית
-      else if (cleanPath === "/" || cleanPath === "" || cleanPath.includes("index.html") || cleanPath.split('/').filter(Boolean).length <= 1) {
+      else if (cleanPath === "/" || cleanPath === "" || cleanPath.includes("index")) {
         setCurrentPage('home');
       }
-      // במקום 404 גורף, נחזיר לדף הבית אם אנחנו לא בטוחים בנתיב בסביבת הפיתוח
       else {
+        // ברירת מחדל היא דף הבית כדי למנוע נטישת גולשים מגוגל
         setCurrentPage('home'); 
       }
+      
+      window.scrollTo({ top: 0, behavior: 'instant' });
     };
 
     handleRouting();
@@ -77,17 +78,13 @@ const App: React.FC = () => {
     };
   }, []);
 
-  // ניווט מותנה - החזרת הרכיב המתאים לפי ה-State
   if (currentPage === 'pricing') return <PricingPage />;
   if (currentPage === 'contractor') return <ContractorInspectionPage />;
   if (currentPage === 'court') return <CourtExpertPage />;
   if (currentPage === 'leak') return <LeakDetectionPage />;
   if (currentPage === 'tel-aviv') return <LocationPage city="תל אביב" />;
   if (currentPage === 'jerusalem') return <LocationPage city="ירושלים" />;
-  // דף 404 יופעל רק אם הוגדר מפורשות (כרגע הוסר מה-else כדי למנוע טעויות בתצוגה)
-  if (currentPage === '404') return <NotFound />;
 
-  // ברירת מחדל סופית: רינדור דף הבית המלא
   return (
     <div className="bg-gray-950 text-gray-300 selection:bg-blue-500/30 selection:text-white overflow-x-hidden">
       <Header />
