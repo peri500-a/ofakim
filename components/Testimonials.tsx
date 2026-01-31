@@ -91,12 +91,12 @@ const Testimonials: React.FC = () => {
                 </div>
                 <h4 className="text-2xl sm:text-4xl font-black text-white mb-3">אנו מדורגים בראש <span className="text-blue-500">אתר מידרג</span></h4>
                 <p className="text-gray-400 text-lg leading-relaxed">
-                  ההמלצות שלנו מופיעות גם באתר מידרג, שם המהנדס יוסי מדורג בטופ של תחום בדק הבית עם ציון משוקלל של <span className="text-white font-bold">9.9/10</span>.
+                  ההמלצות שלנו מופיעות גם באתר מידרג, שם המהנדס יוסי מדורג בטופ של תחום בדק הבית עם ציון משוקלל של <span className="text-white font-bold">9.75/10</span>.
                 </p>
               </div>
 
               <div className="shrink-0 bg-blue-600 text-white px-10 py-8 rounded-[2rem] text-center shadow-xl shadow-blue-900/40">
-                <div className="text-5xl font-black mb-1">9.9</div>
+                <div className="text-5xl font-black mb-1">9.75</div>
                 <div className="text-xs font-bold uppercase tracking-widest opacity-80 italic">ציון מידרג</div>
                 <div className="mt-4 flex justify-center gap-1">
                   {[...Array(5)].map((_, i) => (
