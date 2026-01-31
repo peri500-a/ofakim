@@ -3,6 +3,13 @@ import React from 'react';
 import Logo from './Logo';
 
 const NotFound: React.FC = () => {
+  const handleGoHome = (e: React.MouseEvent) => {
+    e.preventDefault();
+    window.history.pushState(null, '', '/');
+    // טריגר ידני לעדכון ה-State ב-App.tsx
+    window.dispatchEvent(new PopStateEvent('popstate'));
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-950 text-white p-6 relative overflow-hidden">
       {/* Engineering Background Grid */}
@@ -41,14 +48,18 @@ const NotFound: React.FC = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-            <a 
-              href="/" 
+            <button 
+              onClick={handleGoHome}
               className="w-full sm:w-auto bg-blue-600 hover:bg-blue-500 text-white font-black text-xl px-12 py-5 rounded-2xl transition-all shadow-[0_20px_40px_rgba(37,99,235,0.3)] hover:-translate-y-1 active:scale-95"
             >
               חזרה לעמוד הבית
-            </a>
+            </button>
             <a 
               href="/#contact" 
+              onClick={(e) => {
+                handleGoHome(e);
+                setTimeout(() => window.location.hash = '#contact', 50);
+              }}
               className="w-full sm:w-auto px-12 py-5 text-xl font-bold border border-white/10 rounded-2xl hover:bg-white/5 transition-all focus:ring-2 focus:ring-blue-500"
             >
               ייעוץ עם מהנדס

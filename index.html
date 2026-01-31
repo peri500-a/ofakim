@@ -6,92 +6,61 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
     <meta name="theme-color" content="#070a13" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     
-    <!-- SEO Meta Tags -->
     <title>בדק בית וביקורת מבנים ע"י מהנדס מוסמך | אופקים הנדסה</title>
-    <meta name="description" content="אופקים הנדסה: שירותי בדק בית מקצועיים וביקורת מבנים ע״י מהנדס בניין רשום. איתור ליקויי בנייה בציוד תרמי מתקדם, דוחות הנדסיים קבילים בבית משפט וייעוץ אישי. הגנו על ההשקעה שלכם." />
-    <meta name="keywords" content="בדק בית, ביקורת מבנים, מהנדס בדק בית, איתור ליקויי בנייה, חוות דעת הנדסית, בדק בית מחיר, בדק בית במרכז, איתור נזילות תרמי, אופקים הנדסה, מהנדס בניין" />
-    <link rel="canonical" href="https://homeinspection.co.il/" />
+    <meta name="description" content="זקוקים לבדק בית? אופקים הנדסה מציעה ביקורת מבנים מקצועית ע״י מהנדס מומחה. איתור רטיבות, ליקויי שלד וצנרת. דוח הנדסי תוך 48 שעות. התקשרו לייעוץ חינם." />
+    <meta name="keywords" content="בדק בית, ביקורת מבנים, מהנדס בדק בית, איתור ליקויי בנייה, חוות דעת הנדסית, מחיר בדק בית, בדק בית במרכז, אופקים הנדסה" />
     
-    <!-- Open Graph for Social SEO -->
-    <meta property="og:title" content="בדק בית וביקורת מבנים מקצועית ע״י מהנדס | אופקים הנדסה" />
-    <meta property="og:description" content="איתור ליקויי בנייה נסתרים, דוחות הנדסיים מפורטים ושקט לנפשי לפני הרכישה הגדולה של חייכם. ייעוץ הנדסי ברמה הגבוהה ביותר." />
-    <meta property="og:url" content="https://homeinspection.co.il/" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&w=1200&q=80" />
-
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Advanced Service Schema for SEO -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Service",
-      "serviceType": "בדק בית וביקורת מבנים",
-      "provider": {
-        "@type": "LocalBusiness",
-        "name": "אופקים הנדסה",
-        "telephone": "054-7515142",
-        "url": "https://homeinspection.co.il/",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "מרכז הארץ",
-          "addressLocality": "תל אביב",
-          "addressCountry": "IL"
-        }
+      "@type": "HomeAndConstructionBusiness",
+      "name": "אופקים הנדסה",
+      "image": "https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&w=1200&q=80",
+      "@id": "https://homeinspection.co.il",
+      "url": "https://homeinspection.co.il",
+      "telephone": "054-7515142",
+      "priceRange": "₪₪",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "מרכז",
+        "addressLocality": "תל אביב",
+        "addressRegion": "מרכז",
+        "addressCountry": "IL"
       },
-      "areaServed": [
-        "Tel Aviv", "Jerusalem", "Rehovot", "Shoham", "Ramat Gan", "Givatayim", "Herzliya"
-      ],
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "שירותי הנדסה",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "בדק בית לדירת 1-3 חדרים"
-            },
-            "price": "1400",
-            "priceCurrency": "ILS"
-          }
-        ]
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 32.0853,
+        "longitude": 34.7818
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Sunday",
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday"
+        ],
+        "opens": "08:00",
+        "closes": "20:00"
       }
     }
     </script>
 
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
         theme: {
           extend: {
-            fontFamily: {
-              sans: ['Assistant', 'sans-serif'],
-            },
+            fontFamily: { sans: ['Assistant', 'sans-serif'] },
             colors: {
-              blue: {
-                50: '#eff6ff',
-                100: '#dbeafe',
-                200: '#bfdbfe',
-                300: '#93c5fd',
-                400: '#3b82f6',
-                500: '#2563eb',
-                600: '#1d4ed8',
-                700: '#1e40af',
-                800: '#1e3a8a',
-                900: '#1e3a8a',
-                950: '#0a0f1d',
-              },
-              gray: {
-                950: '#070a13',
-              }
+              blue: { 950: '#0a0f1d' },
+              gray: { 950: '#070a13' }
             }
           }
         }
@@ -99,75 +68,22 @@
     </script>
 
     <style>
-      :root {
-        scroll-behavior: smooth;
-      }
-      body {
-        font-family: 'Assistant', sans-serif;
-        background-color: #070a13;
-      }
-
-      /* Custom Scrollbar */
-      .custom-scrollbar::-webkit-scrollbar {
-        width: 8px;
-        height: 8px;
-      }
-      .custom-scrollbar::-webkit-scrollbar-track {
-        background: rgba(255, 255, 255, 0.05);
-      }
-      .custom-scrollbar::-webkit-scrollbar-thumb {
-        background: rgba(59, 130, 246, 0.3);
-        border-radius: 10px;
-      }
-      .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-        background: rgba(59, 130, 246, 0.5);
-      }
-
-      /* Reveal Animations */
-      .reveal {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-        pointer-events: none;
-      }
-      .reveal.active {
-        opacity: 1;
-        transform: translateY(0);
-        pointer-events: auto;
-      }
-
-      /* Keyframe Animations */
-      @keyframes slide-up {
-        from { opacity: 0; transform: translateY(20px); }
-        to { opacity: 1; transform: translateY(0); }
-      }
-      .animate-slide-up {
-        animation: slide-up 0.5s ease-out forwards;
-      }
-      
-      @keyframes fade-in {
-        from { opacity: 0; }
-        to { opacity: 1; }
-      }
-      .animate-fade-in {
-        animation: fade-in 1s ease-out forwards;
-      }
+      :root { scroll-behavior: smooth; }
+      body { background-color: #070a13; color: #d1d5db; }
+      .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+      .reveal.active { opacity: 1; transform: translateY(0); }
     </style>
-
-    <script type="importmap">
+  <script type="importmap">
 {
   "imports": {
-    "react": "https://esm.sh/react@19.0.0",
-    "react-dom": "https://esm.sh/react-dom@19.0.0",
-    "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
-    "@google/genai": "https://esm.sh/@google/genai",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
     "react/": "https://esm.sh/react@^19.2.4/",
-    "vite": "https://esm.sh/vite@^7.3.1"
+    "react": "https://esm.sh/react@^19.2.4",
+    "vite": "https://esm.sh/vite@^7.3.1",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/"
   }
 }
 </script>
-  <link rel="stylesheet" href="/index.css">
+<link rel="stylesheet" href="/index.css">
 </head>
   <body>
     <div id="root"></div>

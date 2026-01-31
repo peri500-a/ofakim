@@ -1,9 +1,11 @@
+
 import React, { useEffect, useState } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Services from './components/Services';
 import WhyUs from './components/WhyUs';
 import Process from './components/Process';
+import CaseStudies from './components/CaseStudies';
 import Testimonials from './components/Testimonials';
 import ComparisonTable from './components/ComparisonTable';
 import KnowledgeHub from './components/KnowledgeHub';
@@ -16,122 +18,76 @@ import AccessibilitySection from './components/AccessibilitySection';
 import FadeInSection from './components/FadeInSection';
 import NotFound from './components/NotFound';
 import CookieConsent from './components/CookieConsent';
+import PricingPage from './components/PricingPage';
 
 const App: React.FC = () => {
-  const [isNotFound, setIsNotFound] = useState(false);
+  const [currentPage, setCurrentPage] = useState<'home' | 'pricing' | '404'>('home');
 
   useEffect(() => {
-    // מפת ניתובים מכתובות האתר הישן למקטעים החדשים (עוגנים)
-    const legacyMap: Record<string, string> = {
-      '/prices': '#knowledge',
-      '/pricing': '#knowledge',
-      '/בדק-בית-מחיר': '#knowledge',
-      '/מחיר-בדק-בית': '#knowledge',
-      '/ביקורת-מבנים': '#services',
-      '/בדק-בית': '#services',
-      '/איתור-נזילות': '#services',
-      '/צור-קשר': '#contact',
-      '/contact': '#contact'
-    };
-
     const handleRouting = () => {
+      // פענוח הכתובת כדי לזהות תווים בעברית נכונה (למשל במקום %D7%91...)
+      let path = "";
       try {
-        const rawPath = window.location.pathname;
-        let decodedPath = rawPath;
+        path = decodeURIComponent(window.location.pathname).toLowerCase().replace(/\/+$/, "") || "/";
+      } catch (e) {
+        path = window.location.pathname.toLowerCase().replace(/\/+$/, "") || "/";
+      }
+      
+      if (path === "/" || path === "") {
+        setCurrentPage('home');
+      } else if (path === "/בדק-בית-מחיר" || path === "/prices") {
+        setCurrentPage('pricing');
+      } else {
+        // רשימת הפניות למסמכים ישנים או סקשנים בתוך דף הבית
+        const legacyMap: Record<string, string> = {
+          '/ביקורת-מבנים': '#services',
+          '/צור-קשר': '#contact',
+          '/בדק-בית-המלצות': '#testimonials'
+        };
 
-        try {
-          decodedPath = decodeURIComponent(rawPath);
-        } catch (e) {
-          console.warn("URI decoding failed", e);
-        }
-
-        // נרמול הנתיב לבדיקה
-        const normalizedPath = decodedPath.toLowerCase().replace(/\/+$/, "") || "/";
-
-        // 1. בדיקה האם מדובר בכתובת ישנה שצריכה הפניה לעוגן בדף הבית
-        if (legacyMap[normalizedPath]) {
-          const targetHash = legacyMap[normalizedPath];
+        if (legacyMap[path]) {
           window.history.replaceState(null, '', '/');
-          window.location.hash = targetHash;
-          setIsNotFound(false);
-          return;
+          window.location.hash = legacyMap[path];
+          setCurrentPage('home');
+        } else {
+          setCurrentPage('404');
         }
-
-        // 2. הבטחת הצגת דף הבית:
-        // מאחר ומדובר באתר של דף נחיתה אחד (Landing Page), אנחנו נבטל את הצגת דף ה-404 
-        // בכל מצב שבו המשתמש נמצא בנתיב כלשהו שאינו מוגדר במפורש כדף אחר.
-        // זה פותר בעיות שבהן ה-URL בסביבות פיתוח כולל תתי-נתיבים (כמו ב-AI Studio).
-        setIsNotFound(false);
-
-      } catch (err) {
-        console.error("Routing error:", err);
-        setIsNotFound(false); // ברירת מחדל לדף הבית בכל מקרה של שגיאה
       }
     };
 
+    // הפעלה ראשונית
     handleRouting();
     
+    // האזנה לשינויים ב-URL (כפתור אחורה/קדימה או pushState)
     window.addEventListener('popstate', handleRouting);
-    window.addEventListener('hashchange', handleRouting);
-    
-    return () => {
-      window.removeEventListener('popstate', handleRouting);
-      window.removeEventListener('hashchange', handleRouting);
-    };
+    return () => window.removeEventListener('popstate', handleRouting);
   }, []);
 
-  // הצגת דף 404 רק אם בעתיד נרצה להגדיר דפים פנימיים ומישהו ינסה להגיע אליהם
-  if (isNotFound) {
+  // ניהול תצוגה
+  if (currentPage === '404') {
     return <NotFound />;
+  }
+
+  if (currentPage === 'pricing') {
+    return <PricingPage />;
   }
 
   return (
     <div className="bg-gray-950 text-gray-300 selection:bg-blue-500/30 selection:text-white overflow-x-hidden">
       <Header />
       <main id="main-content" role="main">
-        <FadeInSection>
-          <Hero />
-        </FadeInSection>
-
-        <FadeInSection delay={150}>
-          <Services />
-        </FadeInSection>
-
-        <FadeInSection>
-          <WhyUs />
-        </FadeInSection>
-
-        <FadeInSection>
-          <ComparisonTable />
-        </FadeInSection>
-
-        <FadeInSection delay={100}>
-          <Process />
-        </FadeInSection>
-
-        <FadeInSection>
-          <KnowledgeHub />
-        </FadeInSection>
-
-        <FadeInSection>
-          <Testimonials />
-        </FadeInSection>
-
-        <FadeInSection>
-          <FAQ />
-        </FadeInSection>
-
-        <FadeInSection>
-          <Contact />
-        </FadeInSection>
-
-        <FadeInSection>
-          <PrivacySection />
-        </FadeInSection>
-
-        <FadeInSection>
-          <AccessibilitySection />
-        </FadeInSection>
+        <FadeInSection><Hero /></FadeInSection>
+        <FadeInSection delay={150}><Services /></FadeInSection>
+        <FadeInSection><CaseStudies /></FadeInSection>
+        <FadeInSection><WhyUs /></FadeInSection>
+        <FadeInSection><ComparisonTable /></FadeInSection>
+        <FadeInSection delay={100}><Process /></FadeInSection>
+        <FadeInSection><KnowledgeHub /></FadeInSection>
+        <FadeInSection><Testimonials /></FadeInSection>
+        <FadeInSection><FAQ /></FadeInSection>
+        <FadeInSection><Contact /></FadeInSection>
+        <FadeInSection><PrivacySection /></FadeInSection>
+        <FadeInSection><AccessibilitySection /></FadeInSection>
       </main>
       <Footer />
       <StickyQuoteButton />
