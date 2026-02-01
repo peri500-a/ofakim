@@ -4,30 +4,16 @@ import Logo from './Logo';
 
 const Footer: React.FC = () => {
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    // אם הקישור הוא פנימי (מתחיל ב-/) או עוגן (#) כשאנחנו לא בדף הבית
-    if (href.startsWith('/') || (href.startsWith('#') && window.location.pathname !== '/')) {
-      e.preventDefault();
-      
-      // יצירת הנתיב המלא
-      const targetPath = href.startsWith('#') ? `/${href}` : href;
-      const [path, hash] = targetPath.split('#');
-      
-      window.history.pushState(null, '', path);
-      window.dispatchEvent(new PopStateEvent('popstate'));
-      
-      // אם יש האש, נגלול אליו לאחר טעינת הדף
-      if (hash) {
-        setTimeout(() => {
-          const element = document.getElementById(hash);
-          if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-          } else {
-            window.location.hash = hash;
-          }
-        }, 100);
-      } else {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (href.startsWith('#')) {
+      // If it's a section anchor on the home page
+      if (href.startsWith('#') && !href.startsWith('#/') && (window.location.pathname === '/' || window.location.hash === '#/')) {
+        return;
       }
+
+      e.preventDefault();
+      window.location.hash = href.replace(/^#/, '');
+      window.dispatchEvent(new PopStateEvent('popstate'));
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
@@ -36,8 +22,8 @@ const Footer: React.FC = () => {
       <div className="container mx-auto px-6 py-12">
         <div className="flex flex-col items-center gap-8">
           <a 
-            href="/" 
-            onClick={(e) => handleLinkClick(e, '/')}
+            href="#/" 
+            onClick={(e) => handleLinkClick(e, '#/')}
             className="flex items-center gap-3 transition-opacity duration-300 hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg p-1"
           >
             <Logo />
@@ -45,11 +31,11 @@ const Footer: React.FC = () => {
           </a>
           
           <nav className="flex flex-wrap justify-center gap-6 sm:gap-10 text-gray-400 font-bold" aria-label="ניווט תחתון">
-            <a href="/#services" onClick={(e) => handleLinkClick(e, '/#services')} className="hover:text-blue-400 transition-colors">שירותים</a>
-            <a href="/בדק-בית-מחיר" onClick={(e) => handleLinkClick(e, '/בדק-בית-מחיר')} className="hover:text-blue-400 transition-colors">מחירון 2026</a>
-            <a href="/#privacy-policy" onClick={(e) => handleLinkClick(e, '/#privacy-policy')} className="hover:text-blue-400 transition-colors">מדיניות פרטיות</a>
-            <a href="/#accessibility" onClick={(e) => handleLinkClick(e, '/#accessibility')} className="hover:text-blue-400 transition-colors underline decoration-blue-500/50 decoration-2 underline-offset-8">הצהרת נגישות</a>
-            <a href="/#contact" onClick={(e) => handleLinkClick(e, '/#contact')} className="hover:text-blue-400 transition-colors">צור קשר</a>
+            <a href="#/services" onClick={(e) => handleLinkClick(e, '#/services')} className="hover:text-blue-400 transition-colors">שירותים</a>
+            <a href="#/בדק-בית-מחיר" onClick={(e) => handleLinkClick(e, '#/בדק-בית-מחיר')} className="hover:text-blue-400 transition-colors">מחירון 2026</a>
+            <a href="#/privacy-policy" onClick={(e) => handleLinkClick(e, '#/privacy-policy')} className="hover:text-blue-400 transition-colors">מדיניות פרטיות</a>
+            <a href="#/accessibility" onClick={(e) => handleLinkClick(e, '#/accessibility')} className="hover:text-blue-400 transition-colors underline decoration-blue-500/50 decoration-2 underline-offset-8">הצהרת נגישות</a>
+            <a href="#/contact" onClick={(e) => handleLinkClick(e, '#/contact')} className="hover:text-blue-400 transition-colors">צור קשר</a>
           </nav>
 
           <div className="w-full max-w-2xl h-px bg-white/5"></div>

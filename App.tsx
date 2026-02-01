@@ -22,15 +22,19 @@ import PricingPage from './components/PricingPage';
 import ContractorInspectionPage from './components/ContractorInspectionPage';
 import CourtExpertPage from './components/CourtExpertPage';
 import LeakDetectionPage from './components/LeakDetectionPage';
+import AppraisalPage from './components/AppraisalPage';
 import LocationPage from './components/LocationPage';
 
 const App: React.FC = () => {
-  const [currentPage, setCurrentPage] = useState<'home' | 'pricing' | 'contractor' | 'court' | 'leak' | 'tel-aviv' | 'jerusalem' | '404'>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'pricing' | 'contractor' | 'court' | 'leak' | 'appraisal' | 'tel-aviv' | 'jerusalem' | '404'>('home');
 
   useEffect(() => {
     const handleRouting = () => {
-      // הסרת פרמטרים של גוגל (כמו ?gclid) מהנתיב לצורך בדיקת התאמה
-      const rawPath = window.location.pathname;
+      // Prioritize Hash routing for reliability on refresh
+      const hash = window.location.hash.replace(/^#/, '');
+      const pathname = window.location.pathname;
+      
+      let rawPath = hash || pathname;
       let decodedPath = "/";
       
       try {
@@ -39,10 +43,8 @@ const App: React.FC = () => {
         decodedPath = rawPath.toLowerCase();
       }
 
-      // ניקוי סלאשים מיותרים ורווחים
       const cleanPath = decodedPath.trim().replace(/\/+$/, "") || "/";
       
-      // לוגיקת זיהוי גמישה המבוססת על מילות מפתח ב-URL
       if (cleanPath.includes("מחיר") || cleanPath.includes("pricing")) {
         setCurrentPage('pricing');
       } else if (cleanPath.includes("מקבלן") || cleanPath.includes("contractor")) {
@@ -51,6 +53,8 @@ const App: React.FC = () => {
         setCurrentPage('court');
       } else if (cleanPath.includes("נזילות") || cleanPath.includes("leak")) {
         setCurrentPage('leak');
+      } else if (cleanPath.includes("שמאות") || cleanPath.includes("appraisal")) {
+        setCurrentPage('appraisal');
       } else if (cleanPath.includes("תל-אביב") || cleanPath.includes("tel-aviv")) {
         setCurrentPage('tel-aviv');
       } else if (cleanPath.includes("ירושלים") || cleanPath.includes("jerusalem")) {
@@ -60,7 +64,6 @@ const App: React.FC = () => {
         setCurrentPage('home');
       }
       else {
-        // ברירת מחדל היא דף הבית כדי למנוע נטישת גולשים מגוגל
         setCurrentPage('home'); 
       }
       
@@ -82,6 +85,7 @@ const App: React.FC = () => {
   if (currentPage === 'contractor') return <ContractorInspectionPage />;
   if (currentPage === 'court') return <CourtExpertPage />;
   if (currentPage === 'leak') return <LeakDetectionPage />;
+  if (currentPage === 'appraisal') return <AppraisalPage />;
   if (currentPage === 'tel-aviv') return <LocationPage city="תל אביב" />;
   if (currentPage === 'jerusalem') return <LocationPage city="ירושלים" />;
 

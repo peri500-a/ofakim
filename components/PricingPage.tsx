@@ -14,7 +14,7 @@ const PricingPage: React.FC = () => {
 
   const handleGoHome = (e: React.MouseEvent) => {
     e.preventDefault();
-    window.history.pushState(null, '', '/');
+    window.location.hash = '/';
     window.dispatchEvent(new PopStateEvent('popstate'));
   };
 

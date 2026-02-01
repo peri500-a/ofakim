@@ -22,7 +22,7 @@ const CourtExpertPage: React.FC = () => {
             </div>
             <h1 className="text-5xl md:text-8xl font-black text-white mb-8 tracking-tighter leading-none">
               חוות דעת <br/>
-              <span className="text-blue-500">לבית משפט</span>
+              <span className="text-blue-500">הנדסית לבית משפט</span>
             </h1>
             <p className="text-2xl text-gray-400 leading-relaxed max-w-2xl mb-12">
               דוח הנדסי של "אופקים הנדסה" אינו רק ביקורת מבנים - הוא כלי משפטי עוצמתי. אנו מספקים חוות דעת מומחה קבילות, מבוססות תקנים, ומלווים אתכם בעדות בבית המשפט.

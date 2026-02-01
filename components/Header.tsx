@@ -7,25 +7,26 @@ const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   const navLinks = [
-    { href: '/', label: 'ראשי' },
+    { href: '#/', label: 'ראשי' },
     { 
       label: 'שירותים נבחרים', 
       isDropdown: true,
       items: [
-        { href: '/בדק-בית-מקבלן', label: 'בדק בית מקבלן' },
-        { href: '/איתור-נזילות-ורטיבות', label: 'איתור נזילות' },
-        { href: '/חוות-דעת-הנדסית-לבית-משפט', label: 'חוות דעת משפטית' }
+        { href: '#/בדק-בית-מקבלן', label: 'בדק בית מקבלן' },
+        { href: '#/איתור-נזילות-ורטיבות', label: 'איתור נזילות' },
+        { href: '#/שמאות-רכוש-והערכת-נזקים', label: 'שמאות והערכת נזקים' },
+        { href: '#/חוות-דעת-הנדסית-לבית-משפט', label: 'חוות דעת משפטית' }
       ]
     },
     { 
       label: 'אזורי שירות', 
       isDropdown: true,
       items: [
-        { href: '/בדק-בית-בתל-אביב', label: 'תל אביב' },
-        { href: '/בדק-בית-בירושלים', label: 'ירושלים' }
+        { href: '#/בדק-בית-בתל-אביב', label: 'תל אביב' },
+        { href: '#/בדק-בית-בירושלים', label: 'ירושלים' }
       ]
     },
-    { href: '/בדק-בית-מחיר', label: 'מחירון 2026' },
+    { href: '#/בדק-בית-מחיר', label: 'מחירון 2026' },
     { href: '#contact', label: 'צור קשר' },
   ];
 
@@ -38,30 +39,22 @@ const Header: React.FC = () => {
   }, []);
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    if (href.startsWith('/') || (href.startsWith('#') && window.location.pathname !== '/')) {
+    // Check if it's an internal hash route or anchor
+    if (href.startsWith('#')) {
+      // If it's a section anchor on the home page
+      if (href.startsWith('#') && !href.startsWith('#/') && window.location.pathname === '/' && !window.location.hash.startsWith('#/')) {
+        // Normal scroll behavior
+        setIsMenuOpen(false);
+        return;
+      }
+
       e.preventDefault();
       
-      const targetPath = href.startsWith('#') ? `/${href}` : href;
-      const [path, hash] = targetPath.split('#');
-
-      window.history.pushState(null, '', path);
+      // Update hash and trigger popstate for App.tsx to catch it
+      window.location.hash = href.replace(/^#/, '');
       window.dispatchEvent(new PopStateEvent('popstate'));
       setIsMenuOpen(false);
-
-      if (hash) {
-        setTimeout(() => {
-          const element = document.getElementById(hash);
-          if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-          } else {
-            window.location.hash = hash;
-          }
-        }, 100);
-      } else {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-    } else {
-      setIsMenuOpen(false);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
@@ -72,7 +65,7 @@ const Header: React.FC = () => {
       <header role="banner" className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? 'bg-gray-950/95 backdrop-blur-md py-2 shadow-2xl border-b border-white/10' : 'bg-transparent py-4 md:py-6'}`}>
         <div className="container mx-auto px-6">
           <div className="flex items-center justify-between">
-            <a href="/" onClick={(e) => handleLinkClick(e, '/')} className="group flex items-center gap-3 focus:outline-none">
+            <a href="#/" onClick={(e) => handleLinkClick(e, '#/')} className="group flex items-center gap-3 focus:outline-none">
               <Logo />
               <div className="flex flex-col">
                 <span className="text-xl md:text-2xl font-black text-white group-hover:text-blue-400 transition-colors">אופקים הנדסה</span>
