@@ -12,9 +12,11 @@ const Header: React.FC = () => {
       label: 'שירותים נבחרים', 
       isDropdown: true,
       items: [
-        { href: '#/בדק-בית-מקבלן', label: 'בדק בית מקבלן' },
-        { href: '#/איתור-נזילות-ורטיבות', label: 'איתור נזילות' },
-        { href: '#/שמאות-רכוש-והערכת-נזקים', label: 'שמאות והערכת נזקים' },
+        { href: '#/בדק-בית-מקבלן', label: 'דירה חדשה מקבלן' },
+        { href: '#/בדיקת-סוף-שנת-בדק', label: 'סוף שנת בדק' },
+        { href: '#/בדק-בית-לבית-פרטי-וילה', label: 'בתים פרטיים ווילות' },
+        { href: '#/איתור-נזילות-ורטיבות', label: 'איתור נזילות ותרמי' },
+        { href: '#/שמאות-רכוש-והערכת-נזקים', label: 'שמאות רכוש' },
         { href: '#/חוות-דעת-הנדסית-לבית-משפט', label: 'חוות דעת משפטית' }
       ]
     },
@@ -23,7 +25,8 @@ const Header: React.FC = () => {
       isDropdown: true,
       items: [
         { href: '#/בדק-בית-בתל-אביב', label: 'תל אביב' },
-        { href: '#/בדק-בית-בירושלים', label: 'ירושלים' }
+        { href: '#/בדק-בית-בירושלים', label: 'ירושלים' },
+        { href: '#/בדק-בית-במרכז', label: 'כל אזור המרכז' }
       ]
     },
     { href: '#/בדק-בית-מחיר', label: 'מחירון 2026' },
@@ -39,18 +42,13 @@ const Header: React.FC = () => {
   }, []);
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    // Check if it's an internal hash route or anchor
     if (href.startsWith('#')) {
-      // If it's a section anchor on the home page
       if (href.startsWith('#') && !href.startsWith('#/') && window.location.pathname === '/' && !window.location.hash.startsWith('#/')) {
-        // Normal scroll behavior
         setIsMenuOpen(false);
         return;
       }
 
       e.preventDefault();
-      
-      // Update hash and trigger popstate for App.tsx to catch it
       window.location.hash = href.replace(/^#/, '');
       window.dispatchEvent(new PopStateEvent('popstate'));
       setIsMenuOpen(false);
@@ -85,7 +83,7 @@ const Header: React.FC = () => {
                         </svg>
                       </button>
                       
-                      <div className="absolute top-full right-0 w-56 pt-0 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all z-50">
+                      <div className="absolute top-full right-0 w-64 pt-0 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all z-50">
                         <div className="bg-gray-900 border border-white/10 rounded-2xl shadow-2xl p-2 mt-1">
                           {link.items?.map((sub) => (
                             <a 
