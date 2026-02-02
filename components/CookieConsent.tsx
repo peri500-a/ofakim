@@ -4,10 +4,13 @@ const CookieConsent: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    // Check if user has already made a choice
     const consent = localStorage.getItem('cookie-consent');
     if (!consent) {
-      // השהייה קלה להצגת הבאנר לאחר טעינת הדף לחוויית משתמש טובה יותר
-      const timer = setTimeout(() => setIsVisible(true), 2000);
+      // Show the banner with a slight delay for better UX
+      const timer = setTimeout(() => {
+        setIsVisible(true);
+      }, 1500);
       return () => clearTimeout(timer);
     }
   }, []);
@@ -23,27 +26,31 @@ const CookieConsent: React.FC = () => {
     <div 
       role="alert" 
       aria-live="polite"
-      className="fixed bottom-6 left-6 right-6 md:left-auto md:right-auto md:max-w-xl md:left-1/2 md:-translate-x-1/2 z-[60] animate-slide-up"
+      className="fixed bottom-6 left-6 right-6 md:left-auto md:right-auto md:max-w-2xl md:left-1/2 md:-translate-x-1/2 z-[100] animate-slide-up"
     >
-      <div className="bg-gray-900/95 backdrop-blur-xl border border-white/10 rounded-[2rem] p-6 sm:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex flex-col md:flex-row items-center gap-6">
+      <div className="bg-gray-900/95 backdrop-blur-2xl border border-white/10 rounded-[2.5rem] p-6 sm:p-10 shadow-[0_30px_100px_rgba(0,0,0,0.8)] flex flex-col md:flex-row items-center gap-8 border-b-blue-600/50">
         <div className="flex-grow text-center md:text-right">
-          <h4 className="text-white font-black text-lg mb-2">פרטיות ושימוש בעוגיות 🍪</h4>
-          <p className="text-gray-400 text-sm leading-relaxed">
-            אנו משתמשים בעוגיות כדי לשפר את חווית הגלישה שלך, להציג תוכן מותאם אישית ולנתח את התנועה באתר שלנו. למידע נוסף, עיין ב
-            <a href="#privacy-policy" className="text-blue-400 hover:underline mr-1">מדיניות הפרטיות</a> שלנו.
+          <div className="flex items-center justify-center md:justify-start gap-3 mb-3">
+             <span className="text-2xl" aria-hidden="true">🍪</span>
+             <h4 className="text-white font-black text-xl">פרטיות ושימוש בעוגיות</h4>
+          </div>
+          <p className="text-gray-400 text-sm sm:text-base leading-relaxed">
+            אנו משתמשים בעוגיות כדי לשפר את חווית הגלישה שלך, לספק הגנה הנדסית טובה יותר ולהציג תוכן מותאם אישית. 
+            בלחיצה על "אישור", הנך מסכים לשימוש זה. למידע נוסף, ניתן לעיין ב
+            <a href="#/privacy-policy" className="text-blue-400 hover:text-blue-300 font-bold underline underline-offset-4 mr-1 transition-colors">מדיניות הפרטיות</a> שלנו.
           </p>
         </div>
         
-        <div className="flex flex-row gap-3 w-full md:w-auto shrink-0">
+        <div className="flex flex-row gap-4 w-full md:w-auto shrink-0">
           <button 
             onClick={() => handleConsent('declined')}
-            className="flex-1 md:flex-none px-6 py-3 rounded-xl border border-white/10 text-gray-400 text-sm font-bold hover:bg-white/5 transition-all focus:outline-none focus:ring-2 focus:ring-white/20"
+            className="flex-1 md:flex-none px-8 py-4 rounded-2xl border border-white/10 text-gray-400 text-sm font-bold hover:bg-white/5 hover:text-white transition-all focus:outline-none focus:ring-2 focus:ring-white/20 active:scale-95"
           >
             דחה
           </button>
           <button 
             onClick={() => handleConsent('accepted')}
-            className="flex-1 md:flex-none px-8 py-3 rounded-xl bg-blue-600 text-white text-sm font-black hover:bg-blue-500 shadow-lg shadow-blue-600/20 transition-all focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="flex-1 md:flex-none px-12 py-4 rounded-2xl bg-blue-600 text-white text-sm font-black hover:bg-blue-500 shadow-xl shadow-blue-600/30 transition-all focus:outline-none focus:ring-2 focus:ring-blue-400 active:scale-95"
           >
             אישור
           </button>

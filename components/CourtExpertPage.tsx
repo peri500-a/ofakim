@@ -21,11 +21,11 @@ const CourtExpertPage: React.FC = () => {
               Legal Engineering Services
             </div>
             <h1 className="text-5xl md:text-8xl font-black text-white mb-8 tracking-tighter leading-none">
-              חוות דעת <br/>
-              <span className="text-blue-500">הנדסית לבית משפט</span>
+              חוות דעת הנדסית <br/>
+              <span className="text-blue-500">לבית משפט ובוררות</span>
             </h1>
             <p className="text-2xl text-gray-400 leading-relaxed max-w-2xl mb-12">
-              דוח הנדסי של "אופקים הנדסה" אינו רק ביקורת מבנים - הוא כלי משפטי עוצמתי. אנו מספקים חוות דעת מומחה קבילות, מבוססות תקנים, ומלווים אתכם בעדות בבית המשפט.
+              דוח הנדסי של "אופקים הנדסה" אינו רק ביקורת מבנים - הוא כלי משפטי עוצמתי. אנו מספקים חוות דעת מהנדס מומחה קבילות, מבוססות תקנים, ומלווים אתכם בעדות מקצועית בבית המשפט.
             </p>
             <a href="#contact" className="bg-blue-600 text-white font-black px-12 py-6 rounded-2xl text-xl hover:bg-blue-500 transition-all shadow-xl shadow-blue-900/40 inline-block">קבלו ייעוץ משפטי-הנדסי</a>
           </div>
@@ -51,7 +51,7 @@ const CourtExpertPage: React.FC = () => {
 
       <section className="py-24">
         <div className="container mx-auto px-6 max-w-5xl mx-auto">
-          <h2 className="text-4xl font-black text-white mb-12 text-center">מתי נדרשת חוות דעת מומחה?</h2>
+          <h2 className="text-4xl font-black text-white mb-12 text-center">מתי נדרשת חוות דעת מומחה לליקויי בנייה?</h2>
           <div className="space-y-4">
              {[
                'תביעות נזקי רטיבות ואיטום בין שכנים',

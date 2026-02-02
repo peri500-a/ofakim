@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const ServiceCard: React.FC<{ 
@@ -22,7 +21,7 @@ const ServiceCard: React.FC<{
     <a 
       href={href}
       onClick={handleLinkClick}
-      className="bg-gray-800 rounded-3xl md:rounded-[2.5rem] shadow-2xl hover:shadow-blue-600/20 hover:-translate-y-2 transition-all duration-500 flex flex-col border border-white/5 group overflow-hidden relative focus:outline-none focus:ring-4 focus:ring-blue-500/50 block"
+      className="bg-gray-800 rounded-3xl md:rounded-[2.5rem] shadow-2xl hover:shadow-blue-600/20 hover:-translate-y-2 transition-all duration-500 flex flex-col border border-white/5 group overflow-hidden relative focus:outline-none focus:ring-4 focus:ring-blue-500/50 block h-full"
       aria-label={`מידע על שירות ${title}`}
     >
       <div className="absolute inset-0 bg-blue-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
@@ -33,9 +32,6 @@ const ServiceCard: React.FC<{
           alt={imageAlt} 
           className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" 
           loading="lazy"
-          onError={(e) => {
-            (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&w=800&q=80";
-          }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/20 to-transparent"></div>
         
@@ -49,8 +45,8 @@ const ServiceCard: React.FC<{
         <h3 className="text-xl sm:text-2xl font-black text-white group-hover:text-blue-400 transition-colors duration-300 mb-3 leading-tight">{title}</h3>
         <p className="text-gray-400 leading-relaxed flex-grow text-sm sm:text-base mb-6">{description}</p>
         
-        <div className="flex items-center gap-3 text-blue-400 font-bold text-sm group-hover:translate-x-[-4px] transition-transform duration-300">
-          <span>פרטים והצעת מחיר</span>
+        <div className="flex items-center gap-3 text-blue-400 font-bold text-sm group-hover:translate-x-[-4px] transition-transform duration-300 mt-auto">
+          <span>פרטים והצעת מחיר לבדק בית</span>
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 12H5m0 0l7 7m-7-7l7-7" />
           </svg>
@@ -63,50 +59,76 @@ const ServiceCard: React.FC<{
 const Services: React.FC = () => {
   const services = [
     {
-      title: 'ביקורת מבנים לפני רכישה',
-      description: 'בדיקה הנדסית יסודית לנכסי יד שנייה: איתור ליקויים קריטיים בשלד, במערכות האינסטלציה והחשמל לפני הרכישה.',
-      imageUrl: "https://res.cloudinary.com/dbzklnlcx/image/upload/v1769671156/%D7%91%D7%99%D7%AA_%D7%97%D7%93%D7%A9_fztewk.jpg",
-      imageAlt: 'בדיקת בדק בית בבית פרטי יוקרתי לאיתור ליקויים הנדסיים וליקויי בנייה סמויים',
-      icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" /></svg>
-    },
-    {
       title: 'בדק בית לדירה חדשה',
-      description: 'בדיקה מפורטת מול מפרט המכר והתקנים הישראליים. הפקת דוח הנדסי מחייב לקבלן לביצוע תיקונים בשנת הבדק.',
+      description: 'וודאו שהקבלן מספק בדיוק מה שהובטח: בדיקה מדוקדקת מול מפרט המכר המאלצת את הקבלן לתקן ליקויים על חשבונו לפני תום שנת הבדק.',
       imageUrl: "https://res.cloudinary.com/dbzklnlcx/image/upload/v1769671282/%D7%93%D7%99%D7%A8%D7%94_%D7%97%D7%93%D7%A9%D7%94_lybsnf.jpg",
-      imageAlt: 'מהנדס בניין מבצע בדק בית בדירה חדשה מקבלן לאימות מפרט המכר ותקינות הגימור',
+      imageAlt: 'מהנדס בניין מבצע בדק בית בדירה חדשה מקבלן לאימות מפרט המכר',
       icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>,
       href: '#/בדק-בית-מקבלן'
     },
     {
+      title: 'בדק בית לבתים פרטיים',
+      description: 'הגנה היקפית על צמודי קרקע: בדיקת מעטפת, גגות רעפים, מערכות ניקוז חוץ ושלד המבנה. מומחיות ייחודית לתקלות האופייניות לוילות.',
+      imageUrl: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
+      imageAlt: 'ביקורת מבנים הנדסית לבית פרטי ווילה',
+      icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>,
+      href: '#/בדק-בית-לבית-פרטי-וילה'
+    },
+    {
+      title: 'בדק בית ליד שניה',
+      description: 'אל תקנו חתול בשק: בדיקה הנדסית מקיפה לפני רכישת דירה משומשת לאיתור נזילות סמויות, סדקים בשלד וליקויים בתשתיות ישנות.',
+      imageUrl: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80",
+      imageAlt: 'בדק בית לדירת יד שניה',
+      icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>,
+      href: '#contact'
+    },
+    {
+      title: 'בדיקת סוף שנת בדק',
+      description: 'הזדמנות אחרונה לתיקונים על חשבון הקבלן: איתור ליקויים שהתפתחו בשנה הראשונה (סדקים, רטיבות) ודרישת תיקון רגע לפני פקיעת האחריות.',
+      imageUrl: "https://images.unsplash.com/photo-1503387762-592dea58ef22?auto=format&fit=crop&w=800&q=80",
+      imageAlt: 'בדיקת שנת בדק לדירה חדשה',
+      icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
+      href: '#/בדיקת-סוף-שנת-בדק'
+    },
+    {
       title: 'איתור נזילות ורטיבות',
-      description: 'שימוש במצלמות תרמיות FLIR ומכשור מתקדם לאיתור נזילות סמויות וכשלי איטום ללא גרימת נזק למבנה.',
+      description: 'איתור הבעיה בציוד תרמי מתקדם ללא שבירת קירות: גלו כשלי איטום ונזילות סמויות לפני שהן הופכות לעובש מסוכן ולנזק מבני בלתי הפיך.',
       imageUrl: "https://res.cloudinary.com/dbzklnlcx/image/upload/v1769635012/%D7%90%D7%99%D7%AA%D7%95%D7%A8_%D7%A8%D7%98%D7%99%D7%91%D7%95%D7%99%D7%95%D7%AA_irxrhe.jpg",
-      imageAlt: 'איתור נזילות ורטיבות סמויה באמצעות מצלמה תרמית FLIR מתקדמת בחדר רחצה מעוצב',
+      imageAlt: 'איתור נזילות ורטיבות סמויה באמצעות מצלמה תרמית FLIR',
       icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" /></svg>,
       href: '#/איתור-נזילות-ורטיבות'
     },
     {
-      title: 'שמאות רכוש והערכת נזקים',
-      description: 'הערכת שווי מקצועית לצרכי ביטוח, ירידת ערך ותביעות נזיקין. אנו מספקים אומדן כספי מדויק המגובה בחוות דעת הנדסית לצורך קבלת פיצוי הולם מחברות הביטוח.',
+      title: 'חוות דעת לבית משפט',
+      description: 'ראיית זהב להליך המשפטי: דוח הנדסי קביל ועדות מומחה מקצועית מטעם בית המשפט, המבטיחים לכם את הסיכוי המקסימלי לזכייה בתביעות בנייה.',
+      imageUrl: "https://res.cloudinary.com/dbzklnlcx/image/upload/v1769671390/%D7%AA%D7%9E%D7%95%D7%A0%D7%AA_%D7%A9%D7%95%D7%A4%D7%98_txgcse.jpg",
+      imageAlt: 'חוות דעת הנדסית לבית משפט בנושא ליקויי בנייה',
+      icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" /></svg>,
+      href: '#/חוות-דעת-הנדסית-לבית-משפט'
+    },
+    {
+      title: 'שמאות רכוש וירידת ערך',
+      description: 'מיקסום הפיצוי המגיע לכם: הערכת שווי הנדסית-שמאית מדויקת לנזקי רכוש וירידת ערך, המהווה בסיס בלתי מעורער לתביעות ביטוח ונזיקין.',
       imageUrl: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=800&q=80",
-      imageAlt: 'שמאי רכוש מבצע הערכת שווי ונזקים בנכס',
-      icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>,
+      imageAlt: 'שמאי רכוש מבצע הערכת שווי וירידת ערך בגין ליקויי בנייה',
+      icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
       href: '#/שמאות-רכוש-והערכת-נזקים'
     },
     {
-      title: 'בדיקת קונסטרוקציה ושלד',
-      description: 'אבחון יציבות הנדסית, קירות נושאים ותקרות. זיהוי סדקים קונסטרוקטיביים מסוכנים במבנים ותיקים ובפרויקטי תמ\"א.',
-      imageUrl: "https://res.cloudinary.com/dbzklnlcx/image/upload/v1769635464/%D7%91%D7%93%D7%99%D7%A7%D7%AA_%D7%A7%D7%95%D7%A0%D7%A1%D7%98%D7%A8%D7%95%D7%A7%D7%A6%D7%99%D7%94_gjlb0o.jpg",
-      imageAlt: 'בדיקת יציבות הנדסית של שלד בטון בבניין מגורים רב קומות במהלך תהליך בנייה',
-      icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" /></svg>
+      title: 'ביקורת שטחים משותפים',
+      description: 'שירות ייעודי לועדי בתים: בדיקת הנדסית מקיפה של לובי, מעליות, מאגרי מים, גגות ופיתוח סביבתי לפני קבלת האחריות מהקבלן.',
+      imageUrl: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80",
+      imageAlt: 'ביקורת שטחים משותפים בבניין',
+      icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>,
+      href: '#contact'
     },
     {
-      title: 'חוות דעת לבית משפט',
-      description: 'הפקת דוחות הנדסיים מפורטים הקבילים כראיה בבתי המשפט בישראל, כולל עדות מומחה וליווי בתביעות בנייה.',
-      imageUrl: "https://res.cloudinary.com/dbzklnlcx/image/upload/v1769671390/%D7%AA%D7%9E%D7%95%D7%A0%D7%AA_%D7%A9%D7%95%D7%A4%D7%98_txgcse.jpg",
-      imageAlt: 'פטיש שופט ומאזני צדק המייצגים חוות דעת הנדסית קבילה בבתי משפט בישראל',
-      icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" /></svg>,
-      href: '#/חוות-דעת-הנדסית-לבית-משפט'
+      title: 'פיקוח הנדסי וליווי בניה',
+      description: 'ראש שקט לאורך כל הפרויקט: ליווי מהנדס מוסמך משלב היסודות ועד הגמר, המבטיח בניה איכותית ותקנית ללא קיצורי דרך של קבלנים.',
+      imageUrl: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80",
+      imageAlt: 'פיקוח הנדסי וליווי בניה בשטח',
+      icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
+      href: '#contact'
     }
   ];
 
@@ -114,10 +136,10 @@ const Services: React.FC = () => {
     <section id="services" className="py-24 bg-gray-950 scroll-mt-24">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-blue-500 font-black uppercase tracking-widest text-sm mb-4 italic">שירותי הנדסה מתקדמים</h2>
-          <h3 className="text-4xl md:text-6xl font-black text-white leading-tight">מעטפת פתרונות <br/><span className="text-blue-500">הנדסית מלאה</span> לכל נכס</h3>
+          <h2 className="text-blue-500 font-black uppercase tracking-widest text-sm mb-4 italic">שירותי הנדסה וביקורת מבנים</h2>
+          <h3 className="text-4xl md:text-6xl font-black text-white leading-tight">מעטפת פתרונות <br/><span className="text-blue-500">בדק בית</span> לכל נכס</h3>
           <p className="mt-6 text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed px-4">
-            אנו משלבים את הטכנולוגיה המתקדמת ביותר עם ניסיון הנדסי מהשורה הראשונה כדי לספק לכם חוות דעת מדויקת וביטחון מלא.
+            אנו משלבים את הטכנולוגיה המתקדמת ביותר לאיתור <strong>ליקויי בנייה</strong> עם ניסיון הנדסי מהשורה הראשונה כדי לספק לכם ביטחון מלא.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">

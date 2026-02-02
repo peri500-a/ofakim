@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import Header from './Header';
 import Footer from './Footer';
@@ -36,12 +37,12 @@ const ContractorInspectionPage: React.FC = () => {
         <div className="absolute inset-0 bg-gray-950/90 backdrop-blur-sm"></div>
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-5xl md:text-8xl font-black text-white mb-6 tracking-tighter leading-none">
+            <h1 className="text-5xl md:text-8xl font-black text-white mb-6 tracking-normal leading-none">
               בדק בית <br/>
-              <span className="text-blue-500">מקבלן</span>
+              <span className="text-blue-500">לדירה חדשה מקבלן</span>
             </h1>
             <p className="text-2xl text-gray-400 mb-10 leading-relaxed max-w-2xl font-medium">
-              קיבלתם מפתח? מזל טוב. עכשיו הזמן לוודא שהקבלן עמד בכל ההתחייבויות שלו. אל תחתמו על פרוטוקול המסירה ללא בדיקה של מהנדס.
+              קיבלתם מפתח? מזל טוב. עכשיו הזמן לוודא שהקבלן עמד בכל ההתחייבויות שלו. אל תחתמו על פרוטוקול המסירה ללא ביקורת מבנים הנדסית של מהנדס מוסמך.
             </p>
             <div className="flex gap-4">
                <a href="#contact" className="bg-blue-600 hover:bg-blue-500 text-white font-black px-10 py-5 rounded-2xl text-xl transition-all shadow-xl shadow-blue-900/40">הזמינו בדיקת מסירה</a>

@@ -6,21 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
     <meta name="theme-color" content="#070a13" />
     
-    <title>בדק בית וביקורת מבנים ע"י מהנדס מוסמך | אופקים הנדסה</title>
-    <meta name="description" content="זקוקים לבדק בית? אופקים הנדסה מציעה ביקורת מבנים מקצועית ע״י מהנדס מומחה. איתור רטיבות, ליקויי שלד וצנרת. דוח הנדסי תוך 48 שעות. התקשרו לייעוץ חינם." />
-    <meta name="keywords" content="בדק בית, ביקורת מבנים, מהנדס בדק בית, איתור ליקויי בנייה, חוות דעת הנדסית, מחיר בדק בית, בדק בית במרכז, אופקים הנדסה" />
+    <title>אופקים הנדסה | בדק בית, ביקורת מבנים ואיתור ליקויי בנייה ע"י מהנדס</title>
+    <meta name="description" content="אופקים הנדסה - מומחים לבדק בית וביקורת מבנים בפריסה ארצית. איתור ליקויי בנייה ורטיבות בציוד תרמי מתקדם. דוח הנדסי קביל בבית משפט תוך 48 שעות. התקשרו לייעוץ!" />
+    <meta name="keywords" content="בדק בית, ביקורת מבנים, מהנדס בדק בית, ליקויי בנייה, איתור נזילות, בדיקת דירה מקבלן, חוות דעת הנדסית, מחיר בדק בית 2026, אופקים הנדסה" />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://homeinspection.co.il/" />
-    <meta property="og:title" content="אופקים הנדסה | בדק בית וביקורת מבנים" />
-    <meta property="og:description" content="ביקורת מבנים מקצועית ע״י מהנדס מומחה. איתור רטיבות וליקויי בנייה בציוד תרמי מתקדם." />
+    <meta property="og:title" content="אופקים הנדסה | בדק בית וביקורת מבנים מקצועית" />
+    <meta property="og:description" content="ביקורת מבנים הנדסית ואיתור ליקויי בנייה ע״י מהנדס מומחה. דוח קביל בבית משפט וחיסכון כספי משמעותי." />
     <meta property="og:image" content="https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&w=1200&q=80" />
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:title" content="אופקים הנדסה | בדק בית וביקורת מבנים" />
-    <meta property="twitter:description" content="ביקורת מבנים מקצועית ע״י מהנדס מומחה. דוח הנדסי קביל בבית משפט." />
 
     <link rel="canonical" href="https://homeinspection.co.il/" />
     
@@ -28,46 +23,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "HomeAndConstructionBusiness",
-      "name": "אופקים הנדסה",
-      "image": "https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&w=1200&q=80",
-      "@id": "https://homeinspection.co.il",
-      "url": "https://homeinspection.co.il",
-      "telephone": "054-7515142",
-      "priceRange": "₪₪",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "מרכז",
-        "addressLocality": "תל אביב",
-        "addressRegion": "מרכז",
-        "addressCountry": "IL"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 32.0853,
-        "longitude": 34.7818
-      },
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Sunday",
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday"
-        ],
-        "opens": "08:00",
-        "closes": "20:00"
-      },
-      "sameAs": [
-        "https://www.facebook.com/ofakim.engineering"
-      ]
-    }
-    </script>
-
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -77,6 +32,15 @@
             colors: {
               blue: { 950: '#0a0f1d' },
               gray: { 950: '#070a13' }
+            },
+            animation: {
+              'slide-up': 'slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+            },
+            keyframes: {
+              slideUp: {
+                '0%': { transform: 'translateY(100%)', opacity: '0' },
+                '100%': { transform: 'translateY(0)', opacity: '1' },
+              }
             }
           }
         }
@@ -88,10 +52,17 @@
       body { background-color: #070a13; color: #d1d5db; }
       .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
       .reveal.active { opacity: 1; transform: translateY(0); }
-      /* Custom Scrollbar */
       .custom-scrollbar::-webkit-scrollbar { width: 6px; }
       .custom-scrollbar::-webkit-scrollbar-track { background: #070a13; }
       .custom-scrollbar::-webkit-scrollbar-thumb { background: #1d4ed8; border-radius: 10px; }
+      
+      @keyframes slideUp {
+        from { transform: translateY(100%); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+      }
+      .animate-slide-up {
+        animation: slideUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+      }
     </style>
   <script type="importmap">
 {
@@ -103,6 +74,7 @@
   }
 }
 </script>
+<link rel="stylesheet" href="/index.css">
 </head>
   <body>
     <div id="root"></div>

@@ -18,11 +18,11 @@ const AppraisalPage: React.FC = () => {
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-4xl mx-auto">
             <h1 className="text-5xl md:text-8xl font-black text-white mb-8 tracking-tighter leading-none">
-              שמאות <br/>
-              <span className="text-blue-500">רכוש</span>
+              שמאות רכוש <br/>
+              <span className="text-blue-500">וירידת ערך הנדסית</span>
             </h1>
             <p className="text-2xl text-gray-400 leading-relaxed mb-12 font-medium">
-              הערכת שווי מקצועית ויסודית לצרכי ביטוח, ירידת ערך ותביעות נזיקין. אנו מספקים אומדן כספי מדויק המגובה בחוות דעת הנדסית לצורך קבלת פיצוי הולם.
+              הערכת שווי מקצועית ויסודית לצרכי ביטוח, ירידת ערך ותביעות ליקויי בנייה. אנו מספקים אומדן כספי מדויק המגובה בחוות דעת הנדסית לצורך קבלת פיצוי הולם.
             </p>
             <div className="flex flex-wrap gap-4 mb-12">
                {['הערכת נזקים', 'ירידת ערך', 'שמאות לביטוח', 'חוות דעת מומחה'].map(t => (
@@ -38,13 +38,13 @@ const AppraisalPage: React.FC = () => {
         <div className="container mx-auto px-6">
            <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
              <div className="space-y-8">
-               <h2 className="text-4xl font-black text-white">מתי נדרשת שמאות הנדסית?</h2>
-               <p className="text-xl text-gray-400 italic">לא כל שמאי הוא מהנדס, ולא כל מהנדס הוא שמאי. אצלנו תקבלו את השילוב המנצח.</p>
+               <h2 className="text-4xl font-black text-white">מתי נדרשת שמאות והערכת נזקים?</h2>
+               <p className="text-xl text-gray-400 italic">לא כל שמאי הוא מהנדס, ולא כל מהנדס הוא שמאי. אצלנו תקבלו את השילוב המנצח למימוש זכויותיכם.</p>
                <ul className="space-y-6">
                  {[
                    { t: 'תביעות נגד חברות ביטוח', d: 'הוכחת הנזק הממשי והערכת עלויות התיקון האמיתיות מול אומדני החברה.' },
-                   { t: 'ירידת ערך לנכס', d: 'הערכת הפגיעה בשווי הנכס כתוצאה מליקויי בנייה קבועים או נזקי צנרת נרחבים.' },
-                   { t: 'סכסוכי שכנים', d: 'אומדן נזקים כתוצאה מהצפות או עבודות בנייה של השכן, קביל בבית משפט.' }
+                   { t: 'ירידת ערך לנכס עקב ליקויים', d: 'הערכת הפגיעה בשווי הנכס כתוצאה מליקויי בנייה קבועים או נזקי צנרת נרחבים.' },
+                   { t: 'סכסוכי שכנים ונזקי צד ג׳', d: 'אומדן נזקים כתוצאה מהצפות או עבודות בנייה של השכן, קביל בבית משפט.' }
                  ].map((item, idx) => (
                    <li key={idx} className="flex gap-4">
                      <div className="w-12 h-12 bg-blue-600/20 text-blue-500 rounded-xl flex items-center justify-center shrink-0">

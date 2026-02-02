@@ -24,8 +24,8 @@ const Hero: React.FC = () => {
 
       <div className="relative container mx-auto px-6 text-center z-10 pt-12 md:pt-20">
         
-        {/* H1 for SEO - Fluid Typography */}
-        <h1 className="text-3xl xs:text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black leading-[1.1] md:leading-[0.9] mb-6 md:mb-10 tracking-tighter filter drop-shadow-2xl animate-slide-up max-w-5xl mx-auto">
+        {/* H1 for SEO - Fluid Typography with improved letter spacing */}
+        <h1 className="text-3xl xs:text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black leading-[1.1] md:leading-[0.9] mb-6 md:mb-10 tracking-normal filter drop-shadow-2xl animate-slide-up max-w-5xl mx-auto">
           <span className="block text-white mb-2">בדק בית וביקורת מבנים.</span>
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 via-blue-400 to-indigo-500 block">
             השקט הנפשי שלך.

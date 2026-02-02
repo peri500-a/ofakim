@@ -22,10 +22,10 @@ const WarrantyInspectionPage: React.FC = () => {
             </div>
             <h1 className="text-5xl md:text-8xl font-black text-white mb-8 tracking-tighter leading-none">
               בדיקת סוף <br/>
-              <span className="text-blue-500">שנת בדק</span>
+              <span className="text-blue-500">שנת בדק וליקויי בנייה</span>
             </h1>
             <p className="text-2xl text-gray-400 leading-relaxed max-w-2xl mb-12">
-              גרים בבית שנה? זה הזמן הקריטי ביותר. לפני שתקופת הבדק מסתיימת, חובת ההוכחה היא על הקבלן. דוח מהנדס עכשיו יחסוך לכם עשרות אלפי שקלים בתיקונים עתידיים.
+              גרים בבית שנה? זה הזמן הקריטי ביותר. לפני שתקופת הבדק מסתיימת, חובת ההוכחה היא על הקבלן. ביצוע בדק בית עכשיו יחסוך לכם עשרות אלפי שקלים בתיקונים עתידיים.
             </p>
             <a href="#contact" className="bg-blue-600 text-white font-black px-12 py-6 rounded-2xl text-xl hover:bg-blue-500 transition-all shadow-xl shadow-blue-900/40 inline-block">הזמינו בדיקת שנת בדק</a>
           </div>
@@ -35,10 +35,10 @@ const WarrantyInspectionPage: React.FC = () => {
       <section className="py-24 bg-gray-900/30">
         <div className="container mx-auto px-6">
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-4xl font-black text-white mb-12">למה דווקא עכשיו?</h2>
+            <h2 className="text-4xl font-black text-white mb-12">למה דווקא עכשיו לבצע בדק בית?</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                <div className="space-y-6">
-                 <p className="text-xl text-gray-400">בשנה הראשונה למגורים, הבית "מתיישב". זה השלב שבו מתגלים סדקים, כשלי איטום ובעיות תשתית שלא נראו במסירה הראשונית.</p>
+                 <p className="text-xl text-gray-400">בשנה הראשונה למגורים, הבית "מתיישב". זה השלב שבו מתגלים סדקים, כשלי איטום וליקויי בנייה בתשתית שלא נראו במסירה הראשונית.</p>
                  <div className="bg-gray-900 p-8 rounded-3xl border border-blue-500/20">
                     <h4 className="text-white font-bold text-xl mb-4">חוק המכר לטובתכם</h4>
                     <p className="text-gray-400">בתקופת הבדק, הקבלן חייב לתקן כל ליקוי אלא אם הוכיח שהנזק נגרם באשמתכם. לאחר מכן, חובת ההוכחה עוברת אליכם.</p>

@@ -19,10 +19,10 @@ const LeakDetectionPage: React.FC = () => {
           <div className="max-w-4xl mx-auto">
             <h1 className="text-5xl md:text-8xl font-black text-white mb-8 tracking-tighter leading-none">
               איתור נזילות <br/>
-              <span className="text-blue-500">ללא הרס</span>
+              <span className="text-blue-500">ורטיבות במצלמה תרמית</span>
             </h1>
             <p className="text-2xl text-gray-400 leading-relaxed mb-12 font-medium">
-              רואים סימני רטיבות? אל תשברו את הקירות. אנו משתמשים במצלמות תרמיות FLIR ובמכשור אקוסטי מתקדם לאיתור מקור הנזילה בדיוק מירבי, מבלי לגרום נזק לנכס.
+              רואים סימני רטיבות? אל תשברו את הקירות. אנו משתמשים במצלמות תרמיות FLIR ובמכשור אקוסטי מתקדם לאיתור מקור הנזילה וביקורת מבנים הנדסית בדיוק מירבי, מבלי לגרום נזק לנכס.
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
                {['אינסטלציה', 'איטום', 'צנרת', 'מרתפים'].map(t => (
@@ -38,8 +38,8 @@ const LeakDetectionPage: React.FC = () => {
         <div className="container mx-auto px-6">
            <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
              <div className="space-y-8">
-               <h2 className="text-4xl font-black text-white">הטכנולוגיה בשירות ההנדסה</h2>
-               <p className="text-xl text-gray-400">אנו לא משתמשים רק בעיניים. הציוד שלנו מאפשר לראות דרך קירות וריצוף:</p>
+               <h2 className="text-4xl font-black text-white">איתור נזילות - טכנולוגיה בשירות ההנדסה</h2>
+               <p className="text-xl text-gray-400">אנו לא משתמשים רק בעיניים. הציוד שלנו מאפשר לראות דרך קירות וריצוף ולאתר ליקויי בנייה סמויים:</p>
                <ul className="space-y-6">
                  {[
                    { t: 'מצלמה תרמית FLIR', d: 'מזהה הפרשי טמפרטורה המעידים על הצטברות מים מאחורי חיפויים.' },

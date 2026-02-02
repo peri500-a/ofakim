@@ -19,10 +19,10 @@ const VillaInspectionPage: React.FC = () => {
           <div className="max-w-4xl mx-auto">
             <h1 className="text-5xl md:text-8xl font-black text-white mb-8 tracking-tighter leading-none">
               בדק בית <br/>
-              <span className="text-blue-500">לבתים פרטיים</span>
+              <span className="text-blue-500">לבתים פרטיים ווילות</span>
             </h1>
             <p className="text-2xl text-gray-400 leading-relaxed mb-12 font-medium">
-              בית פרטי הוא מורכב פי כמה מדירה בבניין. אנו בודקים את המעטפת, הגג, החצר, תשתיות הניקוז והאיטום לעומק כדי להגן על ההשקעה הגדולה בחייכם.
+              בית פרטי הוא מורכב פי כמה מדירה בבניין. אנו מבצעים ביקורת מבנים מקיפה הכוללת את המעטפת, הגג, החצר, תשתיות הניקוז והאיטום כדי להגן על ההשקעה היקרה בחייכם.
             </p>
             <div className="flex flex-wrap gap-4 mb-12">
                {['בדיקת גגות רעפים', 'איטום מרתפים', 'תשתיות חוץ', 'קירות תמך'].map(t => (
@@ -38,13 +38,13 @@ const VillaInspectionPage: React.FC = () => {
         <div className="container mx-auto px-6">
            <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
              <div className="space-y-8">
-               <h2 className="text-4xl font-black text-white">מדוע בדיקת וילה שונה מדירה?</h2>
+               <h2 className="text-4xl font-black text-white">מדוע בדק בית לוילה שונה מדירה?</h2>
                <p className="text-xl text-gray-400 italic">בבית צמוד קרקע, אתם האחראים הבלעדיים על כל המערכות. אין ועד בית שיטפל בנזילות מהגג או בפיצוצי צנרת בחצר.</p>
                <ul className="space-y-6">
                  {[
                    { t: 'בדיקת מעטפת וחיפויים', d: 'וידוא תקינות האבן, השליכט והבידוד התרמי למניעת עיבוי ורטיבות.' },
-                   { t: 'תשתיות ניקוז וביוב', d: 'בדיקת שיפועים בחצר ומערכות ניקוז למניעת הצפות בחורף.' },
-                   { t: 'גגות ואיטום עליון', d: 'בדיקת רעפים, מרזבים ואיטום יריעות ביטומניות בגגות שטוחים.' }
+                   { t: 'תשתיות ניקוז וביוב בחצר', d: 'בדיקת שיפועים בחצר ומערכות ניקוז למניעת הצפות ורטיבות ביסודות.' },
+                   { t: 'גגות, רעפים ואיטום עליון', d: 'בדיקת רעפים, מרזבים ואיטום יריעות ביטומניות בגגות שטוחים.' }
                  ].map((item, idx) => (
                    <li key={idx} className="flex gap-4">
                      <div className="w-12 h-12 bg-blue-600/20 text-blue-500 rounded-xl flex items-center justify-center shrink-0 font-black">

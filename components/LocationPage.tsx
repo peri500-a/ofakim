@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import Header from './Header';
 import Footer from './Footer';
@@ -24,10 +23,15 @@ const LocationPage: React.FC<LocationPageProps> = ({ city }) => {
       desc: 'בירושלים קיימים אתגרים הנדסיים ייחודיים כמו חיפויי אבן ירושלמית, בידוד תרמי לקור הירושלמי ותווי קרקע הרריים. המהנדס יוסי מכיר את התקנים הספציפיים לבירה.',
       points: ['בדיקת חיפויי אבן ותקינותם', 'אבחון בעיות בידוד ועיבוי', 'בדיקת קירות תמך בתוואי הררי', 'ביקורת לנכסים בעיר העתיקה'],
       image: 'https://images.unsplash.com/photo-1542668595-df665422894f?auto=format&fit=crop&w=1200&q=80'
+    },
+    'המרכז': {
+      desc: 'אזור המרכז וגוש דן נמצאים בתנופת בנייה אדירה. אנו מספקים שירותי בדק בית בראשון לציון, פתח תקווה, רמת גן וחולון, עם התמחות בבדיקות מסירה מקבלן וביקורת מבנים ליד שניה.',
+      points: ['בדיקות מסירה בפרויקטים חדשים', 'איתור נזילות במכשור טכנולוגי', 'ביקורת מבנים לפני רכישת דירת יד שניה', 'פיקוח הנדסי לשיפוצים ותוספות'],
+      image: 'https://images.unsplash.com/photo-1503387762-592dea58ef22?auto=format&fit=crop&w=1200&q=80'
     }
   };
 
-  const data = cityContent[city] || cityContent['תל אביב'];
+  const data = cityContent[city] || cityContent['המרכז'];
 
   return (
     <div className="bg-gray-950 text-gray-300 min-h-screen">
@@ -62,7 +66,7 @@ const LocationPage: React.FC<LocationPageProps> = ({ city }) => {
         <div className="container mx-auto px-6 text-center">
            <h2 className="text-4xl font-black text-white mb-12 italic">למה לבחור באופקים הנדסה באזור {city}?</h2>
            <div className="max-w-3xl mx-auto space-y-8 text-xl leading-relaxed text-gray-400">
-             <p>אנו פועלים ב{city} מזה 15 שנה ומכירים כל שכונה וכל סגנון בנייה. הידע המקומי שלנו חוסך לכם זמן וכסף באיתור ליקויים הנפוצים באזור זה.</p>
+             <p>אנו פועלים באזור {city} מזה 15 שנה ומכירים כל שכונה וכל סגנון בנייה. הידע המקומי שלנו חוסך לכם זמן וכסף באיתור ליקויים הנפוצים באזור זה.</p>
              <p>המהנדס יוסי וצוותו זמינים לבדיקות דחופות ב{city} תוך 24-48 שעות, עם דוח מפורט וליווי אישי מול הקבלנים המקומיים.</p>
            </div>
         </div>

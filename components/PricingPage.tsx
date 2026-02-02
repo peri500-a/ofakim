@@ -46,7 +46,7 @@ const PricingPage: React.FC = () => {
               חזרה לאתר הראשי
             </button>
             
-            <h1 className="text-5xl md:text-8xl font-black text-white mb-8 tracking-tighter leading-[0.9]">
+            <h1 className="text-5xl md:text-8xl font-black text-white mb-8 tracking-tight leading-[0.9]">
               מחירון <br/>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">בדק בית 2026</span>
             </h1>
