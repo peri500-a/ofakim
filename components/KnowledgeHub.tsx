@@ -1,4 +1,3 @@
-
 import React, { useState, useRef } from 'react';
 
 interface Article {
@@ -53,8 +52,8 @@ const KnowledgeHub: React.FC = () => {
       icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>,
       content: (
         <div className="space-y-4 text-gray-300">
-          <p className="font-bold text-white text-lg">המציאות בשטח מראה שב-100% מהדירות החדשות ישנם ליקויים.</p>
-          <p>הליקויים הנפוצים ביותר שאנו מאתרים כוללים:</p>
+          <h3 className="font-bold text-white text-lg">המציאות בשטח מראה שב-100% מהדירות החדשות ישנם ליקויים.</h3>
+          <p>הליקויים הנפוצים ביותר שאנו מאתרים בביצוע <strong>בדק בית</strong> כוללים:</p>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
             <li className="bg-white/5 p-4 rounded-xl border border-white/10"><span className="text-blue-400 font-bold block mb-1">רטיבות כלואה:</span> נגרמת עקב איטום לקוי או שימוש בחול רטוב מתחת לריצוף.</li>
             <li className="bg-white/5 p-4 rounded-xl border border-white/10"><span className="text-blue-400 font-bold block mb-1">סדקים נימיים:</span> סדקים המופיעים עקב "עבודה" של המבנה או יישום טיח לא תקין.</li>
@@ -77,15 +76,24 @@ const KnowledgeHub: React.FC = () => {
           <div className="space-y-4 mt-6">
             <div className="flex gap-4 items-start">
                <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center shrink-0 font-bold text-white">1</div>
-               <p><strong className="text-white">ביסוס על תקנים ישראליים:</strong> כל ליקוי מפנה לסעיף המדויק בתקן הישראלי (ת"י) או בתקנות התכנון והבנייה.</p>
+               <div>
+                 <h3 className="text-white font-bold">ביסוס על תקנים ישראליים</h3>
+                 <p>כל ליקוי מפנה לסעיף המדויק בתקן הישראלי (ת"י) או בתקנות התכנון והבנייה.</p>
+               </div>
             </div>
             <div className="flex gap-4 items-start">
                <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center shrink-0 font-bold text-white">2</div>
-               <p><strong className="text-white">תיעוד טכנולוגי:</strong> צילומים תרמיים ומדידות לייזר משמשים כהוכחות חותכות שקשה להתווכח איתן בבית המשפט.</p>
+               <div>
+                 <h3 className="text-white font-bold">תיעוד טכנולוגי</h3>
+                 <p>צילומים תרמיים ומדידות לייזר משמשים כהוכחות חותכות שקשה להתווכח איתן בבית המשפט.</p>
+               </div>
             </div>
             <div className="flex gap-4 items-start">
                <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center shrink-0 font-bold text-white">3</div>
-               <p><strong className="text-white">אומדן עלויות:</strong> הדוח כולל הערכת עלות לתיקון הליקויים המבוססת על מחירוני "דקל", מה שמאפשר לשופט לפסוק פיצוי כספי מדויק.</p>
+               <div>
+                 <h3 className="text-white font-bold">אומדן עלויות מקצועי</h3>
+                 <p>הדוח כולל הערכת עלות לתיקון הליקויים המבוססת על מחירוני "דקל", מה שמאפשר לשופט לפסוק פיצוי כספי מדויק.</p>
+               </div>
             </div>
           </div>
         </div>

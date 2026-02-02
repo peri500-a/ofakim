@@ -1,4 +1,3 @@
-
 import React, { useEffect } from 'react';
 import Header from './Header';
 import Footer from './Footer';
@@ -7,7 +6,6 @@ import Contact from './Contact';
 const ContractorInspectionPage: React.FC = () => {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    document.title = "בדק בית מקבלן | ביקורת דירה חדשה לפי חוק המכר | אופקים הנדסה";
   }, []);
 
   const handleGoHome = (e: React.MouseEvent) => {
@@ -34,7 +32,7 @@ const ContractorInspectionPage: React.FC = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="relative pt-40 pb-20 overflow-hidden bg-[url('https://images.unsplash.com/photo-1503387762-592dea58ef23?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-fixed">
+      <section className="relative pt-40 pb-20 overflow-hidden bg-[url('https://images.unsplash.com/photo-1503387762-592dea58ef22?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-fixed">
         <div className="absolute inset-0 bg-gray-950/90 backdrop-blur-sm"></div>
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-4xl mx-auto">
@@ -92,7 +90,7 @@ const ContractorInspectionPage: React.FC = () => {
                   <div key={i} className="flex gap-4 group">
                     <div className="w-8 h-8 rounded-full bg-blue-500/10 text-blue-500 flex items-center justify-center shrink-0 font-black group-hover:bg-blue-600 group-hover:text-white transition-all">{i+1}</div>
                     <div>
-                      <h4 className="text-xl font-bold text-white mb-1">{item.t}</h4>
+                      <h3 className="text-xl font-bold text-white mb-1">{item.t}</h3>
                       <p className="text-gray-400">{item.d}</p>
                     </div>
                   </div>
@@ -155,11 +153,11 @@ const ContractorInspectionPage: React.FC = () => {
              </p>
              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-right">
                 <div className="bg-gray-950 p-8 rounded-3xl border border-white/5">
-                  <h4 className="text-blue-400 font-bold mb-3">שנת הבדק</h4>
+                  <h3 className="text-blue-400 font-bold mb-3">שנת הבדק</h3>
                   <p className="text-gray-500">תקופה שמתחילה עם מסירת הדירה, בה הקבלן חייב לתקן כל ליקוי אלא אם הוכיח שהנגרם ע"י הקונה.</p>
                 </div>
                 <div className="bg-gray-950 p-8 rounded-3xl border border-white/5">
-                  <h4 className="text-blue-400 font-bold mb-3">תקופת האחריות</h4>
+                  <h3 className="text-blue-400 font-bold mb-3">תקופת האחריות</h3>
                   <p className="text-gray-500">תקופה של 3 שנים נוספות לאחר שנת הבדק, בה האחריות היא על הקונה להוכיח שהליקוי מקורו בבנייה.</p>
                 </div>
              </div>
