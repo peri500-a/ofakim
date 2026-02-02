@@ -50,63 +50,63 @@ const CaseStudies: React.FC = () => {
       defect: 'רטיבות סמויה מתחת לריצוף במרפסת',
       finding: 'שימוש במצלמה תרמית גילה כשל באיטום שלא נראה לעין. הקבלן נדרש להחליף את כל התשתית.',
       savings: 'כ-45,000 ₪',
-      imageUrl: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=80'
+      imageUrl: 'https://res.cloudinary.com/dbzklnlcx/image/upload/v1770017740/%D7%93%D7%99%D7%A8%D7%AA_%D7%A7%D7%91%D7%9C%D7%9F_%D7%91%D7%A8%D7%90%D7%A9%D7%95%D7%9F_%D7%9C%D7%A6%D7%99%D7%95%D7%9F_pyt6gv.jpg'
     },
     {
       title: 'בית פרטי בשוהם',
       defect: 'סדקים קונסטרוקטיביים בשלד',
       finding: 'זיהוי תזוזת קרקע שגרמה לסדקים מסוכנים. הוגשה חוות דעת מומחה לבית משפט.',
       savings: 'כ-120,000 ₪',
-      imageUrl: 'https://images.unsplash.com/photo-1590069230005-db393739a731?auto=format&fit=crop&w=600&q=80'
+      imageUrl: 'https://res.cloudinary.com/dbzklnlcx/image/upload/v1770017647/%D7%91%D7%99%D7%AA_%D7%A4%D7%A8%D7%98%D7%99_%D7%91%D7%A9%D7%95%D7%94%D7%9D_yxddu8.jpg'
     },
     {
       title: 'פנטהאוז בתל אביב',
       defect: 'אי התאמה למפרט המכר',
       finding: 'בדיקת לייזר גילתה סטיות של 15% בשטחי החדרים וגובה התקרה בניגוד לחוזה.',
       savings: 'כ-85,000 ₪',
-      imageUrl: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=600&q=80'
+      imageUrl: 'https://res.cloudinary.com/dbzklnlcx/image/upload/v1770017891/%D7%A4%D7%A0%D7%98%D7%94%D7%90%D7%95%D7%A1_%D7%91%D7%AA%D7%9C_%D7%90%D7%91%D7%99%D7%91_fr8zkw.jpg'
     },
     {
       title: 'דירת יד-שנייה בירושלים',
       defect: 'רטיבות קפילארית בקירות הפנים',
       finding: 'אבחון הנדסי חשף פיצוץ סמוי בצנרת המים הראשית מתחת לריצוף הסלון שלא אותר בשיפוץ הקודם.',
       savings: 'כ-30,000 ₪',
-      imageUrl: ''
+      imageUrl: 'https://res.cloudinary.com/dbzklnlcx/image/upload/v1770018003/%D7%93%D7%99%D7%A8%D7%94_%D7%99%D7%93_%D7%A9%D7%A0%D7%99%D7%99%D7%94_%D7%91%D7%99%D7%A8%D7%95%D7%A9%D7%9C%D7%99%D7%9D_uo8r5q.jpg'
     },
     {
       title: 'וילה יוקרתית בהרצליה פיתוח',
       defect: 'כשלי איטום בבריכת השחייה ובמרתף',
       finding: 'בדיקת הצפה ומצלמה תרמית FLIR זיהו חדירת מי תהום לקומת המרתף עקב איטום שלילי לקוי.',
       savings: 'כ-150,000 ₪',
-      imageUrl: ''
+      imageUrl: 'https://res.cloudinary.com/dbzklnlcx/image/upload/v1770018097/%D7%95%D7%99%D7%9C%D7%94_%D7%99%D7%95%D7%A7%D7%A8%D7%AA%D7%99%D7%AA_%D7%91%D7%94%D7%A8%D7%A6%D7%9C%D7%99%D7%94_%D7%A4%D7%99%D7%AA%D7%95%D7%97_coh01x.jpg'
     },
     {
       title: 'דירת 5 חדרים בפתח תקווה',
       defect: 'ליקויי חשמל ואינסטלציה קריטיים',
       finding: 'בדיקת לוח החשמל גילתה היעדר הארקה תקנית וסכנת התחשמלות. הקבלן נדרש לחיווט מחדש של כל הדירה.',
       savings: 'כ-25,000 ₪',
-      imageUrl: ''
+      imageUrl: 'https://res.cloudinary.com/dbzklnlcx/image/upload/v1770018186/%D7%93%D7%99%D7%A8%D7%94_%D7%91%D7%A4%D7%AA%D7%97_%D7%AA%D7%A7%D7%95%D7%95%D7%94_ybjt5v.jpg'
     },
     {
       title: 'קוטג׳ חדש בנתניה (עיר ימים)',
       defect: 'קורוזיה מואצת בחיפויי אבן ושלד',
       finding: 'זיהוי חומרי בנייה שאינם עמידים לסביבה ימית. הדו"ח מנע מהלקוח רכישת נכס עם נזק מבני עתידי.',
       savings: 'כ-200,000 ₪',
-      imageUrl: ''
+      imageUrl: 'https://res.cloudinary.com/dbzklnlcx/image/upload/v1770018282/%D7%A7%D7%95%D7%98%D7%92_%D7%9E%D7%A4%D7%95%D7%90%D7%A8_kx3wlq.jpg'
     },
     {
       title: 'דירת גן בבאר שבע',
       defect: 'בעיות ניקוז ופיתוח שטח',
       finding: 'שיפועים הפוכים בחצר גרמו להצטברות מים ביסודות המבנה. ביצוע עבודות ניקוז דחופות על חשבון המוכר.',
       savings: 'כ-35,000 ₪',
-      imageUrl: ''
+      imageUrl: 'https://res.cloudinary.com/dbzklnlcx/image/upload/v1770018362/%D7%93%D7%99%D7%A8%D7%AA_%D7%92%D7%9F_hmao7u.jpg'
     },
     {
       title: 'דירת בוטיק ברמת השרון',
       defect: 'ליקויי גימור וריצוף נרחבים',
       finding: 'בדיקת אקוסטיקה ומישוריות גילתה חללים ריקים מתחת ל-40% מהאריחים ורמת רעש חריגה מהשכנים.',
       savings: 'כ-55,000 ₪',
-      imageUrl: ''
+      imageUrl: 'https://res.cloudinary.com/dbzklnlcx/image/upload/v1770018443/%D7%93%D7%99%D7%A8%D7%AA_%D7%91%D7%95%D7%98%D7%99%D7%A7_q4mztn.jpg'
     }
   ];
 
