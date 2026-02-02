@@ -3,7 +3,6 @@ import React, { useEffect } from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import Contact from './Contact';
-import Logo from './Logo';
 
 const ContractorInspectionPage: React.FC = () => {
   useEffect(() => {
@@ -16,6 +15,19 @@ const ContractorInspectionPage: React.FC = () => {
     window.history.pushState(null, '', '/');
     window.dispatchEvent(new PopStateEvent('popstate'));
   };
+
+  const warrantyItems = [
+    { id: 1, title: 'ליקוי במוצרי מסגרות ונגרות', years: 'שנתיים', detail: 'לרבות אלומיניום ופלסטיק' },
+    { id: 2, title: 'ליקוי בריצוף וחיפוי פנים', years: 'שנתיים', detail: 'לרבות שקיעות ושחיקה' },
+    { id: 3, title: 'כשל בתפקוד מכונות ודוודים', years: 'שלוש שנים', detail: 'עמידות בתפקוד לאורך זמן' },
+    { id: 4, title: 'ליקוי בפיתוח חצר', years: 'שלוש שנים', detail: 'שקיעות, דרכים, שבילים, גדרות, מערכות מים וחשמל' },
+    { id: 5, title: 'כשל במרכיבי הבידוד התרמי', years: 'שלוש שנים', detail: 'תפקוד ועמידות המערכת' },
+    { id: 6, title: 'כשל במערכות צנרת', years: 'ארבע שנים', detail: 'כולל הסקה, מרזבים, דלוחין וביוב (לרבות נזילות)' },
+    { id: 7, title: 'כשל באיטום המבנה', years: 'ארבע שנים', detail: 'בחללים תת-קרקעיים, קירות, תקרות וגגות' },
+    { id: 8, title: 'סדקים ברוחב מעל 1.5 מ"מ', years: 'חמש שנים', detail: 'ברכיבים שאינם נושאים' },
+    { id: 9, title: 'התנתקות/קילוף חיפויי חוץ', years: 'שבע שנים', detail: 'התפרקות או נפילה של חיפויים' },
+    { id: 10, title: 'אי-התאמה יסודית אחרת', years: 'שנה אחת', detail: 'כל אי-התאמה שאינה מפורטת לעיל' },
+  ];
 
   return (
     <div className="bg-gray-950 text-gray-300 min-h-screen">
@@ -95,13 +107,51 @@ const ContractorInspectionPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Legal Section */}
+      {/* Law Supplement Section */}
+      <section className="py-24 bg-gray-900/30">
+        <div className="container mx-auto px-6">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-blue-500 font-black uppercase tracking-[0.2em] text-sm mb-4 italic">חוק המכר (דירות)</h2>
+              <h3 className="text-4xl md:text-5xl font-black text-white mb-6">התוספת (סעיף 4): <span className="text-blue-500">תקופות הבדק</span></h3>
+              <p className="text-gray-400 text-lg max-w-3xl mx-auto">
+                לפי החוק, הקבלן אחראי לתיקון ליקויים שנתגלו בדירה בתקופות זמן קצובות. המהנדס שלנו יוודא שכל חריגה מהתקנים האלו תופיע בדוח ההנדסי שלכם.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {warrantyItems.map((item) => (
+                <div key={item.id} className="bg-gray-900 border border-white/5 p-6 rounded-2xl flex items-center justify-between hover:border-blue-500/30 transition-all group">
+                  <div className="flex-grow">
+                    <div className="flex items-center gap-3 mb-1">
+                      <span className="text-blue-500 font-black text-xs uppercase tracking-widest">{item.id}.</span>
+                      <h4 className="text-lg font-bold text-white group-hover:text-blue-400 transition-colors">{item.title}</h4>
+                    </div>
+                    <p className="text-gray-500 text-sm">{item.detail}</p>
+                  </div>
+                  <div className="shrink-0 mr-4 bg-blue-600/10 border border-blue-500/20 px-4 py-2 rounded-xl text-blue-400 font-black text-sm whitespace-nowrap">
+                    {item.years}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-12 bg-gray-950 p-8 rounded-[2rem] border border-white/5 space-y-4 text-sm text-gray-400">
+               <h4 className="text-white font-bold text-lg mb-2 underline decoration-blue-500 underline-offset-8">הגדרות חשובות מהחוק:</h4>
+               <p><strong className="text-blue-400">"כשל"</strong> – כישלון מלא או חלקי בתפקוד המוצר או המערכת.</p>
+               <p><strong className="text-blue-400">"ליקוי"</strong> – ליקוי בתפקוד ובעמידות המוצר או המערכת, לרבות אי-שמירה על יציבות, שלמות, איכות ומראה, הן של כל מרכיב בנפרד והן של המכלול.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Legal Summary Section */}
       <section className="py-24 bg-gray-900/50">
         <div className="container mx-auto px-6">
            <div className="max-w-3xl mx-auto text-center">
-             <h2 className="text-4xl font-black text-white mb-8">הגנה משפטית מלאה: שנת הבדק ותקופת האחריות</h2>
+             <h2 className="text-4xl font-black text-white mb-8">הגנה משפטית מלאה</h2>
              <p className="text-xl text-gray-400 leading-relaxed mb-12">
-               לפי חוק המכר (דירות), לקבלן יש אחריות לתיקון ליקויים. הדוח ההנדסי של "אופקים הנדסה" משמש כמסמך משפטי מחייב הדורש מהקבלן לבצע את התיקונים או לשלם פיצוי כספי.
+               הדוח ההנדסי של "אופקים הנדסה" משמש כמסמך משפטי מחייב המפרט את הליקויים מול הקבלן בהתאם לתקופות הבדק המצוינות לעיל. אל תתנו לקבלן להתחמק מהאחריות המוטלת עליו בחוק.
              </p>
              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-right">
                 <div className="bg-gray-950 p-8 rounded-3xl border border-white/5">

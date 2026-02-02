@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -25,6 +24,7 @@ import AppraisalPage from './components/AppraisalPage';
 import LocationPage from './components/LocationPage';
 import VillaInspectionPage from './components/VillaInspectionPage';
 import WarrantyInspectionPage from './components/WarrantyInspectionPage';
+import NotFound from './components/NotFound';
 
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<'home' | 'pricing' | 'contractor' | 'court' | 'leak' | 'appraisal' | 'tel-aviv' | 'jerusalem' | 'villa' | 'warranty' | '404'>('home');
@@ -34,9 +34,17 @@ const App: React.FC = () => {
       const hash = window.location.hash.replace(/^#/, '');
       const pathname = window.location.pathname;
       
-      let rawPath = hash || pathname;
-      let decodedPath = "/";
+      // Determine if the URL points to a specific internal page route
+      const isPageRoute = hash.startsWith('/') || (pathname !== '/' && pathname !== '/index.html');
       
+      let rawPath = '';
+      if (hash.startsWith('/')) {
+        rawPath = hash;
+      } else if (pathname !== '/' && pathname !== '/index.html') {
+        rawPath = pathname;
+      }
+
+      let decodedPath = "/";
       try {
         decodedPath = decodeURIComponent(rawPath).toLowerCase();
       } catch (e) {
@@ -45,6 +53,13 @@ const App: React.FC = () => {
 
       const cleanPath = decodedPath.trim().replace(/\/+$/, "") || "/";
       
+      // Home page check
+      if (cleanPath === "/" || cleanPath === "" || (!isPageRoute && (!hash || !hash.includes('/')))) {
+        setCurrentPage('home');
+        return;
+      }
+
+      // Route Matching for internal pages
       if (cleanPath.includes("מחיר") || cleanPath.includes("pricing")) {
         setCurrentPage('pricing');
       } else if (cleanPath.includes("מקבלן") || cleanPath.includes("contractor")) {
@@ -63,16 +78,23 @@ const App: React.FC = () => {
         setCurrentPage('villa');
       } else if (cleanPath.includes("שנת-בדק") || cleanPath.includes("warranty")) {
         setCurrentPage('warranty');
-      }
-      else if (cleanPath === "/" || cleanPath === "" || cleanPath.includes("index")) {
-        setCurrentPage('home');
-      }
-      else {
-        setCurrentPage('home'); 
+      } else {
+        // Known anchors on the home page should stay on home
+        const homeSections = ['contact', 'faq', 'services', 'process', 'why-us', 'testimonials', 'cases', 'knowledge', 'privacy-policy', 'accessibility'];
+        if (homeSections.includes(hash)) {
+          setCurrentPage('home');
+        } else {
+          setCurrentPage('404');
+        }
       }
       
-      window.scrollTo({ top: 0, behavior: 'instant' });
+      // Scroll to top on page change, but not for section anchors
+      if (!homeSections.includes(hash)) {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      }
     };
+
+    const homeSections = ['contact', 'faq', 'services', 'process', 'why-us', 'testimonials', 'cases', 'knowledge', 'privacy-policy', 'accessibility'];
 
     handleRouting();
     
@@ -85,6 +107,7 @@ const App: React.FC = () => {
     };
   }, []);
 
+  if (currentPage === '404') return <NotFound />;
   if (currentPage === 'pricing') return <PricingPage />;
   if (currentPage === 'contractor') return <ContractorInspectionPage />;
   if (currentPage === 'court') return <CourtExpertPage />;
