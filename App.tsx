@@ -30,74 +30,73 @@ const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<'home' | 'pricing' | 'contractor' | 'court' | 'leak' | 'appraisal' | 'tel-aviv' | 'jerusalem' | 'villa' | 'warranty' | '404'>('home');
 
   useEffect(() => {
+    const updateMeta = (title: string, description: string) => {
+      document.title = title;
+      const metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc) metaDesc.setAttribute('content', description);
+      
+      // Update Canonical
+      let canonical = document.querySelector('link[rel="canonical"]');
+      if (!canonical) {
+        canonical = document.createElement('link');
+        canonical.setAttribute('rel', 'canonical');
+        document.head.appendChild(canonical);
+      }
+      canonical.setAttribute('href', window.location.href.split('#')[0] + window.location.hash);
+    };
+
     const handleRouting = () => {
       const hash = window.location.hash.replace(/^#/, '');
       const pathname = window.location.pathname;
       
-      // Determine if the URL points to a specific internal page route
-      const isPageRoute = hash.startsWith('/') || (pathname !== '/' && pathname !== '/index.html');
-      
-      let rawPath = '';
+      let cleanPath = "/";
       if (hash.startsWith('/')) {
-        rawPath = hash;
-      } else if (pathname !== '/' && pathname !== '/index.html') {
-        rawPath = pathname;
+        cleanPath = decodeURIComponent(hash).toLowerCase();
+      } else if (pathname !== '/' && pathname !== '/index.html' && pathname !== '/index.tsx') {
+        cleanPath = decodeURIComponent(pathname).toLowerCase();
       }
 
-      let decodedPath = "/";
-      try {
-        decodedPath = decodeURIComponent(rawPath).toLowerCase();
-      } catch (e) {
-        decodedPath = rawPath.toLowerCase();
-      }
-
-      const cleanPath = decodedPath.trim().replace(/\/+$/, "") || "/";
-      
-      // Home page check
-      if (cleanPath === "/" || cleanPath === "" || (!isPageRoute && (!hash || !hash.includes('/')))) {
-        setCurrentPage('home');
-        return;
-      }
-
-      // Route Matching for internal pages
       if (cleanPath.includes("מחיר") || cleanPath.includes("pricing")) {
         setCurrentPage('pricing');
+        updateMeta("מחירון בדק בית 2026 | אופקים הנדסה", "מחירון בדק בית שקוף ומעודכן לשנת 2026. בדקו כמה עולה בדק בית לדירה חדשה, יד שנייה או בית פרטי.");
       } else if (cleanPath.includes("מקבלן") || cleanPath.includes("contractor")) {
         setCurrentPage('contractor');
+        updateMeta("בדק בית מקבלן | ביקורת דירה חדשה | אופקים הנדסה", "קיבלתם מפתח? אל תחתמו על פרוטוקול מסירה בלי בדיקת מהנדס. איתור ליקויי בנייה בדירות חדשות לפי חוק המכר.");
       } else if (cleanPath.includes("חוות-דעת") || cleanPath.includes("court")) {
         setCurrentPage('court');
+        updateMeta("חוות דעת הנדסית לבית משפט | מהנדס מומחה | אופקים הנדסה", "דוחות הנדסיים קבילים בבתי משפט. ליווי משפטי מקצועי ועדות מומחה בתביעות ליקויי בנייה.");
       } else if (cleanPath.includes("נזילות") || cleanPath.includes("leak")) {
         setCurrentPage('leak');
+        updateMeta("איתור נזילות ורטיבות ללא הרס | צילום תרמי | אופקים הנדסה", "איתור נזילות סמויות במצלמה תרמית FLIR מתקדמת. פתרון כשלי איטום ורטיבות ללא שבירת קירות.");
       } else if (cleanPath.includes("שמאות") || cleanPath.includes("appraisal")) {
         setCurrentPage('appraisal');
+        updateMeta("שמאות רכוש והערכת נזקים | אופקים הנדסה", "הערכת שווי נזקי רכוש, ירידת ערך וליקויי בנייה ע״י שמאי ומהנדס מוסמך.");
       } else if (cleanPath.includes("תל-אביב") || cleanPath.includes("tel-aviv")) {
         setCurrentPage('tel-aviv');
+        updateMeta("בדק בית בתל אביב | ביקורת מבנים במרכז | אופקים הנדסה", "שירותי בדק בית מקצועיים בתל אביב והמרכז. מהנדס מומחה למגדלי מגורים ומבנים לשימור.");
       } else if (cleanPath.includes("ירושלים") || cleanPath.includes("jerusalem")) {
         setCurrentPage('jerusalem');
+        updateMeta("בדק בית בירושלים | ביקורת מבנים בבירה | אופקים הנדסה", "ביקורת מבנים מקצועית בירושלים. מומחיות בחיפויי אבן, בידוד תרמי וליקויי בנייה בבנייה ירושלמית.");
       } else if (cleanPath.includes("וילה") || cleanPath.includes("villa")) {
         setCurrentPage('villa');
+        updateMeta("בדק בית לבית פרטי ווילה | אופקים הנדסה", "בדיקה הנדסית מקיפה לצמודי קרקע. בדיקת גגות, מעטפת המבנה ותשתיות חוץ.");
       } else if (cleanPath.includes("שנת-בדק") || cleanPath.includes("warranty")) {
         setCurrentPage('warranty');
+        updateMeta("בדיקת סוף שנת בדק | מימוש אחריות קבלן | אופקים הנדסה", "הזדמנות אחרונה לתיקון ליקויים על חשבון הקבלן. בדיקה מקצועית לפני תום תקופת האחריות.");
+      } else if (cleanPath === "/" || cleanPath === "" || !hash.includes('/')) {
+        setCurrentPage('home');
+        updateMeta("אופקים הנדסה | בדק בית וביקורת מבנים ע״י מהנדס מומחה", "החברה המובילה לבדק בית. איתור ליקויי בנייה בציוד תרמי, דוחות הנדסיים קבילים בבית משפט וחיסכון כספי משמעותי.");
       } else {
-        // Known anchors on the home page should stay on home
-        const homeSections = ['contact', 'faq', 'services', 'process', 'why-us', 'testimonials', 'cases', 'knowledge', 'privacy-policy', 'accessibility'];
-        if (homeSections.includes(hash)) {
-          setCurrentPage('home');
-        } else {
-          setCurrentPage('404');
-        }
+        setCurrentPage('404');
       }
       
-      // Scroll to top on page change, but not for section anchors
+      const homeSections = ['contact', 'faq', 'services', 'process', 'why-us', 'testimonials', 'cases', 'knowledge', 'privacy-policy', 'accessibility'];
       if (!homeSections.includes(hash)) {
         window.scrollTo({ top: 0, behavior: 'instant' });
       }
     };
 
-    const homeSections = ['contact', 'faq', 'services', 'process', 'why-us', 'testimonials', 'cases', 'knowledge', 'privacy-policy', 'accessibility'];
-
     handleRouting();
-    
     window.addEventListener('popstate', handleRouting);
     window.addEventListener('hashchange', handleRouting);
 
