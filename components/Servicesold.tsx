@@ -44,7 +44,7 @@ const ServiceCard: React.FC<{
       
       <div className="p-6 sm:p-8 flex flex-col flex-grow relative z-10">
         <h3 className="text-xl sm:text-2xl font-black text-white group-hover:text-blue-400 transition-colors duration-300 mb-3 leading-tight">{title}</h3>
-        <p className="text-gray-400 leading-relaxed flex-grow text-sm sm:text-base mb-6 line-clamp-3">{description}</p>
+        <p className="text-gray-400 leading-relaxed flex-grow text-sm sm:text-base mb-6">{description}</p>
         
         <div className="flex items-center gap-3 text-blue-400 font-bold text-sm group-hover:translate-x-[-4px] transition-transform duration-300 mt-auto">
           <span>פרטים והצעת מחיר לבדק בית</span>
@@ -84,12 +84,12 @@ const Services: React.FC = () => {
       href: '#/בדק-בית-יד-שנייה'
     },
     {
-      title: 'חוות דעת לבית משפט',
-      description: 'ראיית זהב להליך המשפטי: דוח הנדסי קביל ועדות מומחה מקצועית מטעם בית המשפט, המבטיחים לכם את הסיכוי המקסימלי לזכייה בתביעות בנייה.',
-      imageUrl: "https://res.cloudinary.com/dbzklnlcx/image/upload/v1769671390/%D7%AA%D7%9E%D7%95%D7%A0%D7%AA_%D7%A9%D7%95%D7%A4%D7%98_txgcse.jpg",
-      imageAlt: 'חוות דעת הנדסית לבית משפט בנושא ליקויי בנייה',
-      icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" /></svg>,
-      href: '#/חוות-דעת-הנדסית-לבית-משפט'
+      title: 'בדיקת סוף שנת בדק',
+      description: 'הזדמנות אחרונה לתיקונים על חשבון הקבלן: איתור ליקויים שהתפתחו בשנה הראשונה (סדקים, רטיבות) ודרישת תיקון רגע לפני פקיעת האחריות.',
+      imageUrl: "https://res.cloudinary.com/dbzklnlcx/image/upload/v1770103357/%D7%A9%D7%A0%D7%AA_%D7%91%D7%93%D7%A7_a5klqo.jpg?auto=format&fit=crop&w=800&q=80",
+      imageAlt: 'בדיקת שנת בדק לדירה חדשה',
+      icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
+      href: '#/בדיקת-סוף-שנת-בדק'
     },
     {
       title: 'איתור נזילות ורטיבות',
@@ -100,36 +100,12 @@ const Services: React.FC = () => {
       href: '#/איתור-נזילות-ורטיבות'
     },
     {
-      title: 'בדיקת סוף שנת בדק',
-      description: 'הזדמנות אחרונה לתיקונים על חשבון הקבלן: איתור ליקויים שהתפתחו בשנה הראשונה (סדקים, רטיבות) ודרישת תיקון רגע לפני פקיעת האחריות.',
-      imageUrl: "https://res.cloudinary.com/dbzklnlcx/image/upload/v1770103357/%D7%A9%D7%A0%D7%AA_%D7%91%D7%93%D7%A7_a5klqo.jpg?auto=format&fit=crop&w=800&q=80",
-      imageAlt: 'בדיקת שנת בדק לדירה חדשה',
-      icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
-      href: '#/בדיקת-סוף-שנת-בדק'
-    },
-    {
-      title: 'פיקוח הנדסי וליווי בניה',
-      description: 'ליווי צמוד לאורך כל תהליך הבנייה או השיפוץ: פיקוח על איכות החומרים, עמידה בלוחות זמנים ומניעת ליקויים עוד בשלב הביצוע המוקדם.',
-      imageUrl: "https://images.unsplash.com/photo-1503387762-592dea58ef22?auto=format&fit=crop&w=800&q=80",
-      imageAlt: 'פיקוח הנדסי וליווי בנייה באתר עבודה',
-      icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" /></svg>,
-      href: '#contact'
-    },
-    {
-      title: 'ביקורת שטחים משותפים',
-      description: 'בדיקה הנדסית לרכוש המשותף: מעליות, מאגרי מים, לובי וחיפויים חיצוניים. הגנה על ועד הבית והדיירים מפני הוצאות תחזוקה כבדות.',
-      imageUrl: "https://res.cloudinary.com/dbzklnlcx/image/upload/v1770018443/%D7%93%D7%99%D7%A8%D7%94_%D7%91%D7%95%D7%91_%D7%91%D7%98%D7%99%D7%A7_q4mztn.jpg",
-      imageAlt: 'ביקורת שטחים משותפים בבניין מגורים',
-      icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>,
-      href: '#contact'
-    },
-    {
-      title: 'שמאות רכוש וירידת ערך',
-      description: 'הערכת נזקים וחישוב ירידת ערך לנכס עקב ליקויים או נזקי צנרת. דוח שמאי מוסמך לצורך תביעות ביטוח ודרישת פיצויים מהקבלן.',
-      imageUrl: "https://images.unsplash.com/photo-1554469384-e58fb162295a?auto=format&fit=crop&w=800&q=80",
-      imageAlt: 'שמאות רכוש וירידת ערך לנכס',
-      icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
-      href: '#/שמאות-רכוש-והערכת-נזקים'
+      title: 'חוות דעת לבית משפט',
+      description: 'ראיית זהב להליך המשפטי: דוח הנדסי קביל ועדות מומחה מקצועית מטעם בית המשפט, המבטיחים לכם את הסיכוי המקסימלי לזכייה בתביעות בנייה.',
+      imageUrl: "https://res.cloudinary.com/dbzklnlcx/image/upload/v1769671390/%D7%AA%D7%9E%D7%95%D7%A0%D7%AA_%D7%A9%D7%95%D7%A4%D7%98_txgcse.jpg",
+      imageAlt: 'חוות דעת הנדסית לבית משפט בנושא ליקויי בנייה',
+      icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" /></svg>,
+      href: '#/חוות-דעת-הנדסית-לבית-משפט'
     }
   ];
 

@@ -28,50 +28,40 @@ import WarrantyInspectionPage from './components/WarrantyInspectionPage';
 import SecondHandInspectionPage from './components/SecondHandInspectionPage';
 import NotFound from './components/NotFound';
 
-type PageType = 'home' | 'pricing' | 'contractor' | 'court' | 'leak' | 'appraisal' | 'tel-aviv' | 'jerusalem' | 'merkaz' | 'villa' | 'warranty' | 'second-hand' | '404';
-
 const App: React.FC = () => {
-  const [currentPage, setCurrentPage] = useState<PageType>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'pricing' | 'contractor' | 'court' | 'leak' | 'appraisal' | 'tel-aviv' | 'jerusalem' | 'merkaz' | 'villa' | 'warranty' | 'second-hand' | '404'>('home');
 
   useEffect(() => {
     const updateMeta = (title: string, description: string, keywords: string) => {
-      try {
-        document.title = title;
-        const metaDesc = document.querySelector('meta[name="description"]');
-        if (metaDesc) metaDesc.setAttribute('content', description);
-        
-        const metaKeywords = document.querySelector('meta[name="keywords"]');
-        if (metaKeywords) metaKeywords.setAttribute('content', keywords);
-        
-        let canonical = document.querySelector('link[rel="canonical"]');
-        if (!canonical) {
-          canonical = document.createElement('link');
-          canonical.setAttribute('rel', 'canonical');
-          document.head.appendChild(canonical);
-        }
-        canonical.setAttribute('href', window.location.href.split('#')[0] + window.location.hash);
-      } catch (e) {
-        console.error("Meta update failed", e);
+      document.title = title;
+      const metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc) metaDesc.setAttribute('content', description);
+      
+      const metaKeywords = document.querySelector('meta[name="keywords"]');
+      if (metaKeywords) metaKeywords.setAttribute('content', keywords);
+      
+      let canonical = document.querySelector('link[rel="canonical"]');
+      if (!canonical) {
+        canonical = document.createElement('link');
+        canonical.setAttribute('rel', 'canonical');
+        document.head.appendChild(canonical);
       }
+      canonical.setAttribute('href', window.location.href.split('#')[0] + window.location.hash);
     };
 
     const handleRouting = () => {
+      const hash = window.location.hash.replace(/^#/, '');
+      const pathname = window.location.pathname;
+      
       let routePath = "/";
-      try {
-        const hash = window.location.hash.replace(/^#/, '');
-        const pathname = window.location.pathname;
-        
-        if (hash.startsWith('/')) {
-          routePath = decodeURIComponent(hash).toLowerCase();
-        } else if (pathname !== '/' && pathname !== '/index.html') {
-          routePath = decodeURIComponent(pathname).toLowerCase();
-        }
-      } catch (e) {
-        console.warn("Invalid URI in path, reverting to home", e);
-        routePath = "/";
+      
+      if (hash.startsWith('/')) {
+        routePath = decodeURIComponent(hash).toLowerCase();
+      } else if (pathname !== '/' && pathname !== '/index.html') {
+        routePath = decodeURIComponent(pathname).toLowerCase();
       }
 
-      const normalizedPath = routePath.replace(/\s+/g, '-').replace(/\/$/, '') || "/";
+      const normalizedPath = routePath.replace(/\s+/g, '-').replace(/\/$/, '');
 
       if (normalizedPath === "" || normalizedPath === "/" || normalizedPath === "/index.html") {
         setCurrentPage('home');
@@ -104,18 +94,16 @@ const App: React.FC = () => {
       } else if (normalizedPath.includes("יד-שנייה") || normalizedPath.includes("second-hand")) {
         setCurrentPage('second-hand');
       } else {
-        const hashSection = window.location.hash.replace(/^#/, '');
         const homeSections = ['contact', 'faq', 'services', 'process', 'why-us', 'testimonials', 'cases', 'knowledge', 'privacy-policy', 'accessibility'];
-        if (homeSections.includes(hashSection)) {
+        if (homeSections.includes(hash)) {
           setCurrentPage('home');
         } else {
           setCurrentPage('404');
         }
       }
       
-      const hashSection = window.location.hash.replace(/^#/, '');
       const homeSections = ['contact', 'faq', 'services', 'process', 'why-us', 'testimonials', 'cases', 'knowledge', 'privacy-policy', 'accessibility'];
-      if (!homeSections.includes(hashSection)) {
+      if (!homeSections.includes(hash)) {
         window.scrollTo({ top: 0, behavior: 'instant' });
       }
     };
@@ -130,47 +118,41 @@ const App: React.FC = () => {
     };
   }, []);
 
-  const renderPage = () => {
-    switch (currentPage) {
-      case 'pricing': return <PricingPage />;
-      case 'contractor': return <ContractorInspectionPage />;
-      case 'court': return <CourtExpertPage />;
-      case 'leak': return <LeakDetectionPage />;
-      case 'appraisal': return <AppraisalPage />;
-      case 'tel-aviv': return <LocationPage city="תל אביב" />;
-      case 'jerusalem': return <LocationPage city="ירושלים" />;
-      case 'merkaz': return <LocationPage city="המרכז" />;
-      case 'villa': return <VillaInspectionPage />;
-      case 'warranty': return <WarrantyInspectionPage />;
-      case 'second-hand': return <SecondHandInspectionPage />;
-      case '404': return <NotFound />;
-      default:
-        return (
-          <div className="bg-gray-950 text-gray-300 selection:bg-blue-500/30 selection:text-white overflow-x-hidden">
-            <Header />
-            <main id="main-content" role="main">
-              <FadeInSection><Hero /></FadeInSection>
-              <FadeInSection delay={150}><Services /></FadeInSection>
-              <FadeInSection><WhyUs /></FadeInSection>
-              <FadeInSection><CaseStudies /></FadeInSection>
-              <FadeInSection><ComparisonTable /></FadeInSection>
-              <FadeInSection delay={100}><Process /></FadeInSection>
-              <FadeInSection><KnowledgeHub /></FadeInSection>
-              <FadeInSection><Testimonials /></FadeInSection>
-              <FadeInSection><FAQ /></FadeInSection>
-              <FadeInSection><Contact /></FadeInSection>
-              <FadeInSection><PrivacySection /></FadeInSection>
-              <FadeInSection><AccessibilitySection /></FadeInSection>
-            </main>
-            <Footer />
-            <StickyQuoteButton />
-            <CookieConsent />
-          </div>
-        );
-    }
-  };
+  if (currentPage === '404') return <NotFound />;
+  if (currentPage === 'pricing') return <PricingPage />;
+  if (currentPage === 'contractor') return <ContractorInspectionPage />;
+  if (currentPage === 'court') return <CourtExpertPage />;
+  if (currentPage === 'leak') return <LeakDetectionPage />;
+  if (currentPage === 'appraisal') return <AppraisalPage />;
+  if (currentPage === 'tel-aviv') return <LocationPage city="תל אביב" />;
+  if (currentPage === 'jerusalem') return <LocationPage city="ירושלים" />;
+  if (currentPage === 'merkaz') return <LocationPage city="המרכז" />;
+  if (currentPage === 'villa') return <VillaInspectionPage />;
+  if (currentPage === 'warranty') return <WarrantyInspectionPage />;
+  if (currentPage === 'second-hand') return <SecondHandInspectionPage />;
 
-  return renderPage();
+  return (
+    <div className="bg-gray-950 text-gray-300 selection:bg-blue-500/30 selection:text-white overflow-x-hidden">
+      <Header />
+      <main id="main-content" role="main">
+        <FadeInSection><Hero /></FadeInSection>
+        <FadeInSection delay={150}><Services /></FadeInSection>
+        <FadeInSection><WhyUs /></FadeInSection>
+        <FadeInSection><CaseStudies /></FadeInSection>
+        <FadeInSection><ComparisonTable /></FadeInSection>
+        <FadeInSection delay={100}><Process /></FadeInSection>
+        <FadeInSection><KnowledgeHub /></FadeInSection>
+        <FadeInSection><Testimonials /></FadeInSection>
+        <FadeInSection><FAQ /></FadeInSection>
+        <FadeInSection><Contact /></FadeInSection>
+        <FadeInSection><PrivacySection /></FadeInSection>
+        <FadeInSection><AccessibilitySection /></FadeInSection>
+      </main>
+      <Footer />
+      <StickyQuoteButton />
+      <CookieConsent />
+    </div>
+  );
 };
 
 export default App;
