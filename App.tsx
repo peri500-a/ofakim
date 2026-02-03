@@ -25,10 +25,11 @@ import AppraisalPage from './components/AppraisalPage';
 import LocationPage from './components/LocationPage';
 import VillaInspectionPage from './components/VillaInspectionPage';
 import WarrantyInspectionPage from './components/WarrantyInspectionPage';
+import SecondHandInspectionPage from './components/SecondHandInspectionPage';
 import NotFound from './components/NotFound';
 
 const App: React.FC = () => {
-  const [currentPage, setCurrentPage] = useState<'home' | 'pricing' | 'contractor' | 'court' | 'leak' | 'appraisal' | 'tel-aviv' | 'jerusalem' | 'merkaz' | 'villa' | 'warranty' | '404'>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'pricing' | 'contractor' | 'court' | 'leak' | 'appraisal' | 'tel-aviv' | 'jerusalem' | 'merkaz' | 'villa' | 'warranty' | 'second-hand' | '404'>('home');
 
   useEffect(() => {
     const updateMeta = (title: string, description: string, keywords: string) => {
@@ -54,19 +55,15 @@ const App: React.FC = () => {
       
       let routePath = "/";
       
-      // Determine the active route path
       if (hash.startsWith('/')) {
         routePath = decodeURIComponent(hash).toLowerCase();
       } else if (pathname !== '/' && pathname !== '/index.html') {
         routePath = decodeURIComponent(pathname).toLowerCase();
       }
 
-      // Normalizing for comparison
       const normalizedPath = routePath.replace(/\s+/g, '-').replace(/\/$/, '');
 
-      // Check for Home Page first (empty normalized path means root)
       if (normalizedPath === "" || normalizedPath === "/" || normalizedPath === "/index.html") {
-        // If we have a hash that is just a section (like #contact), it's also Home
         setCurrentPage('home');
         updateMeta(
           "בדק בית וביקורת מבנים ע״י מהנדס מומחה | איתור ליקויי בנייה | אופקים הנדסה", 
@@ -94,8 +91,9 @@ const App: React.FC = () => {
         setCurrentPage('villa');
       } else if (normalizedPath.includes("שנת-בדק") || normalizedPath.includes("warranty")) {
         setCurrentPage('warranty');
+      } else if (normalizedPath.includes("יד-שנייה") || normalizedPath.includes("second-hand")) {
+        setCurrentPage('second-hand');
       } else {
-        // Explicitly check for internal home anchors
         const homeSections = ['contact', 'faq', 'services', 'process', 'why-us', 'testimonials', 'cases', 'knowledge', 'privacy-policy', 'accessibility'];
         if (homeSections.includes(hash)) {
           setCurrentPage('home');
@@ -104,7 +102,6 @@ const App: React.FC = () => {
         }
       }
       
-      // Scroll to top only if not an anchor navigation
       const homeSections = ['contact', 'faq', 'services', 'process', 'why-us', 'testimonials', 'cases', 'knowledge', 'privacy-policy', 'accessibility'];
       if (!homeSections.includes(hash)) {
         window.scrollTo({ top: 0, behavior: 'instant' });
@@ -132,6 +129,7 @@ const App: React.FC = () => {
   if (currentPage === 'merkaz') return <LocationPage city="המרכז" />;
   if (currentPage === 'villa') return <VillaInspectionPage />;
   if (currentPage === 'warranty') return <WarrantyInspectionPage />;
+  if (currentPage === 'second-hand') return <SecondHandInspectionPage />;
 
   return (
     <div className="bg-gray-950 text-gray-300 selection:bg-blue-500/30 selection:text-white overflow-x-hidden">

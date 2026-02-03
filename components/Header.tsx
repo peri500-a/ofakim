@@ -16,10 +16,10 @@ const Header: React.FC = () => {
       isDropdown: true,
       items: [
         { href: '#/בדק-בית-מקבלן', label: 'דירה חדשה מקבלן' },
+        { href: '#/בדק-בית-יד-שנייה', label: 'דירות יד שנייה' },
         { href: '#/בדיקת-סוף-שנת-בדק', label: 'סוף שנת בדק' },
         { href: '#/בדק-בית-לבית-פרטי-וילה', label: 'בתים פרטיים ווילות' },
         { href: '#/איתור-נזילות-ורטיבות', label: 'איתור נזילות ותרמי' },
-        { href: '#/שמאות-רכוש-והערכת-נזקים', label: 'שמאות רכוש' },
         { href: '#/חוות-דעת-הנדסית-לבית-משפט', label: 'חוות דעת משפטית' }
       ]
     },
@@ -96,7 +96,6 @@ const Header: React.FC = () => {
 
       if (isHomeDeepLink) {
         e.preventDefault();
-        // Force clean URL for home
         window.history.pushState(null, '', '/');
         window.location.hash = '';
         window.dispatchEvent(new PopStateEvent('popstate'));
@@ -106,7 +105,6 @@ const Header: React.FC = () => {
 
       if (href.startsWith('#/')) {
         e.preventDefault();
-        // If we are on a deep path, first clean the URL then apply hash
         if (isDeepPath) {
           window.history.pushState(null, '', '/');
         }
@@ -114,7 +112,6 @@ const Header: React.FC = () => {
         window.dispatchEvent(new PopStateEvent('popstate'));
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
-        // Simple internal anchor
         if (isDeepPath) {
           e.preventDefault();
           window.history.pushState(null, '', '/');
@@ -203,69 +200,6 @@ const Header: React.FC = () => {
           </div>
         </div>
       </header>
-
-      <div 
-        id="mobile-menu"
-        ref={menuRef}
-        className={`lg:hidden fixed inset-0 z-[60] bg-gray-950/98 backdrop-blur-xl transition-all duration-500 ${isMenuOpen ? 'opacity-100 pointer-events-auto translate-x-0' : 'opacity-0 pointer-events-none translate-x-full'}`}
-        aria-hidden={!isMenuOpen}
-        role="dialog"
-        aria-modal="true"
-        aria-label="תפריט ניווט נייד"
-      >
-        <div className="flex flex-col items-center justify-center h-full space-y-6 p-6 overflow-y-auto">
-          <button 
-            ref={closeButtonRef}
-            onClick={toggleMenu} 
-            className="absolute top-6 left-6 text-gray-400 p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-full"
-            aria-label="סגור תפריט"
-          >
-            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
-          </button>
-          
-          <div className="flex flex-col items-center gap-8 w-full">
-            {navLinks.map((link, idx) => (
-              <div key={idx} className="flex flex-col items-center gap-4 w-full">
-                {link.isDropdown ? (
-                  <>
-                    <span className="text-blue-500 font-black text-sm uppercase tracking-widest" aria-hidden="true">{link.label}</span>
-                    <div className="flex flex-col items-center gap-3">
-                      {link.items?.map((sub) => (
-                        <a 
-                          key={sub.href} 
-                          href={sub.href} 
-                          onClick={(e) => handleLinkClick(e, sub.href)} 
-                          className="text-2xl font-black text-white hover:text-blue-400 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg px-2"
-                        >
-                          {sub.label}
-                        </a>
-                      ))}
-                    </div>
-                  </>
-                ) : (
-                  <a 
-                    href={link.href} 
-                    onClick={(e) => handleLinkClick(e, link.href!)} 
-                    className="text-3xl font-black text-white hover:text-blue-400 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg px-2"
-                  >
-                    {link.label}
-                  </a>
-                )}
-              </div>
-            ))}
-          </div>
-
-          <div className="pt-8 border-t border-white/10 w-full max-w-xs flex flex-col items-center">
-            <a 
-              href="tel:054-7515142" 
-              className="flex items-center gap-3 bg-blue-600 text-white font-black px-8 py-4 rounded-2xl shadow-xl shadow-blue-900/40 focus:outline-none focus:ring-4 focus:ring-blue-400"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
-              <span>054-7515142</span>
-            </a>
-          </div>
-        </div>
-      </div>
     </>
   );
 };

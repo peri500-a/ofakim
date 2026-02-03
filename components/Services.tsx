@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 const ServiceCard: React.FC<{ 
@@ -75,12 +76,12 @@ const Services: React.FC = () => {
       href: '#/בדק-בית-לבית-פרטי-וילה'
     },
     {
-      title: 'בדק בית ליד שניה',
+      title: 'בדק בית לדירות יד שנייה',
       description: 'אל תקנו חתול בשק: בדיקה הנדסית מקיפה לפני רכישת דירה משומשת לאיתור נזילות סמויות, סדקים בשלד וליקויים בתשתיות ישנות.',
       imageUrl: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80",
-      imageAlt: 'בדק בית לדירת יד שניה',
+      imageAlt: 'בדק בית לדירת יד שנייה לפני רכישה',
       icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>,
-      href: '#contact'
+      href: '#/בדק-בית-יד-שנייה'
     },
     {
       title: 'בדיקת סוף שנת בדק',
@@ -105,30 +106,6 @@ const Services: React.FC = () => {
       imageAlt: 'חוות דעת הנדסית לבית משפט בנושא ליקויי בנייה',
       icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" /></svg>,
       href: '#/חוות-דעת-הנדסית-לבית-משפט'
-    },
-    {
-      title: 'שמאות רכוש וירידת ערך',
-      description: 'מיקסום הפיצוי המגיע לכם: הערכת שווי הנדסית-שמאית מדויקת לנזקי רכוש וירידת ערך, המהווה בסיס בלתי מעורער לתביעות ביטוח ונזיקין.',
-      imageUrl: "https://res.cloudinary.com/dbzklnlcx/image/upload/v1770104338/%D7%A9%D7%9E%D7%90%D7%95%D7%AA_%D7%A8%D7%9B%D7%95%D7%A911_drxde5.jpg",
-      imageAlt: 'שמאי רכוש מבצע הערכת שווי וירידת ערך בגין ליקויי בנייה',
-      icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
-      href: '#/שמאות-רכוש-והערכת-נזקים'
-    },
-    {
-      title: 'ביקורת שטחים משותפים',
-      description: 'שירות ייעודי לועדי בתים: בדיקת הנדסית מקיפה של לובי, מעליות, מאגרי מים, גגות ופיתוח סביבתי לפני קבלת האחריות מהקבלן.',
-      imageUrl: "https://res.cloudinary.com/dbzklnlcx/image/upload/v1770103357/%D7%9C%D7%95%D7%91%D7%99_%D7%A9%D7%9C_%D7%91%D7%A0%D7%99%D7%99%D7%9F_qr7teu.jpg",
-      imageAlt: 'ביקורת שטחים משותפים בבניין',
-      icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>,
-      href: '#contact'
-    },
-    {
-      title: 'פיקוח הנדסי וליווי בניה',
-      description: 'ראש שקט לאורך כל הפרויקט: ליווי מהנדס מוסמך משלב היסודות ועד הגמר, המבטיח בניה איכותית ותקנית ללא קיצורי דרך של קבלנים.',
-      imageUrl: "https://res.cloudinary.com/dbzklnlcx/image/upload/v1770103357/%D7%A9%D7%A0%D7%AA_%D7%91%D7%93%D7%A7_a5klqo.jpg?auto=format&fit=crop&w=800&q=80",
-      imageAlt: 'פיקוח הנדסי וליווי בניה בשטח',
-      icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
-      href: '#contact'
     }
   ];
 
