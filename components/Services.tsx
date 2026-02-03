@@ -69,7 +69,7 @@ const Services: React.FC = () => {
     {
       title: 'בדק בית לבתים פרטיים',
       description: 'הגנה היקפית על צמודי קרקע: בדיקת מעטפת, גגות רעפים, מערכות ניקוז חוץ ושלד המבנה. מומחיות ייחודית לתקלות האופייניות לוילות.',
-      imageUrl: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
+      imageUrl: "https://res.cloudinary.com/dbzklnlcx/image/upload/v1770103357/%D7%91%D7%99%D7%AA_%D7%A4%D7%A8%D7%98%D7%99_wlsjqc.jpg?auto=format&fit=crop&w=800&q=80",
       imageAlt: 'ביקורת מבנים הנדסית לבית פרטי ווילה',
       icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>,
       href: '#/בדק-בית-לבית-פרטי-וילה'
@@ -85,7 +85,7 @@ const Services: React.FC = () => {
     {
       title: 'בדיקת סוף שנת בדק',
       description: 'הזדמנות אחרונה לתיקונים על חשבון הקבלן: איתור ליקויים שהתפתחו בשנה הראשונה (סדקים, רטיבות) ודרישת תיקון רגע לפני פקיעת האחריות.',
-      imageUrl: "https://images.unsplash.com/photo-1503387762-592dea58ef22?auto=format&fit=crop&w=800&q=80",
+      imageUrl: "https://res.cloudinary.com/dbzklnlcx/image/upload/v1770103357/%D7%A9%D7%A0%D7%AA_%D7%91%D7%93%D7%A7_a5klqo.jpg?auto=format&fit=crop&w=800&q=80",
       imageAlt: 'בדיקת שנת בדק לדירה חדשה',
       icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
       href: '#/בדיקת-סוף-שנת-בדק'
@@ -109,7 +109,7 @@ const Services: React.FC = () => {
     {
       title: 'שמאות רכוש וירידת ערך',
       description: 'מיקסום הפיצוי המגיע לכם: הערכת שווי הנדסית-שמאית מדויקת לנזקי רכוש וירידת ערך, המהווה בסיס בלתי מעורער לתביעות ביטוח ונזיקין.',
-      imageUrl: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=800&q=80",
+      imageUrl: "https://res.cloudinary.com/dbzklnlcx/image/upload/v1770104338/%D7%A9%D7%9E%D7%90%D7%95%D7%AA_%D7%A8%D7%9B%D7%95%D7%A911_drxde5.jpg",
       imageAlt: 'שמאי רכוש מבצע הערכת שווי וירידת ערך בגין ליקויי בנייה',
       icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
       href: '#/שמאות-רכוש-והערכת-נזקים'
@@ -117,7 +117,7 @@ const Services: React.FC = () => {
     {
       title: 'ביקורת שטחים משותפים',
       description: 'שירות ייעודי לועדי בתים: בדיקת הנדסית מקיפה של לובי, מעליות, מאגרי מים, גגות ופיתוח סביבתי לפני קבלת האחריות מהקבלן.',
-      imageUrl: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80",
+      imageUrl: "https://res.cloudinary.com/dbzklnlcx/image/upload/v1770103357/%D7%9C%D7%95%D7%91%D7%99_%D7%A9%D7%9C_%D7%91%D7%A0%D7%99%D7%99%D7%9F_qr7teu.jpg",
       imageAlt: 'ביקורת שטחים משותפים בבניין',
       icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>,
       href: '#contact'
@@ -125,7 +125,7 @@ const Services: React.FC = () => {
     {
       title: 'פיקוח הנדסי וליווי בניה',
       description: 'ראש שקט לאורך כל הפרויקט: ליווי מהנדס מוסמך משלב היסודות ועד הגמר, המבטיח בניה איכותית ותקנית ללא קיצורי דרך של קבלנים.',
-      imageUrl: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80",
+      imageUrl: "https://res.cloudinary.com/dbzklnlcx/image/upload/v1770103357/%D7%A9%D7%A0%D7%AA_%D7%91%D7%93%D7%A7_a5klqo.jpg?auto=format&fit=crop&w=800&q=80",
       imageAlt: 'פיקוח הנדסי וליווי בניה בשטח',
       icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
       href: '#contact'
