@@ -44,11 +44,9 @@ const Header: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Accessibility: Focus management and body scroll locking
   useEffect(() => {
     if (isMenuOpen) {
       document.body.style.overflow = 'hidden';
-      // Focus the close button when the menu opens
       closeButtonRef.current?.focus();
 
       const handleKeyDown = (e: KeyboardEvent) => {
@@ -84,23 +82,46 @@ const Header: React.FC = () => {
         document.body.style.overflow = '';
       };
     } else {
-      // Return focus to the toggle button when the menu closes
       toggleButtonRef.current?.focus();
     }
   }, [isMenuOpen]);
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    setIsMenuOpen(false);
+    
     if (href.startsWith('#')) {
-      if (href.startsWith('#') && !href.startsWith('#/') && window.location.pathname === '/' && !window.location.hash.startsWith('#/')) {
-        setIsMenuOpen(false);
+      const isHomeDeepLink = href === '#/' || href === '#';
+      const currentPath = window.location.pathname;
+      const isDeepPath = currentPath !== '/' && currentPath !== '/index.html';
+
+      if (isHomeDeepLink) {
+        e.preventDefault();
+        // Force clean URL for home
+        window.history.pushState(null, '', '/');
+        window.location.hash = '';
+        window.dispatchEvent(new PopStateEvent('popstate'));
+        window.scrollTo({ top: 0, behavior: 'smooth' });
         return;
       }
 
-      e.preventDefault();
-      window.location.hash = href.replace(/^#/, '');
-      window.dispatchEvent(new PopStateEvent('popstate'));
-      setIsMenuOpen(false);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (href.startsWith('#/')) {
+        e.preventDefault();
+        // If we are on a deep path, first clean the URL then apply hash
+        if (isDeepPath) {
+          window.history.pushState(null, '', '/');
+        }
+        window.location.hash = href.replace(/^#/, '');
+        window.dispatchEvent(new PopStateEvent('popstate'));
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        // Simple internal anchor
+        if (isDeepPath) {
+          e.preventDefault();
+          window.history.pushState(null, '', '/');
+          window.location.hash = href.replace(/^#/, '');
+          window.dispatchEvent(new PopStateEvent('popstate'));
+        }
+      }
     }
   };
 

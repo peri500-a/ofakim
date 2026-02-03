@@ -52,19 +52,21 @@ const App: React.FC = () => {
       const hash = window.location.hash.replace(/^#/, '');
       const pathname = window.location.pathname;
       
-      let cleanPath = "/";
+      let routePath = "/";
       
-      // Deciphering the path from either Netlify Pathname or older Hash routing
-      if (pathname !== '/' && pathname !== '/index.html') {
-        cleanPath = decodeURIComponent(pathname).toLowerCase();
-      } else if (hash.startsWith('/')) {
-        cleanPath = decodeURIComponent(hash).toLowerCase();
+      // Determine the active route path
+      if (hash.startsWith('/')) {
+        routePath = decodeURIComponent(hash).toLowerCase();
+      } else if (pathname !== '/' && pathname !== '/index.html') {
+        routePath = decodeURIComponent(pathname).toLowerCase();
       }
 
-      // Normalizing the path for matching (standardizing dashes/spaces)
-      const normalizedPath = cleanPath.replace(/\s+/g, '-').replace(/\/$/, '');
+      // Normalizing for comparison
+      const normalizedPath = routePath.replace(/\s+/g, '-').replace(/\/$/, '');
 
-      if (normalizedPath === "") {
+      // Check for Home Page first (empty normalized path means root)
+      if (normalizedPath === "" || normalizedPath === "/" || normalizedPath === "/index.html") {
+        // If we have a hash that is just a section (like #contact), it's also Home
         setCurrentPage('home');
         updateMeta(
           "בדק בית וביקורת מבנים ע״י מהנדס מומחה | איתור ליקויי בנייה | אופקים הנדסה", 
@@ -93,7 +95,7 @@ const App: React.FC = () => {
       } else if (normalizedPath.includes("שנת-בדק") || normalizedPath.includes("warranty")) {
         setCurrentPage('warranty');
       } else {
-        // Explicitly check for internal home anchors before failing to 404
+        // Explicitly check for internal home anchors
         const homeSections = ['contact', 'faq', 'services', 'process', 'why-us', 'testimonials', 'cases', 'knowledge', 'privacy-policy', 'accessibility'];
         if (homeSections.includes(hash)) {
           setCurrentPage('home');
@@ -102,7 +104,9 @@ const App: React.FC = () => {
         }
       }
       
-      if (currentPage !== '404') {
+      // Scroll to top only if not an anchor navigation
+      const homeSections = ['contact', 'faq', 'services', 'process', 'why-us', 'testimonials', 'cases', 'knowledge', 'privacy-policy', 'accessibility'];
+      if (!homeSections.includes(hash)) {
         window.scrollTo({ top: 0, behavior: 'instant' });
       }
     };
@@ -115,7 +119,7 @@ const App: React.FC = () => {
       window.removeEventListener('popstate', handleRouting);
       window.removeEventListener('hashchange', handleRouting);
     };
-  }, [currentPage]);
+  }, []);
 
   if (currentPage === '404') return <NotFound />;
   if (currentPage === 'pricing') return <PricingPage />;
