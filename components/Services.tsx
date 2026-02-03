@@ -110,7 +110,7 @@ const Services: React.FC = () => {
     {
       title: 'פיקוח הנדסי וליווי בניה',
       description: 'ליווי צמוד לאורך כל תהליך הבנייה או השיפוץ: פיקוח על איכות החומרים, עמידה בלוחות זמנים ומניעת ליקויים עוד בשלב הביצוע המוקדם.',
-      imageUrl: "https://images.unsplash.com/photo-1503387762-592dea58ef22?auto=format&fit=crop&w=800&q=80",
+      imageUrl: "https://res.cloudinary.com/dbzklnlcx/image/upload/v1770103360/%D7%9E%D7%97%D7%99%D7%A8%D7%95%D7%9F_%D7%91%D7%93%D7%A7_%D7%91%D7%99%D7%AA_qac6nq.jpg",
       imageAlt: 'פיקוח הנדסי וליווי בנייה באתר עבודה',
       icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" /></svg>,
       href: '#contact'
@@ -118,7 +118,7 @@ const Services: React.FC = () => {
     {
       title: 'ביקורת שטחים משותפים',
       description: 'בדיקה הנדסית לרכוש המשותף: מעליות, מאגרי מים, לובי וחיפויים חיצוניים. הגנה על ועד הבית והדיירים מפני הוצאות תחזוקה כבדות.',
-      imageUrl: "https://res.cloudinary.com/dbzklnlcx/image/upload/v1770018443/%D7%93%D7%99%D7%A8%D7%94_%D7%91%D7%95%D7%91_%D7%91%D7%98%D7%99%D7%A7_q4mztn.jpg",
+      imageUrl: "https://res.cloudinary.com/dbzklnlcx/image/upload/v1770103357/%D7%9C%D7%95%D7%91%D7%99_%D7%A9%D7%9C_%D7%91%D7%A0%D7%99%D7%99%D7%9F_qr7teu.jpg",
       imageAlt: 'ביקורת שטחים משותפים בבניין מגורים',
       icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>,
       href: '#contact'
@@ -126,7 +126,7 @@ const Services: React.FC = () => {
     {
       title: 'שמאות רכוש וירידת ערך',
       description: 'הערכת נזקים וחישוב ירידת ערך לנכס עקב ליקויים או נזקי צנרת. דוח שמאי מוסמך לצורך תביעות ביטוח ודרישת פיצויים מהקבלן.',
-      imageUrl: "https://images.unsplash.com/photo-1554469384-e58fb162295a?auto=format&fit=crop&w=800&q=80",
+      imageUrl: "https://res.cloudinary.com/dbzklnlcx/image/upload/v1770104338/%D7%A9%D7%9E%D7%90%D7%95%D7%AA_%D7%A8%D7%9B%D7%95%D7%A911_drxde5.jpg",
       imageAlt: 'שמאות רכוש וירידת ערך לנכס',
       icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
       href: '#/שמאות-רכוש-והערכת-נזקים'
