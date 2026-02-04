@@ -81,7 +81,7 @@ const Services: React.FC = () => {
     {
       title: 'בדק בית לדירות יד שנייה',
       description: 'בדיקה קריטית לפני רכישה שמטרתה לחשוף מה המוכרים מסתירים מאחורי צבע טרי. אנו בודקים את תקינות הצנרת הישנה, יציבות השלד והתאמה לתשריט.\n\nליקויים נפוצים: רטיבות כלואה מתחת לריצוף, לוחות חשמל לא תקניים, ושינויי מבנה שבוצעו ללא היתר בנייה.\n\nהיתרון שלנו: דוח שמאות הנדסי שנותן לכם כוח אדיר במשא ומתן על המחיר ומגן עליכם מפני רכישת "חתול בשק".',
-      imageUrl: "https://res.cloudinary.com/dbzklnlcx/image/upload/v1769671282/%D7%93%D7%99%D7%A8%D7%94_%D7%97%D7%93%D7%A9%D7%94_lybsnf.jpg",
+      imageUrl: "https://res.cloudinary.com/dbzklnlcx/image/upload/v1770018186/%D7%93%D7%99%D7%A8%D7%94_%D7%91%D7%A4%D7%AA%D7%97_%D7%AA%D7%A7%D7%95%D7%95%D7%94_ybjt5v.jpg",
       imageAlt: 'ביקורת הנדסית מקיפה לדירת יד שנייה לפני קנייה לאיתור נזילות סמויות',
       icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>,
       href: '#/בדק-בית-יד-שנייה'
