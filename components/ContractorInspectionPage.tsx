@@ -7,6 +7,7 @@ import Contact from './Contact';
 const ContractorInspectionPage: React.FC = () => {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    document.title = "בדק בית לדירה חדשה מקבלן | ביקורת מבנים ע״י מהנדס בדק בית מומחה";
   }, []);
 
   const handleGoHome = (e: React.MouseEvent) => {
@@ -42,7 +43,7 @@ const ContractorInspectionPage: React.FC = () => {
               <span className="text-blue-500">לדירה חדשה מקבלן</span>
             </h1>
             <p className="text-2xl text-gray-400 mb-10 leading-relaxed max-w-2xl font-medium">
-              קיבלתם מפתח? מזל טוב. עכשיו הזמן לוודא שהקבלן עמד בכל ההתחייבויות שלו. אל תחתמו על פרוטוקול המסירה ללא ביקורת מבנים הנדסית של מהנדס מוסמך.
+              קיבלתם מפתח? מזל טוב. עכשיו הזמן לוודא שהקבלן עמד בכל ההתחייבויות שלו. אל תחתמו על פרוטוקול המסירה ללא ביקורת מבנים הנדסית של מהנדס בדק בית מוסמך.
             </p>
             <div className="flex gap-4">
                <a href="#contact" className="bg-blue-600 hover:bg-blue-500 text-white font-black px-10 py-5 rounded-2xl text-xl transition-all shadow-xl shadow-blue-900/40">הזמינו בדיקת מסירה</a>
@@ -80,13 +81,13 @@ const ContractorInspectionPage: React.FC = () => {
         <div className="container mx-auto px-6">
           <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <div>
-              <h2 className="text-4xl font-black text-white mb-8">מה בודקים בבדק בית לדירה חדשה?</h2>
+              <h2 className="text-4xl font-black text-white mb-8">מה בודק מהנדס בדק בית בדירה חדשה?</h2>
               <div className="space-y-6">
                 {[
                   { t: 'איתור ליקויי רטיבות ואיטום', d: 'שימוש במצלמה תרמית לאיתור נזילות סמויות שיתגלו רק בחורף.' },
                   { t: 'בדיקת תשתיות חשמל ואינסטלציה', d: 'וידוא זרימה תקינה, הארקה והתאמה לתוכניות המקוריות.' },
                   { t: 'בדיקת מישוריות וריצוף', d: 'איתור חללים מתחת לאריחים וסטיות במישוריות הקירות.' },
-                  { t: 'ביקורת מפרט המכר', d: 'השוואה מדוקדקת בין מה שהובטח לכם בחוזה לבין מה שבוצע בפועל.' }
+                  { t: 'ביקורת מפרט המכר הנדסית', d: 'השוואה מדוקדקת בין מה שהובטח לכם בחוזה לבין מה שבוצע בפועל.' }
                 ].map((item, i) => (
                   <div key={i} className="flex gap-4 group">
                     <div className="w-8 h-8 rounded-full bg-blue-500/10 text-blue-500 flex items-center justify-center shrink-0 font-black group-hover:bg-blue-600 group-hover:text-white transition-all">{i+1}</div>
@@ -100,7 +101,7 @@ const ContractorInspectionPage: React.FC = () => {
             </div>
             <div className="relative">
                <div className="absolute -inset-10 bg-blue-500/10 blur-[100px] rounded-full"></div>
-               <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=800&q=80" className="relative rounded-[3rem] shadow-2xl border border-white/10" alt="מהנדס בודק דירה חדשה" />
+               <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=800&q=80" className="relative rounded-[3rem] shadow-2xl border border-white/10" alt="ביצוע בדק בית בדירה חדשה" />
             </div>
           </div>
         </div>
@@ -114,7 +115,7 @@ const ContractorInspectionPage: React.FC = () => {
               <h2 className="text-blue-500 font-black uppercase tracking-[0.2em] text-sm mb-4 italic">חוק המכר (דירות)</h2>
               <h3 className="text-4xl md:text-5xl font-black text-white mb-6">התוספת (סעיף 4): <span className="text-blue-500">תקופות הבדק</span></h3>
               <p className="text-gray-400 text-lg max-w-3xl mx-auto">
-                לפי החוק, הקבלן אחראי לתיקון ליקויים שנתגלו בדירה בתקופות זמן קצובות. המהנדס שלנו יוודא שכל חריגה מהתקנים האלו תופיע בדוח ההנדסי שלכם.
+                לפי החוק, הקבלן אחראי לתיקון ליקויי בנייה שנתגלו בדירה בתקופות זמן קצובות. המהנדס שלנו יוודא שכל חריגה מהתקנים האלו תופיע בדוח ההנדסי שלכם.
               </p>
             </div>
 
@@ -136,33 +137,11 @@ const ContractorInspectionPage: React.FC = () => {
             </div>
 
             <div className="mt-12 bg-gray-950 p-8 rounded-[2rem] border border-white/5 space-y-4 text-sm text-gray-400">
-               <h4 className="text-white font-bold text-lg mb-2 underline decoration-blue-500 underline-offset-8">הגדרות חשובות מהחוק:</h4>
+               <h4 className="text-white font-bold text-lg mb-2 underline decoration-blue-500 underline-offset-8">הגדרות חשובות מחוק המכר:</h4>
                <p><strong className="text-blue-400">"כשל"</strong> – כישלון מלא או חלקי בתפקוד המוצר או המערכת.</p>
                <p><strong className="text-blue-400">"ליקוי"</strong> – ליקוי בתפקוד ובעמידות המוצר או המערכת, לרבות אי-שמירה על יציבות, שלמות, איכות ומראה, הן של כל מרכיב בנפרד והן של המכלול.</p>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Legal Summary Section */}
-      <section className="py-24 bg-gray-900/50">
-        <div className="container mx-auto px-6">
-           <div className="max-w-3xl mx-auto text-center">
-             <h2 className="text-4xl font-black text-white mb-8">הגנה משפטית מלאה</h2>
-             <p className="text-xl text-gray-400 leading-relaxed mb-12">
-               הדוח ההנדסי של "אופקים הנדסה" משמש כמסמך משפטי מחייב המפרט את הליקויים מול הקבלן בהתאם לתקופות הבדק המצוינות לעיל. אל תתנו לקבלן להתחמק מהאחריות המוטלת עליו בחוק.
-             </p>
-             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-right">
-                <div className="bg-gray-950 p-8 rounded-3xl border border-white/5">
-                  <h3 className="text-blue-400 font-bold mb-3">שנת הבדק</h3>
-                  <p className="text-gray-500">תקופה שמתחילה עם מסירת הדירה, בה הקבלן חייב לתקן כל ליקוי אלא אם הוכיח שהנגרם ע"י הקונה.</p>
-                </div>
-                <div className="bg-gray-950 p-8 rounded-3xl border border-white/5">
-                  <h3 className="text-blue-400 font-bold mb-3">תקופת האחריות</h3>
-                  <p className="text-gray-500">תקופה של 3 שנים נוספות לאחר שנת הבדק, בה האחריות היא על הקונה להוכיח שהליקוי מקורו בבנייה.</p>
-                </div>
-             </div>
-           </div>
         </div>
       </section>
 

@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const ServiceCard: React.FC<{ 
@@ -23,7 +22,7 @@ const ServiceCard: React.FC<{
       href={href}
       onClick={handleLinkClick}
       className="bg-gray-800 rounded-3xl md:rounded-[2.5rem] shadow-2xl hover:shadow-blue-600/20 hover:-translate-y-2 transition-all duration-500 flex flex-col border border-white/5 group overflow-hidden relative focus:outline-none focus:ring-4 focus:ring-blue-500/50 block h-full"
-      aria-label={`מידע על שירות ${title}`}
+      aria-label={`מידע מפורט על שירות ${title}`}
     >
       <div className="absolute inset-0 bg-blue-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
       
@@ -43,11 +42,15 @@ const ServiceCard: React.FC<{
       </div>
       
       <div className="p-6 sm:p-8 flex flex-col flex-grow relative z-10">
-        <h3 className="text-xl sm:text-2xl font-black text-white group-hover:text-blue-400 transition-colors duration-300 mb-3 leading-tight">{title}</h3>
-        <p className="text-gray-400 leading-relaxed flex-grow text-sm sm:text-base mb-6 line-clamp-3">{description}</p>
+        <h3 className="text-xl sm:text-2xl font-black text-white group-hover:text-blue-400 transition-colors duration-300 mb-4 leading-tight">{title}</h3>
+        <div className="text-gray-400 leading-relaxed flex-grow text-sm sm:text-base space-y-4 mb-6">
+          {description.split('\n\n').map((paragraph, i) => (
+            <p key={i}>{paragraph}</p>
+          ))}
+        </div>
         
-        <div className="flex items-center gap-3 text-blue-400 font-bold text-sm group-hover:translate-x-[-4px] transition-transform duration-300 mt-auto">
-          <span>פרטים והצעת מחיר לבדק בית</span>
+        <div className="flex items-center gap-3 text-blue-400 font-bold text-sm group-hover:translate-x-[-4px] transition-transform duration-300 mt-auto pt-4 border-t border-white/5">
+          <span>קרא עוד והזמן מהנדס מומחה</span>
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 12H5m0 0l7 7m-7-7l7-7" />
           </svg>
@@ -60,76 +63,76 @@ const ServiceCard: React.FC<{
 const Services: React.FC = () => {
   const services = [
     {
-      title: 'בדק בית לדירה חדשה',
-      description: 'וודאו שהקבלן מספק בדיוק מה שהובטח: בדיקה מדוקדקת מול מפרט המכר המאלצת את הקבלן לתקן ליקויים על חשבונו לפני תום שנת הבדק.',
+      title: 'בדק בית לדירה חדשה מקבלן',
+      description: 'בדיקה הנדסית קריטית המבוצעת מול מפרט המכר ותקנות התכנון והבנייה. אנו בוחנים את שלמות הריצוף, מערכות הניקוז, אטימות החלונות ותקינות לוח החשמל.\n\nליקויים נפוצים: אריחים חלולים, סטיות במישוריות הקירות, חוסר בהארקה תקנית וכשלי איטום במרפסות.\n\nהיתרון שלנו: דוח המהנדס של אופקים הנדסה מאלץ את הקבלן לתקן את הליקויים על חשבונו לפני מסירת המפתח, וחוסך לכם עשרות אלפי שקלים בשיפוצים עתידיים.',
       imageUrl: "https://res.cloudinary.com/dbzklnlcx/image/upload/v1769671282/%D7%93%D7%99%D7%A8%D7%94_%D7%97%D7%93%D7%A9%D7%94_lybsnf.jpg",
-      imageAlt: 'מהנדס בניין מבצע בדק בית בדירה חדשה מקבלן לאימות מפרט המכר',
+      imageAlt: 'מהנדס בניין מבצע ביקורת מבנים הנדסית בדירה חדשה לאימות מפרט המכר ותקני הבנייה',
       icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>,
       href: '#/בדק-בית-מקבלן'
     },
     {
-      title: 'בדק בית לבתים פרטיים',
-      description: 'הגנה היקפית על צמודי קרקע: בדיקת מעטפת, גגות רעפים, מערכות ניקוז חוץ ושלד המבנה. מומחיות ייחודית לתקלות האופייניות לוילות.',
-      imageUrl: "https://res.cloudinary.com/dbzklnlcx/image/upload/v1770103357/%D7%91%D7%99%D7%AA_%D7%A4%D7%A8%D7%98%D7%99_wlsjqc.jpg?auto=format&fit=crop&w=800&q=80",
-      imageAlt: 'ביקורת מבנים הנדסית לבית פרטי ווילה',
+      title: 'בדק בית לבתים פרטיים ווילות',
+      description: 'וילה היא מערכת מורכבת הדורשת התמחות במעטפת חוץ, גגות רעפים ותשתיות ניקוז עצמאיות. אנו סורקים את כל שטחי הנכס, כולל קירות תמך ובידוד תרמי.\n\nליקויים נפוצים: חדירת מי תהום למרתפים, כשלי איטום בגגות רעפים ושקיעות קרקע הגורמות לסדקים קונסטרוקטיביים.\n\nהיתרון שלנו: שימוש בטכנולוגיית אקוסטיקה ומצלמות תרמיות FLIR לאיתור נזילות במערכות מורכבות של צמודי קרקע.',
+      imageUrl: "https://res.cloudinary.com/dbzklnlcx/image/upload/v1770103357/%D7%91%D7%99%D7%AA_%D7%A4%D7%A8%D7%98%D7%99_wlsjqc.jpg",
+      imageAlt: 'ביקורת מבנים מקצועית לבית פרטי הכוללת בדיקת גג ואיטום מעטפת',
       icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>,
       href: '#/בדק-בית-לבית-פרטי-וילה'
     },
     {
       title: 'בדק בית לדירות יד שנייה',
-      description: 'אל תקנו חתול בשק: בדיקה הנדסית מקיפה לפני רכישת דירה משומשת לאיתור נזילות סמויות, סדקים בשלד וליקויים בתשתיות ישנות.',
-      imageUrl: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80",
-      imageAlt: 'בדק בית לדירת יד שנייה לפני רכישה',
+      description: 'בדיקה קריטית לפני רכישה שמטרתה לחשוף מה המוכרים מסתירים מאחורי צבע טרי. אנו בודקים את תקינות הצנרת הישנה, יציבות השלד והתאמה לתשריט.\n\nליקויים נפוצים: רטיבות כלואה מתחת לריצוף, לוחות חשמל לא תקניים, ושינויי מבנה שבוצעו ללא היתר בנייה.\n\nהיתרון שלנו: דוח שמאות הנדסי שנותן לכם כוח אדיר במשא ומתן על המחיר ומגן עליכם מפני רכישת "חתול בשק".',
+      imageUrl: "https://res.cloudinary.com/dbzklnlcx/image/upload/v1769671282/%D7%93%D7%99%D7%A8%D7%94_%D7%97%D7%93%D7%A9%D7%94_lybsnf.jpg",
+      imageAlt: 'ביקורת הנדסית מקיפה לדירת יד שנייה לפני קנייה לאיתור נזילות סמויות',
       icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>,
       href: '#/בדק-בית-יד-שנייה'
     },
     {
-      title: 'חוות דעת לבית משפט',
-      description: 'ראיית זהב להליך המשפטי: דוח הנדסי קביל ועדות מומחה מקצועית מטעם בית המשפט, המבטיחים לכם את הסיכוי המקסימלי לזכייה בתביעות בנייה.',
+      title: 'חוות דעת הנדסית לבית משפט',
+      description: 'הפקה של חוות דעת מומחה קבילה משפטית, ערוכה על ידי מהנדס מוסמך מטעם בתי המשפט. אנו מנתחים כשלים טכניים מורכבים ומגבים אותם בתקנים.\n\nליקויים נפוצים: ליקויי בנייה רשלניים, אי-התאמות חמורות לתקן הישראלי ונזקי רכוש כבדים כתוצאה מעבודה לקויה.\n\nהיתרון שלנו: ניסיון רב שנים בעדות בבית משפט ואחוז הצלחה גבוה במיוחד בביסוס טענות התובעים.',
       imageUrl: "https://res.cloudinary.com/dbzklnlcx/image/upload/v1769671390/%D7%AA%D7%9E%D7%95%D7%A0%D7%AA_%D7%A9%D7%95%D7%A4%D7%98_txgcse.jpg",
-      imageAlt: 'חוות דעת הנדסית לבית משפט בנושא ליקויי בנייה',
+      imageAlt: 'כתיבת חוות דעת הנדסית לבית משפט ע״י מהנדס מומחה לליקויי בנייה',
       icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" /></svg>,
       href: '#/חוות-דעת-הנדסית-לבית-משפט'
     },
     {
       title: 'איתור נזילות ורטיבות',
-      description: 'איתור הבעיה בציוד תרמי מתקדם ללא שבירת קירות: גלו כשלי איטום ונזילות סמויות לפני שהן הופכות לעובש מסוכן ולנזק מבני בלתי הפיך.',
+      description: 'איתור מדויק של מקור הנזילה ללא שבירת קירות. אנו משתמשים במצלמה תרמית מתקדמת לזיהוי הפרשי טמפרטורה ומדי לחות אלקטרוניים.\n\nליקויים נפוצים: פיצוצים זעירים בצנרת, איטום לקוי בחדרי רחצה וחדירת מי גשם דרך המעטפת החיצונית.\n\nהיתרון שלנו: אבחון הנדסי שורשי שמונע תיקונים קוסמטיים חסרי תועלת ומביא לפתרון סופי של בעיית הרטיבות.',
       imageUrl: "https://res.cloudinary.com/dbzklnlcx/image/upload/v1769635012/%D7%90%D7%99%D7%AA%D7%95%D7%A8_%D7%A8%D7%98%D7%99%D7%91%D7%95%D7%99%D7%95%D7%AA_irxrhe.jpg",
-      imageAlt: 'איתור נזילות ורטיבות סמויה באמצעות מצלמה תרמית FLIR',
+      imageAlt: 'איתור נזילות מים סמויות וביצוע בדיקת רטיבות באמצעות מצלמה תרמית ללא הרס',
       icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" /></svg>,
       href: '#/איתור-נזילות-ורטיבות'
     },
     {
       title: 'בדיקת סוף שנת בדק',
-      description: 'הזדמנות אחרונה לתיקונים על חשבון הקבלן: איתור ליקויים שהתפתחו בשנה הראשונה (סדקים, רטיבות) ודרישת תיקון רגע לפני פקיעת האחריות.',
-      imageUrl: "https://res.cloudinary.com/dbzklnlcx/image/upload/v1770103357/%D7%A9%D7%A0%D7%AA_%D7%91%D7%93%D7%A7_a5klqo.jpg?auto=format&fit=crop&w=800&q=80",
-      imageAlt: 'בדיקת שנת בדק לדירה חדשה',
+      description: 'הזדמנות אחרונה לאלץ את הקבלן לתקן ליקויים שהתפתחו מאז הכניסה לדירה. בדיקה זו מתבצעת כ-11 חודשים לאחר המסירה.\n\nליקויים נפוצים: סדקים נימיים ודינמיים, כשלים במערכת המיזוג שלא אותרו בקיץ וליקויי ריצוף שהחמירו.\n\nהיתרון שלנו: אנו מוודאים שהקבלן יעמוד באחריותו החוקית (חוק המכר) לפני שתקופת הבדק פוקעת.',
+      imageUrl: "https://res.cloudinary.com/dbzklnlcx/image/upload/v1770103357/%D7%A9%D7%A0%D7%AA_%D7%91%D7%93%D7%A7_a5klqo.jpg",
+      imageAlt: 'מהנדס מומחה מבצע בדיקת שנת בדק לדירה חדשה למימוש אחריות הקבלן',
       icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
       href: '#/בדיקת-סוף-שנת-בדק'
     },
     {
-      title: 'פיקוח הנדסי וליווי בניה',
-      description: 'ליווי צמוד לאורך כל תהליך הבנייה או השיפוץ: פיקוח על איכות החומרים, עמידה בלוחות זמנים ומניעת ליקויים עוד בשלב הביצוע המוקדם.',
-      imageUrl: "https://res.cloudinary.com/dbzklnlcx/image/upload/v1770103360/%D7%9E%D7%97%D7%99%D7%A8%D7%95%D7%9F_%D7%91%D7%93%D7%A7_%D7%91%D7%99%D7%AA_qac6nq.jpg",
-      imageAlt: 'פיקוח הנדסי וליווי בנייה באתר עבודה',
-      icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" /></svg>,
+      title: 'שמאות רכוש וירידת ערך',
+      description: 'אומדן כספי מדויק לנזקים בנכס וירידת ערך הנדסית לצרכי תביעות וביטוח. אנו בוחנים את ההשפעה הכלכלית של ליקויי בנייה ונזקי צנרת.\n\nליקויים נפוצים: ירידת ערך עקב רטיבות קבועה, הערכת חסר של חברות הביטוח ופיצוי לא הולם על נזקי צד ג\'.\n\nהיתרון שלנו: חוות דעת משולבת (הנדסית ושמאית) המעניקה לכם בסיס חזק במיוחד מול חברות ביטוח ובתי משפט.',
+      imageUrl: "https://res.cloudinary.com/dbzklnlcx/image/upload/v1769635899/%D7%A9%D7%9E%D7%90%D7%95%D7%AA_%D7%A8%D7%9B%D7%95%D7%A91_b5aa9w.jpg",
+      imageAlt: 'שמאי רכוש ומהנדס מבצעים הערכת נזקים וירידת ערך לנכס מקרקעין',
+      icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
+      href: '#/שמאות-וירידת-ערך'
+    },
+    {
+      title: 'פיקוח וליווי הנדסי לשיפוצים',
+      description: 'ליווי צמוד של מהנדס במהלך שיפוץ נרחב או בנייה עצמית. אנו מוודאים שהקבלן משתמש בחומרים הנכונים ועומד בלוחות הזמנים ובאיכות העבודה.\n\nליקויים נפוצים: שימוש בחומרי בנייה זולים שאינם עומדים בתקן, אי-עמידה בתוכניות אדריכליות וקיצורי דרך בבטיחות.\n\nהיתרון שלנו: "עיניים מקצועיות" בשטח שמונעות טעויות יקרות עוד לפני שהן קורות, ומבטיחות שההשקעה שלכם מוגנת.',
+      imageUrl: "https://res.cloudinary.com/dbzklnlcx/image/upload/v1769635165/%D7%A0%D7%97%D7%9C_%D7%A9%D7%99%D7%9C%D7%94_1_e2bafy.jpg",
+      imageAlt: 'פיקוח הנדסי באתר בנייה על ידי מהנדס מוסמך להבטחת איכות הביצוע',
+      icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>,
       href: '#contact'
     },
     {
-      title: 'ביקורת שטחים משותפים',
-      description: 'בדיקה הנדסית לרכוש המשותף: מעליות, מאגרי מים, לובי וחיפויים חיצוניים. הגנה על ועד הבית והדיירים מפני הוצאות תחזוקה כבדות.',
+      title: 'בדק בית למבני מסחר ומשרדים',
+      description: 'ביקורת מבנים הנדסית לנכסים עסקיים, חנויות ומבני תעשייה. בדיקת עומסים, מערכות כיבוי אש, נגישות לעסקים ומערכות מיזוג תעשייתיות.\n\nליקויים נפוצים: אי-עמידה בתקני בטיחות אש, כשלי נגישות העלולים לגרור תביעות, ובעיות איטום במבנים גדולים.\n\nהיתרון שלנו: הבנה מעמיקה של תקני הבנייה המסחריים והגנה על הנכס המניב שלכם מפני ירידת ערך וסיכונים בטיחותיים.',
       imageUrl: "https://res.cloudinary.com/dbzklnlcx/image/upload/v1770103357/%D7%9C%D7%95%D7%91%D7%99_%D7%A9%D7%9C_%D7%91%D7%A0%D7%99%D7%99%D7%9F_qr7teu.jpg",
-      imageAlt: 'ביקורת שטחים משותפים בבניין מגורים',
+      imageAlt: 'בדק בית וביקורת מבנים למשרדים ומבני מסחר רחבי היקף',
       icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>,
       href: '#contact'
-    },
-    {
-      title: 'שמאות רכוש וירידת ערך',
-      description: 'הערכת נזקים וחישוב ירידת ערך לנכס עקב ליקויים או נזקי צנרת. דוח שמאי מוסמך לצורך תביעות ביטוח ודרישת פיצויים מהקבלן.',
-      imageUrl: "https://res.cloudinary.com/dbzklnlcx/image/upload/v1770104338/%D7%A9%D7%9E%D7%90%D7%95%D7%AA_%D7%A8%D7%9B%D7%95%D7%A911_drxde5.jpg",
-      imageAlt: 'שמאות רכוש וירידת ערך לנכס',
-      icon: <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
-      href: '#/שמאות-רכוש-והערכת-נזקים'
     }
   ];
 

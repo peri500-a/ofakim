@@ -9,7 +9,7 @@ import Logo from './Logo';
 const PricingPage: React.FC = () => {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    document.title = "מחירון בדק בית 2026 | אופקים הנדסה - שקיפות מלאה";
+    document.title = "מחירון בדק בית וביקורת מבנים 2026 | אופקים הנדסה - מחיר שקוף";
   }, []);
 
   const handleGoHome = (e: React.MouseEvent) => {
@@ -47,12 +47,12 @@ const PricingPage: React.FC = () => {
             </button>
             
             <h1 className="text-5xl md:text-8xl font-black text-white mb-8 tracking-tight leading-[0.9]">
-              מחירון <br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">בדק בית 2026</span>
+              כמה עולה <br/>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">בדק בית וביקורת מבנים?</span>
             </h1>
             
             <p className="text-xl md:text-2xl text-gray-400 leading-relaxed max-w-2xl">
-              אנחנו מאמינים בשקיפות הנדסית. כאן תוכלו למצוא את מחירי השירותים שלנו, המבוססים על רמה מקצועית ללא פשרות ושימוש בטכנולוגיה המתקדמת ביותר.
+              אנחנו מאמינים בשקיפות הנדסית מלאה. כאן תוכלו למצוא את מחירי בדק הבית והביקורת ההנדסית שלנו לשנת 2026.
             </p>
           </div>
         </div>
@@ -67,7 +67,7 @@ const PricingPage: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
               {[
                 { t: 'מחיר פיקס', d: 'ללא אותיות קטנות או "הפתעות" בשטח' },
-                { t: 'מהנדס רשום', d: 'כל הבדיקות מבוצעות ע"י מהנדס מוסמך בלבד' },
+                { t: 'מהנדס רשום', d: 'כל הבדיקות מבוצעות ע"י מהנדס בדק בית מוסמך' },
                 { t: 'דוח תוך 48 שעות', d: 'התחייבות למסירת דוח הנדסי קביל ומהיר' }
               ].map((box, i) => (
                 <div key={i} className="bg-gray-900/50 border border-white/5 p-8 rounded-3xl backdrop-blur-sm">
@@ -89,7 +89,7 @@ const PricingPage: React.FC = () => {
                       <tr className="border-b border-white/5">
                         <th className="pb-6 text-gray-500 font-bold uppercase tracking-widest text-xs">סוג הנכס / השירות</th>
                         <th className="pb-6 text-gray-500 font-bold uppercase tracking-widest text-xs">עלות משוערת (כולל מע"מ)</th>
-                        <th className="pb-6 text-gray-500 font-bold uppercase tracking-widest text-xs hidden sm:table-cell">מה כלול?</th>
+                        <th className="pb-6 text-gray-500 font-bold uppercase tracking-widest text-xs hidden sm:table-cell">מה כולל?</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-white/5">
@@ -112,7 +112,7 @@ const PricingPage: React.FC = () => {
                 
                 <div className="mt-12 p-6 bg-gray-950/50 rounded-2xl border border-white/5 text-center">
                   <p className="text-gray-400 text-sm italic">
-                    * המחירים עשויים להשתנות בהתאם למורכבות הנכס, מיקומו הגיאוגרפי ודרישות ספציפיות. <br className="hidden md:block"/> אנו ממליצים תמיד להתקשר ולקבל הצעה מדויקת המותאמת עבורכם.
+                    * המחירים עשויים להשתנות בהתאם למורכבות הנכס ודרישות ביקורת המבנים הספציפיות. <br className="hidden md:block"/> אנו ממליצים תמיד להתקשר ולקבל הצעה מדויקת המותאמת עבורכם.
                   </p>
                 </div>
               </div>

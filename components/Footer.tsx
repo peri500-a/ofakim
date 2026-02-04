@@ -5,7 +5,6 @@ import Logo from './Logo';
 const Footer: React.FC = () => {
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (href.startsWith('#')) {
-      // If it's a section anchor on the home page
       if (href.startsWith('#') && !href.startsWith('#/') && (window.location.pathname === '/' || window.location.hash === '#/')) {
         return;
       }
@@ -30,11 +29,21 @@ const Footer: React.FC = () => {
             <span className="text-2xl font-black text-blue-400">אופקים הנדסה</span>
           </a>
           
-          <nav className="flex flex-wrap justify-center gap-6 sm:gap-10 text-gray-400 font-bold" aria-label="ניווט תחתון">
+          <nav className="flex flex-wrap justify-center items-center gap-6 sm:gap-10 text-gray-400 font-bold" aria-label="ניווט תחתון">
             <a href="#/services" onClick={(e) => handleLinkClick(e, '#/services')} className="hover:text-blue-400 transition-colors">שירותים</a>
             <a href="#/בדק-בית-מחיר" onClick={(e) => handleLinkClick(e, '#/בדק-בית-מחיר')} className="hover:text-blue-400 transition-colors">מחירון 2026</a>
             <a href="#/privacy-policy" onClick={(e) => handleLinkClick(e, '#/privacy-policy')} className="hover:text-blue-400 transition-colors">מדיניות פרטיות</a>
-            <a href="#/accessibility" onClick={(e) => handleLinkClick(e, '#/accessibility')} className="hover:text-blue-400 transition-colors underline decoration-blue-500/50 decoration-2 underline-offset-8">הצהרת נגישות</a>
+            <a 
+              href="#/נגישות" 
+              onClick={(e) => handleLinkClick(e, '#/נגישות')} 
+              className="flex items-center gap-2 text-white bg-blue-600/10 border border-blue-500/30 px-5 py-2.5 rounded-full hover:bg-blue-600 hover:text-white transition-all underline decoration-blue-500/50 decoration-2 underline-offset-8 focus:ring-2 focus:ring-blue-500"
+              aria-label="הצהרת נגישות"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              </svg>
+              הצהרת נגישות
+            </a>
             <a href="#/contact" onClick={(e) => handleLinkClick(e, '#/contact')} className="hover:text-blue-400 transition-colors">צור קשר</a>
           </nav>
 

@@ -16,24 +16,24 @@ const Feature: React.FC<{ icon: React.ReactNode; title: string; description: str
 const WhyUs: React.FC = () => {
   const features = [
     {
-      icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>,
-      title: 'מהנדסים מומחים ורשויים',
-      description: 'צוות המהנדסים שלנו מורכב מאנשי מקצוע בעלי רישיון בתוקף וניסיון של מעל 15 שנים באיתור ליקויי בנייה מורכבים ומתן עדות מומחה בבתי משפט.',
+      icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>,
+      title: 'מהנדסים אורגניים בלבד',
+      description: 'בניגוד לחברות המעסיקות פרילנסרים, אצלנו כל מהנדס הוא חלק בלתי נפרד מהצוות, מה שמבטיח אחריות אישית, אג׳נדה הנדסית אחידה וקשר ישיר מול הלקוח.',
+    },
+    {
+      icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>,
+      title: 'דוחות ייחודיים (ללא העתק-הדבק)',
+      description: 'כל חוות דעת נערכת באופן ספציפי לנכס הנבדק. אנו נמנעים מדו"חות סטנדרטיים ומבטיחים הצגת עובדות מדויקת וחדה לכל ליקוי.',
     },
     {
       icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 1v4m0 0h-4m4 0l-5-5" /></svg>,
       title: 'טכנולוגיה תרמית פורצת דרך',
-      description: 'אנו משתמשים במצלמות תרמיות FLIR מהמתקדמות בעולם ומכשור אקוסטי דיגיטלי המאפשרים לגלות נזילות וליקויי איטום סמויים מבלי לשבור אף קיר.',
+      description: 'אנו משתמשים במצלמות תרמיות FLIR ומכשור אקוסטי דיגיטלי המאפשרים לגלות נזילות וליקויי איטום סמויים מבלי לשבור אף קיר.',
     },
     {
-      icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
-      title: 'דוח הנדסי תוך 48 שעות',
-      description: 'אנחנו מבינים שזמן הוא כסף בעסקאות נדל"ן. לכן, אנו מתחייבים למסירת דוח מפורט, קריא וקביל משפטית במהירות שיא מרגע סיום הבדיקה.',
-    },
-    {
-      icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" /></svg>,
-      title: 'שקיפות וליווי אישי',
-      description: 'מעבר לדוח היבש, אנו מספקים ייעוץ אישי והסברים מפורטים על כל ליקוי, כולל אומדן עלויות תיקון וליווי מקצועי מול הקבלן או מוכר הנכס.',
+      icon: <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>,
+      title: 'יחס אישי וזמינות מהנדס',
+      description: 'הטיפול נעשה במערכת אינטימית של שאלות ותשובות מול המהנדס המבצע, לאורך כל הדרך ועד לסגירת העסקה מול המוכרים.',
     },
   ];
 
@@ -45,7 +45,7 @@ const WhyUs: React.FC = () => {
             <h2 className="text-blue-500 font-black uppercase tracking-[0.2em] text-base mb-4 italic">היתרון ההנדסי שלנו</h2>
             <h3 className="text-4xl md:text-6xl font-black text-white mb-8 leading-tight tracking-normal">למה לבחור <span className="text-blue-500">בנו?</span></h3>
             <p className="text-xl text-gray-400 mb-12 leading-relaxed max-w-xl">
-              בחירה ב"אופקים הנדסה" היא בחירה בביטחון השקט שלכם. אנו משלבים ידע הנדסי עמוק עם הכלים הטכנולוגיים החדשניים ביותר כדי להבטיח שלא תפספסו אף ליקוי.
+              בחירה ב"אופקים הנדסה" היא בחירה בביטחון השקט שלכם. אנו משלבים ידע הנדסי עמוק עם הכלים הטכנולוגיים החדשניים ביותר ויושרה מקצועית ללא פשרות.
             </p>
             <div className="space-y-10 sm:space-y-12">
               {features.map((feature, index) => (
@@ -70,7 +70,7 @@ const WhyUs: React.FC = () => {
                     <p className="text-blue-400 font-black text-sm uppercase tracking-widest">הבטחת איכות</p>
                 </div>
                 <p className="text-white text-xl sm:text-3xl font-black leading-tight tracking-normal">
-                    הדוח שלנו הוא הכוח שלכם בניהול המשא ומתן. אל תחתמו על החוזה ללא ביקורת מומחה.
+                    הדוח שלנו הוא הכוח שלכם בניהול המשא ומתן. אובייקטיביות מלאה ללא הטיית היכרות.
                 </p>
               </div>
             </div>

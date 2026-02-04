@@ -26,48 +26,29 @@ import LocationPage from './components/LocationPage';
 import VillaInspectionPage from './components/VillaInspectionPage';
 import WarrantyInspectionPage from './components/WarrantyInspectionPage';
 import SecondHandInspectionPage from './components/SecondHandInspectionPage';
+import AccessibilityStatement from './components/AccessibilityStatement';
 import NotFound from './components/NotFound';
+import LegalPower from './components/LegalPower';
 
-type PageType = 'home' | 'pricing' | 'contractor' | 'court' | 'leak' | 'appraisal' | 'tel-aviv' | 'jerusalem' | 'merkaz' | 'villa' | 'warranty' | 'second-hand' | '404';
+type PageType = 'home' | 'pricing' | 'contractor' | 'court' | 'leak' | 'appraisal' | 'tel-aviv' | 'jerusalem' | 'merkaz' | 'villa' | 'warranty' | 'second-hand' | 'accessibility' | '404';
 
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<PageType>('home');
 
   useEffect(() => {
-    const updateMeta = (title: string, description: string, keywords: string) => {
-      try {
-        document.title = title;
-        const metaDesc = document.querySelector('meta[name="description"]');
-        if (metaDesc) metaDesc.setAttribute('content', description);
-        
-        const metaKeywords = document.querySelector('meta[name="keywords"]');
-        if (metaKeywords) metaKeywords.setAttribute('content', keywords);
-        
-        let canonical = document.querySelector('link[rel="canonical"]');
-        if (!canonical) {
-          canonical = document.createElement('link');
-          canonical.setAttribute('rel', 'canonical');
-          document.head.appendChild(canonical);
-        }
-        canonical.setAttribute('href', window.location.href.split('#')[0] + window.location.hash);
-      } catch (e) {
-        console.error("Meta update failed", e);
-      }
-    };
-
     const handleRouting = () => {
       let routePath = "/";
       try {
         const hash = window.location.hash.replace(/^#/, '');
         const pathname = window.location.pathname;
         
-        if (hash.startsWith('/')) {
+        if (hash && hash.startsWith('/')) {
           routePath = decodeURIComponent(hash).toLowerCase();
-        } else if (pathname !== '/' && pathname !== '/index.html') {
+        } else if (pathname && pathname !== '/' && pathname !== '/index.html') {
           routePath = decodeURIComponent(pathname).toLowerCase();
         }
       } catch (e) {
-        console.warn("Invalid URI in path, reverting to home", e);
+        console.warn("Routing decode error, defaulting to home", e);
         routePath = "/";
       }
 
@@ -75,14 +56,8 @@ const App: React.FC = () => {
 
       if (normalizedPath === "" || normalizedPath === "/" || normalizedPath === "/index.html") {
         setCurrentPage('home');
-        updateMeta(
-          "בדק בית וביקורת מבנים ע״י מהנדס מומחה | איתור ליקויי בנייה | אופקים הנדסה", 
-          "אופקים הנדסה - החברה המובילה לבדק בית וביקורת מבנים בישראל. איתור ליקויי בנייה בציוד תרמי, דוחות הנדסיים קבילים בבית משפט וחיסכון כספי משמעותי.",
-          "בדק בית, ביקורת מבנים, מהנדס בדק בית, ליקויי בנייה, איתור נזילות, בדק בית מחיר"
-        );
       } else if (normalizedPath.includes("מחיר") || normalizedPath.includes("pricing")) {
         setCurrentPage('pricing');
-        updateMeta("מחירון בדק בית 2026", "מחירון בדק בית מעודכן 2026", "מחירון");
       } else if (normalizedPath.includes("מקבלן") || normalizedPath.includes("contractor")) {
         setCurrentPage('contractor');
       } else if (normalizedPath.includes("חוות-דעת") || normalizedPath.includes("court")) {
@@ -103,20 +78,16 @@ const App: React.FC = () => {
         setCurrentPage('warranty');
       } else if (normalizedPath.includes("יד-שנייה") || normalizedPath.includes("second-hand")) {
         setCurrentPage('second-hand');
+      } else if (normalizedPath.includes("נגישות") || normalizedPath.includes("accessibility")) {
+        setCurrentPage('accessibility');
       } else {
         const hashSection = window.location.hash.replace(/^#/, '');
-        const homeSections = ['contact', 'faq', 'services', 'process', 'why-us', 'testimonials', 'cases', 'knowledge', 'privacy-policy', 'accessibility'];
-        if (homeSections.includes(hashSection)) {
+        const homeSections = ['contact', 'faq', 'services', 'process', 'why-us', 'testimonials', 'cases', 'knowledge', 'privacy-policy'];
+        if (homeSections.includes(hashSection) || !hashSection) {
           setCurrentPage('home');
         } else {
           setCurrentPage('404');
         }
-      }
-      
-      const hashSection = window.location.hash.replace(/^#/, '');
-      const homeSections = ['contact', 'faq', 'services', 'process', 'why-us', 'testimonials', 'cases', 'knowledge', 'privacy-policy', 'accessibility'];
-      if (!homeSections.includes(hashSection)) {
-        window.scrollTo({ top: 0, behavior: 'instant' });
       }
     };
 
@@ -130,47 +101,47 @@ const App: React.FC = () => {
     };
   }, []);
 
-  const renderPage = () => {
-    switch (currentPage) {
-      case 'pricing': return <PricingPage />;
-      case 'contractor': return <ContractorInspectionPage />;
-      case 'court': return <CourtExpertPage />;
-      case 'leak': return <LeakDetectionPage />;
-      case 'appraisal': return <AppraisalPage />;
-      case 'tel-aviv': return <LocationPage city="תל אביב" />;
-      case 'jerusalem': return <LocationPage city="ירושלים" />;
-      case 'merkaz': return <LocationPage city="המרכז" />;
-      case 'villa': return <VillaInspectionPage />;
-      case 'warranty': return <WarrantyInspectionPage />;
-      case 'second-hand': return <SecondHandInspectionPage />;
-      case '404': return <NotFound />;
-      default:
-        return (
-          <div className="bg-gray-950 text-gray-300 selection:bg-blue-500/30 selection:text-white overflow-x-hidden">
-            <Header />
-            <main id="main-content" role="main">
-              <FadeInSection><Hero /></FadeInSection>
-              <FadeInSection delay={150}><Services /></FadeInSection>
-              <FadeInSection><WhyUs /></FadeInSection>
-              <FadeInSection><CaseStudies /></FadeInSection>
-              <FadeInSection><ComparisonTable /></FadeInSection>
-              <FadeInSection delay={100}><Process /></FadeInSection>
-              <FadeInSection><KnowledgeHub /></FadeInSection>
-              <FadeInSection><Testimonials /></FadeInSection>
-              <FadeInSection><FAQ /></FadeInSection>
-              <FadeInSection><Contact /></FadeInSection>
-              <FadeInSection><PrivacySection /></FadeInSection>
-              <FadeInSection><AccessibilitySection /></FadeInSection>
-            </main>
-            <Footer />
-            <StickyQuoteButton />
-            <CookieConsent />
-          </div>
-        );
-    }
-  };
+  if (currentPage === 'home') {
+    return (
+      <div className="bg-gray-950 text-gray-300 selection:bg-blue-500/30 selection:text-white overflow-x-hidden">
+        <Header />
+        <main id="main-content" role="main">
+          <FadeInSection><Hero /></FadeInSection>
+          <FadeInSection delay={150}><Services /></FadeInSection>
+          <FadeInSection><WhyUs /></FadeInSection>
+          <FadeInSection><LegalPower /></FadeInSection>
+          <FadeInSection><CaseStudies /></FadeInSection>
+          <FadeInSection><ComparisonTable /></FadeInSection>
+          <FadeInSection delay={100}><Process /></FadeInSection>
+          <FadeInSection><KnowledgeHub /></FadeInSection>
+          <FadeInSection><Testimonials /></FadeInSection>
+          <FadeInSection><FAQ /></FadeInSection>
+          <FadeInSection><Contact /></FadeInSection>
+          <FadeInSection><PrivacySection /></FadeInSection>
+          <FadeInSection><AccessibilitySection /></FadeInSection>
+        </main>
+        <Footer />
+        <StickyQuoteButton />
+        <CookieConsent />
+      </div>
+    );
+  }
 
-  return renderPage();
+  switch (currentPage) {
+    case 'pricing': return <PricingPage />;
+    case 'contractor': return <ContractorInspectionPage />;
+    case 'court': return <CourtExpertPage />;
+    case 'leak': return <LeakDetectionPage />;
+    case 'appraisal': return <AppraisalPage />;
+    case 'tel-aviv': return <LocationPage city="תל אביב" />;
+    case 'jerusalem': return <LocationPage city="ירושלים" />;
+    case 'merkaz': return <LocationPage city="המרכז" />;
+    case 'villa': return <VillaInspectionPage />;
+    case 'warranty': return <WarrantyInspectionPage />;
+    case 'second-hand': return <SecondHandInspectionPage />;
+    case 'accessibility': return <AccessibilityStatement />;
+    default: return <NotFound />;
+  }
 };
 
 export default App;
