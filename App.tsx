@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
-import Header from './components/Header';
+import Header from './Header';
 import Hero from './components/Hero';
 import Services from './components/Services';
 import WhyUs from './components/WhyUs';
@@ -54,8 +54,19 @@ const App: React.FC = () => {
 
       const normalizedPath = routePath.replace(/\s+/g, '-').replace(/\/$/, '') || "/";
 
-      if (normalizedPath === "" || normalizedPath === "/" || normalizedPath === "/index.html") {
+      // הוספת בדיקה אם מדובר ב-Hash של דף הבית
+      const hashSection = window.location.hash.replace(/^#\/?/, ''); // תומך גם ב-#contact וגם ב-#/contact
+      const homeSections = ['contact', 'faq', 'services', 'process', 'why-us', 'testimonials', 'cases', 'knowledge', 'privacy-policy', 'main-content'];
+
+      if (normalizedPath === "" || normalizedPath === "/" || normalizedPath === "/index.html" || homeSections.includes(hashSection)) {
         setCurrentPage('home');
+        // אם יש האש, גלול אליו
+        if (hashSection && homeSections.includes(hashSection)) {
+          setTimeout(() => {
+            const el = document.getElementById(hashSection);
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+          }, 100);
+        }
       } else if (normalizedPath.includes("מחיר") || normalizedPath.includes("pricing")) {
         setCurrentPage('pricing');
       } else if (normalizedPath.includes("מקבלן") || normalizedPath.includes("contractor")) {
@@ -81,13 +92,7 @@ const App: React.FC = () => {
       } else if (normalizedPath.includes("נגישות") || normalizedPath.includes("accessibility")) {
         setCurrentPage('accessibility');
       } else {
-        const hashSection = window.location.hash.replace(/^#/, '');
-        const homeSections = ['contact', 'faq', 'services', 'process', 'why-us', 'testimonials', 'cases', 'knowledge', 'privacy-policy'];
-        if (homeSections.includes(hashSection) || !hashSection) {
-          setCurrentPage('home');
-        } else {
-          setCurrentPage('404');
-        }
+        setCurrentPage('404');
       }
     };
 

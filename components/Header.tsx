@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 import Logo from './Logo';
 
@@ -53,7 +54,6 @@ const Header: React.FC = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Keyboard navigation and Focus Trap for Mobile Menu
   useEffect(() => {
     if (isMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -90,16 +90,35 @@ const Header: React.FC = () => {
   }, [isMenuOpen]);
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    setIsMenuOpen(false);
+    
     if (href.startsWith('#')) {
-      setIsMenuOpen(false);
       const targetId = href.replace(/^#\//, '').replace(/^#/, '');
-      if (targetId === '' || targetId === '/') {
+      
+      // אם אנחנו כבר בדף הבית, בצע גלילה חלקה
+      const homeSections = ['contact', 'faq', 'services', 'process', 'why-us', 'testimonials', 'cases', 'knowledge', 'privacy-policy'];
+      
+      if (targetId === '' || targetId === '/' || homeSections.includes(targetId)) {
         e.preventDefault();
-        window.history.pushState(null, '', '/');
-        window.location.hash = '';
+        
+        // עדכון ה-URL
+        window.history.pushState(null, '', `/#${targetId}`);
         window.dispatchEvent(new PopStateEvent('popstate'));
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        
+        // גלילה חלקה
+        if (targetId === '' || targetId === '/') {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          const el = document.getElementById(targetId);
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth' });
+          } else {
+            // אם האלמנט לא קיים כרגע (כי אנחנו בדף פנימי), ה-PopStateEvent למעלה יחליף דף
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }
+        }
       } else if (href.startsWith('#/')) {
+        // ניווט לדף פנימי
         e.preventDefault();
         window.location.hash = href.replace(/^#/, '');
         window.dispatchEvent(new PopStateEvent('popstate'));
@@ -191,7 +210,6 @@ const Header: React.FC = () => {
             </nav>
 
             <div className="flex items-center gap-2 sm:gap-4">
-              {/* Share Button */}
               <div className="relative" ref={shareRef}>
                 <button 
                   onClick={handleShareClick}
@@ -249,7 +267,6 @@ const Header: React.FC = () => {
         </div>
       </header>
 
-      {/* Mobile Menu Overlay */}
       <div 
         id="mobile-menu"
         ref={menuRef}
